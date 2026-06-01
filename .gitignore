@@ -73,3 +73,11 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+# Regras para a subpasta do jogo
+JogoPirata_Unity/Library/
+JogoPirata_Unity/Temp/
+JogoPirata_Unity/Obj/
+JogoPirata_Unity/Builds/
+JogoPirata_Unity/Logs/
+JogoPirata_Unity/UserSettings/
+JogoPirata_Unity/MemoryCaptures/
