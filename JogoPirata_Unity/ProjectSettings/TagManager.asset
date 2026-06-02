@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -41,3 +41,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Fundo_Ceu
+    uniqueID: 2190765087
+    locked: 0
+  - name: Efeito_Agua
+    uniqueID: 3523900975
+    locked: 0
+  - name: Fundo_Horizonte
+    uniqueID: 420410145
+    locked: 0
+  - name: Navio
+    uniqueID: 2054101489
+    locked: 0
+  - name: Frente_Agua
+    uniqueID: 1743705011
+    locked: 0
+  m_RenderingLayers:
+  - Default
+  m_MigratedRenderPipelines: []
