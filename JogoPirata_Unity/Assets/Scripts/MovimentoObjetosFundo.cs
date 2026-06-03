@@ -4,6 +4,7 @@ public class MovimentoObjetosFundo : MonoBehaviour
 {
     public float velocidade = 0.5f;
     public float limiteEsquerdo = -12f; 
+    public float limiteDireito = 12f;     
     public float pontoDeRetorno = 12f;
 
     void Update()
@@ -13,5 +14,9 @@ public class MovimentoObjetosFundo : MonoBehaviour
         {
             transform.position = new Vector3(pontoDeRetorno, transform.position.y, transform.position.z);
         }
+        if (transform.position.x >= limiteDireito)
+        {
+            transform.position = new Vector3(pontoDeRetorno, transform.position.y, transform.position.z);
+        }        
     }
 }
