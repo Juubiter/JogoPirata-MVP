@@ -20,11 +20,24 @@ public class EnemySpawner : MonoBehaviour
     // Chamado pelo GameManager quando a fase inicia
     public void StartSpawning()
     {
+        Debug.Log("[Spawner] StartSpawning chamado!");
         if (!isSpawning)
         {
             isSpawning = true;
             StartCoroutine(SpawnRoutine());
         }
+    }
+
+    void SpawnEnemy()
+    {
+        if (spawnPoints.Length == 0) { Debug.Log("[Spawner] ERRO: Nenhum spawn point!"); return; }
+
+        GameObject prefab = spawnWarship ? warshipPrefab : schoenerPrefab;
+        if (prefab == null) { Debug.Log("[Spawner] ERRO: Prefab nulo!"); return; }
+
+        Debug.Log("[Spawner] Spawnando navio!");
+        Transform ponto = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        Instantiate(prefab, ponto.position, Quaternion.identity);
     }
 
     public void StopSpawning()
@@ -49,14 +62,5 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    void SpawnEnemy()
-    {
-        if (spawnPoints.Length == 0) return;
-
-        GameObject prefab = spawnWarship ? warshipPrefab : schoenerPrefab;
-        if (prefab == null) return;
-
-        Transform ponto = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        Instantiate(prefab, ponto.position, Quaternion.identity);
-    }
+    
 }

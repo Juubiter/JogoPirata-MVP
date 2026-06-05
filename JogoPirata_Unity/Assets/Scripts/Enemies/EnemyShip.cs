@@ -2,6 +2,17 @@ using UnityEngine;
 
 public class EnemyShip : MonoBehaviour
 {
+    [Header("Movimento")]
+    public float moveSpeed = 2f;
+    public Vector2 moveDirection = Vector2.left;
+
+    [Header("Balanço")]
+    public float swayAmplitude = 0.15f;
+    public float swayFrequency = 1.2f;
+    public float rockAngle = 5f;
+    [Tooltip("Filho vazio do prefab posicionado no centro do navio. Se vazio, gira pela origem do root.")]
+    public Transform rockPivot;
+
     [Header("Configurações de Dano")]
     public float damageInterval = 8f;   // Cada X segundos causa um problema no navio
     public int maxHealth = 3;           // Quantos tiros do canhão aguenta
@@ -25,22 +36,59 @@ public class EnemyShip : MonoBehaviour
     private int currentHealth;
     private float damageTimer;
     private AudioSource audioSource;
+    private Vector2 basePosition;
+    private Vector2 swayAxis;
+    private float swayOffset;
+    private Vector3 pivotOffset;   // offset world-space de root→pivô, calculado no spawn com rotação identity
+    private bool hasEnteredScreen = false;
 
     void Start()
     {
         currentHealth = maxHealth;
         damageTimer = damageInterval;
         audioSource = GetComponent<AudioSource>();
+
+        moveDirection = moveDirection.normalized;
+        swayAxis = new Vector2(-moveDirection.y, moveDirection.x);
+        swayOffset = Random.Range(0f, Mathf.PI * 2f);
+
+        Transform root = transform.root;
+        pivotOffset = null != rockPivot ? rockPivot.position - root.position : Vector3.zero;
+        basePosition = (Vector2)root.position + (Vector2)pivotOffset;
     }
 
     void Update()
     {
         damageTimer -= Time.deltaTime;
-
         if (damageTimer <= 0f)
         {
             CausarDano();
             damageTimer = damageInterval;
+        }
+
+        basePosition += moveDirection * (moveSpeed * Time.deltaTime);
+
+        float t = Time.time * swayFrequency + swayOffset;
+        float sway  = Mathf.Sin(t) * swayAmplitude;
+        float angle = Mathf.Sin(t) * rockAngle;
+
+        Transform root = transform.root;
+        Vector3 pivotTarget = new(
+            basePosition.x + swayAxis.x * sway,
+            basePosition.y + swayAxis.y * sway,
+            root.position.z
+        );
+
+        // Posiciona root (com rotação zerada) para que o pivô fique em pivotTarget, depois gira em torno dele
+        root.SetPositionAndRotation(pivotTarget - pivotOffset, Quaternion.identity);
+        root.RotateAround(pivotTarget, Vector3.forward, angle);
+
+        if (Camera.main != null)
+        {
+            Vector3 vp = Camera.main.WorldToViewportPoint(pivotTarget);
+            bool onScreen = vp.x >= -0.1f && vp.x <= 1.1f && vp.y >= -0.1f && vp.y <= 1.1f;
+            if (onScreen) hasEnteredScreen = true;
+            else if (hasEnteredScreen) Destroy(gameObject);
         }
     }
 

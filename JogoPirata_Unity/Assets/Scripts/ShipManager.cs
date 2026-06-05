@@ -11,6 +11,20 @@ public class ShipManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
+    void Start()
+    {
+        EnemySpawner spawner = FindObjectOfType<EnemySpawner>();
+        Debug.Log("[ShipManager] Spawner encontrado: " + spawner);
+
+        if (spawner == null)
+        {
+            Debug.LogError("[ShipManager] EnemySpawner não encontrado na cena!");
+            return;
+        }
+
+        spawner.StartSpawning();
+    }
+
     // TODO: Pessoa pelos sistemas do navio preenche aqui
     public void TriggerFire(Vector2 pos)
     {
