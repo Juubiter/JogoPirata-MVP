@@ -139,7 +139,7 @@ TextureImporter:
         width: 32
         height: 173
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -161,7 +161,7 @@ TextureImporter:
         width: 48
         height: 173
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -180,10 +180,10 @@ TextureImporter:
         serializedVersion: 2
         x: 138
         y: 47
-        width: 54
-        height: 183
+        width: 28
+        height: 136
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -202,10 +202,10 @@ TextureImporter:
         serializedVersion: 2
         x: 187
         y: 47
-        width: 80
-        height: 183
+        width: 42
+        height: 134
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -227,7 +227,7 @@ TextureImporter:
         width: 60
         height: 130
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -249,7 +249,7 @@ TextureImporter:
         width: 45
         height: 130
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -271,7 +271,7 @@ TextureImporter:
         width: 368
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -284,11 +284,143 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: masts_and_flags_7
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 181
+        width: 79
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34d28731177b63f4baf51876672a863e
+      internalID: -253617081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: masts_and_flags_8
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 183
+        width: 58
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d33413ab6241b0140bd0ddb8f955b9e6
+      internalID: 661694136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: masts_and_flags_9
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 143
+        width: 60
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69c640a91b7190f40b97432763de8e58
+      internalID: 257475457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: masts_and_flags_10
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 47
+        width: 60
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 760adf5304d443c47a361ee51d276aa3
+      internalID: -519711383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: masts_and_flags_11
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 79
+        width: 60
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c112430d40a227a46a317afced47f1fb
+      internalID: -453771832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: masts_and_flags_12
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 111
+        width: 60
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6fa45ab0340547488cd6f6f5639ac8b
+      internalID: 700595807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5565d65df3fe7ef4e8384b074c93fee5
     internalID: 0
     vertices: []
     indices: 
@@ -300,11 +432,17 @@ TextureImporter:
     nameFileIdTable:
       masts_and_flags_0: -8010784389190077046
       masts_and_flags_1: -6583023637961964637
+      masts_and_flags_10: -519711383
+      masts_and_flags_11: -453771832
+      masts_and_flags_12: 700595807
       masts_and_flags_2: -8575251986005542877
       masts_and_flags_3: 6892531953369732275
       masts_and_flags_4: 3545222779065091465
       masts_and_flags_5: -383790355434657000
       masts_and_flags_6: 2212526240042010885
+      masts_and_flags_7: -253617081
+      masts_and_flags_8: 661694136
+      masts_and_flags_9: 257475457
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
