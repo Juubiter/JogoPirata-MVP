@@ -195,7 +195,7 @@ TextureImporter:
         serializedVersion: 2
         x: 207
         y: 111
-        width: 113
+        width: 112
         height: 79
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -327,7 +327,7 @@ TextureImporter:
         serializedVersion: 2
         x: 207
         y: 47
-        width: 129
+        width: 108
         height: 65
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -413,12 +413,12 @@ TextureImporter:
       name: cabin_12
       rect:
         serializedVersion: 2
-        x: 312
+        x: 315
         y: 79
-        width: 24
+        width: 21
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -440,7 +440,7 @@ TextureImporter:
         width: 21
         height: 70
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -449,6 +449,28 @@ TextureImporter:
       bones: []
       spriteID: 7e4bfe28e0a2f324db63d5c107b487cf
       internalID: -1369504148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cabin_14
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2da5f5a2a3bced3498233929c9cdacaa
+      internalID: 1611933977
       vertices: []
       indices: 
       edges: []
@@ -473,6 +495,7 @@ TextureImporter:
       cabin_11: 7128472082733702862
       cabin_12: 1896449001
       cabin_13: -1369504148
+      cabin_14: 1611933977
       cabin_2: -7313128961699635226
       cabin_3: 5575218459758606404
       cabin_4: -5099943086305669051
