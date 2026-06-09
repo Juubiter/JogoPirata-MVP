@@ -2,25 +2,40 @@ using UnityEngine;
 
 public class EnemyShip : MonoBehaviour
 {
+    enum State { Entering, Attacking, Leaving }
+
     [Header("Movimento")]
-    public float moveSpeed = 2f;
+    [Min(0f)] public float moveSpeed = 2f;
     public Vector2 moveDirection = Vector2.left;
 
+    [Header("Parada para Ataque")]
+    [Range(0f, 1f), Tooltip("Posição X na viewport onde o navio para (0 = borda esquerda, 1 = borda direita).")]
+    public float stopViewportX = 0.6f;
+    [Min(0f), Tooltip("Segundos que o navio fica parado atacando antes de continuar.")]
+    public float attackDuration = 6f;
+    [Range(0f, 1f), Tooltip("Distância (em viewport) antes do ponto de parada onde o navio começa a desacelerar.")]
+    public float decelerationRange = 0.15f;
+    [Range(0f, 1f), Tooltip("Velocidade mínima (fração de moveSpeed) ao se aproximar da parada, para garantir que o navio realmente chegue ao ponto.")]
+    public float minSpeedFactor = 0.05f;
+    [Min(0f), Tooltip("Tempo (segundos) para o navio acelerar até a velocidade máxima ao retomar o movimento após o ataque.")]
+    public float accelerationTime = 1.5f;
+    [Min(0f), Tooltip("Tempo (segundos) de espera após sair da tela antes de destruir o navio, para garantir que o sprite saia completamente.")]
+    public float destroyDelay = 1f;
+
     [Header("Balanço")]
+    [Min(0f), Tooltip("Altura do balanço em unidades de mundo.")]
     public float swayAmplitude = 0.15f;
+    [Min(0f), Tooltip("Velocidade do balanço (ciclos por segundo).")]
     public float swayFrequency = 1.2f;
-    public float rockAngle = 5f;
-    [Tooltip("Filho vazio do prefab posicionado no centro do navio. Se vazio, gira pela origem do root.")]
-    public Transform rockPivot;
 
     [Header("Configurações de Dano")]
-    public float damageInterval = 8f;   // Cada X segundos causa um problema no navio
-    public int maxHealth = 3;           // Quantos tiros do canhão aguenta
-
-    // Flags para configurar o tipo de navio no Inspector:
-    // escuna normal: os dois false → sorteia aleatório
-    // Navio de Guerra (Fase 4): causesBoth = true
+    [Min(1f), Tooltip("Intervalo em segundos entre cada evento de dano causado ao navio do jogador.")]
+    public float damageInterval = 8f;
+    [Min(1), Tooltip("Quantidade de tiros do canhão necessários para destruir este navio.")]
+    public int maxHealth = 3;
+    [Tooltip("Escuna normal: os dois false → sorteia incêndio ou vazamento aleatoriamente.")]
     public bool causesFloodOnly = false;
+    [Tooltip("Navio de Guerra (Fase 4): causa incêndio E vazamento ao mesmo tempo.")]
     public bool causesBoth = false;
 
     [Header("Pontos de dano (Transforms no cenário do navio)")]
@@ -39,8 +54,10 @@ public class EnemyShip : MonoBehaviour
     private Vector2 basePosition;
     private Vector2 swayAxis;
     private float swayOffset;
-    private Vector3 pivotOffset;   // offset world-space de root→pivô, calculado no spawn com rotação identity
-    private bool hasEnteredScreen = false;
+    private State state = State.Entering;
+    private float attackTimer;
+    private float leavingTimer;
+    private bool destroyScheduled;
 
     void Start()
     {
@@ -52,44 +69,84 @@ public class EnemyShip : MonoBehaviour
         swayAxis = new Vector2(-moveDirection.y, moveDirection.x);
         swayOffset = Random.Range(0f, Mathf.PI * 2f);
 
-        Transform root = transform.root;
-        pivotOffset = null != rockPivot ? rockPivot.position - root.position : Vector3.zero;
-        basePosition = (Vector2)root.position + (Vector2)pivotOffset;
+        basePosition = (Vector2)transform.root.position;
     }
 
     void Update()
     {
-        damageTimer -= Time.deltaTime;
-        if (damageTimer <= 0f)
+        UpdateState();
+        UpdateVisual();
+    }
+
+    void UpdateState()
+    {
+        if (Camera.main == null) return;
+
+        Vector3 vp = Camera.main.WorldToViewportPoint(new Vector3(basePosition.x, basePosition.y, 0));
+
+        switch (state)
         {
-            CausarDano();
-            damageTimer = damageInterval;
+            case State.Entering:
+                float speedFactor = 1f;
+                float distanceToStop = vp.x - stopViewportX;
+                if (decelerationRange > 0f && distanceToStop < decelerationRange)
+                {
+                    float t = Mathf.Clamp01(distanceToStop / decelerationRange);
+                    speedFactor = Mathf.Max(t * t, minSpeedFactor);
+                }
+                basePosition += moveDirection * (moveSpeed * speedFactor * Time.deltaTime);
+                if (vp.x <= stopViewportX)
+                {
+                    state = State.Attacking;
+                    attackTimer = attackDuration;
+                    damageTimer = 0f; // dispara o primeiro ataque imediatamente
+                }
+                break;
+
+            case State.Attacking:
+                damageTimer -= Time.deltaTime;
+                if (damageTimer <= 0f)
+                {
+                    CausarDano();
+                    damageTimer = damageInterval;
+                }
+                attackTimer -= Time.deltaTime;
+                if (attackTimer <= 0f)
+                {
+                    state = State.Leaving;
+                    leavingTimer = 0f;
+                }
+                break;
+
+            case State.Leaving:
+                {
+                    float leavingSpeedFactor = 1f;
+                    if (accelerationTime > 0f)
+                    {
+                        leavingTimer += Time.deltaTime;
+                        float t = Mathf.Clamp01(leavingTimer / accelerationTime);
+                        leavingSpeedFactor = Mathf.Max(t * t, minSpeedFactor);
+                    }
+                    basePosition -= moveDirection * (moveSpeed * leavingSpeedFactor * Time.deltaTime);
+                }
+                if (!destroyScheduled && (vp.x < -0.1f || vp.x > 1.1f || vp.y < -0.1f || vp.y > 1.1f))
+                {
+                    destroyScheduled = true;
+                    Destroy(transform.root.gameObject, destroyDelay);
+                }
+                break;
         }
+    }
 
-        basePosition += moveDirection * (moveSpeed * Time.deltaTime);
-
-        float t = Time.time * swayFrequency + swayOffset;
-        float sway  = Mathf.Sin(t) * swayAmplitude;
-        float angle = Mathf.Sin(t) * rockAngle;
-
+    void UpdateVisual()
+    {
+        float sway = Mathf.Sin(Time.time * swayFrequency + swayOffset) * swayAmplitude;
         Transform root = transform.root;
-        Vector3 pivotTarget = new(
+        root.position = new Vector3(
             basePosition.x + swayAxis.x * sway,
             basePosition.y + swayAxis.y * sway,
             root.position.z
         );
-
-        // Posiciona root (com rotação zerada) para que o pivô fique em pivotTarget, depois gira em torno dele
-        root.SetPositionAndRotation(pivotTarget - pivotOffset, Quaternion.identity);
-        root.RotateAround(pivotTarget, Vector3.forward, angle);
-
-        if (Camera.main != null)
-        {
-            Vector3 vp = Camera.main.WorldToViewportPoint(pivotTarget);
-            bool onScreen = vp.x >= -0.1f && vp.x <= 1.1f && vp.y >= -0.1f && vp.y <= 1.1f;
-            if (onScreen) hasEnteredScreen = true;
-            else if (hasEnteredScreen) Destroy(gameObject);
-        }
     }
 
     Vector2 GetRandomDamagePoint()
@@ -147,6 +204,6 @@ public class EnemyShip : MonoBehaviour
             Destroy(ps.gameObject, ps.main.duration + 1f);
         }
 
-        Destroy(gameObject);
+        Destroy(transform.root.gameObject);
     }
 }
