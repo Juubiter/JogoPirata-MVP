@@ -53,8 +53,14 @@ TagManager:
   - name: Navio
     uniqueID: 2054101489
     locked: 0
+  - name: "Fuma\xE7a"
+    uniqueID: 2185611257
+    locked: 0
   - name: Frente_Agua
     uniqueID: 1743705011
+    locked: 0
+  - name: Chuva
+    uniqueID: 192582557
     locked: 0
   m_RenderingLayers:
   - Default
