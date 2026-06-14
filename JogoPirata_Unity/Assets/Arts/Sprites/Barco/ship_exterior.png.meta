@@ -1105,6 +1105,50 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: ship_exterior_42
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 171
+        width: 103
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a8b56663f960a1469a293c48765e8de
+      internalID: 513812638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ship_exterior_43
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 171
+        width: 46
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 353a7508fdd4404408e0ffda0d66c171
+      internalID: 100768248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -1156,6 +1200,8 @@ TextureImporter:
       ship_exterior_4: 3901043720118076564
       ship_exterior_40: 272919067
       ship_exterior_41: -899084275
+      ship_exterior_42: 513812638
+      ship_exterior_43: 100768248
       ship_exterior_5: 3645349323272438769
       ship_exterior_6: 7067774091238044184
       ship_exterior_7: -4056280461791559395
