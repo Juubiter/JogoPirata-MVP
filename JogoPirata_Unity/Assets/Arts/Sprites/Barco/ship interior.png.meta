@@ -921,7 +921,7 @@ TextureImporter:
         width: 6
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -930,6 +930,116 @@ TextureImporter:
       bones: []
       spriteID: 6534c84b51c520c46855356ed6f706f8
       internalID: 721603544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ship interior_36
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 156
+        width: 32
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 152bd2e6202f80f418f8b5f7475a1feb
+      internalID: -1746778466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ship interior_37
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 148
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6dceb3e995974e42a282d28a1879f4f
+      internalID: 1055211837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ship interior_38
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 160
+        width: 18
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfb049692a7eba44ba74f3478f087bf8
+      internalID: 1619734396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ship interior_39
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 156
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 244fff7d5f9f8c4498db41092eeea403
+      internalID: 1889019648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ship interior_40
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 280
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cae2f489b4ebe0d4a8aac9501d67cc8a
+      internalID: -1510564388
       vertices: []
       indices: 
       edges: []
@@ -978,7 +1088,12 @@ TextureImporter:
       ship interior_33: -601925253
       ship interior_34: 1533059834
       ship interior_35: 721603544
+      ship interior_36: -1746778466
+      ship interior_37: 1055211837
+      ship interior_38: 1619734396
+      ship interior_39: 1889019648
       ship interior_4: -3012934344306514282
+      ship interior_40: -1510564388
       ship interior_5: 5450358490637173949
       ship interior_6: -3526770141572856778
       ship interior_7: 2632845147283575854

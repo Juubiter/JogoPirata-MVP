@@ -493,7 +493,7 @@ TextureImporter:
         width: 34
         height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -502,6 +502,28 @@ TextureImporter:
       bones: []
       spriteID: e78dd39f93719b04c857775fd69a5bec
       internalID: 2073813694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exterior_props_16
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 79
+        width: 27
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 187e7508850b15140a7594b29053a523
+      internalID: -444191436
       vertices: []
       indices: 
       edges: []
@@ -528,6 +550,7 @@ TextureImporter:
       exterior_props_13: 1979216133096054169
       exterior_props_14: -7750002561908413107
       exterior_props_15: 2073813694
+      exterior_props_16: -444191436
       exterior_props_2: -5466430380540136042
       exterior_props_3: 5475415175193996407
       exterior_props_4: 6562001393450842813

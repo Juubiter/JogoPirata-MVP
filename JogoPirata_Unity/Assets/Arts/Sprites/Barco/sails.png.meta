@@ -378,6 +378,182 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: sails_11
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 47
+        width: 32
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67571cf52d4f1a448accaf58999e359d
+      internalID: 2089310493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sails_12
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 47
+        width: 55
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 428d263aabbab6c498ded0dd1e013a45
+      internalID: -1728296910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sails_13
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 161
+        width: 39
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7333498e47703a045a14eec157959568
+      internalID: 1244341867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sails_14
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 161
+        width: 42
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bcd11a8b6787ec4192f04c74ae1ec35
+      internalID: -1988950934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sails_15
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 47
+        width: 28
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a50af8e9a6e0c44499059be0d58b61e
+      internalID: 1392795735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sails_16
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 159
+        width: 35
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 787c77a9d3a73784f86d9562eefa15fa
+      internalID: 1096086595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sails_17
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 47
+        width: 55
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a28ae50a4db97de4ab8350fb51f3b8e1
+      internalID: 1372126689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sails_18
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 47
+        width: 35
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 029c6a2928ac16e4e96202d5b9720221
+      internalID: -492981681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -395,6 +571,14 @@ TextureImporter:
       sails_0: -8282483385104613712
       sails_1: -7670416789667610861
       sails_10: 1047978354
+      sails_11: 2089310493
+      sails_12: -1728296910
+      sails_13: 1244341867
+      sails_14: -1988950934
+      sails_15: 1392795735
+      sails_16: 1096086595
+      sails_17: 1372126689
+      sails_18: -492981681
       sails_2: 8036452507140057463
       sails_3: 5626425438158453118
       sails_4: 6652745359914656267
