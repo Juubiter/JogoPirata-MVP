@@ -1,29 +1,30 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManagerd : MonoBehaviour
 {
-    public GameObject painelControles;
     public GameObject menuPrincipal;
+    public GameObject painel;
 
     void Start()
-{
-    Time.timeScale = 0f;
-}
-
-   public void IniciarJogo()
-{
-    menuPrincipal.SetActive(false);
-    Time.timeScale = 1f;
-}
-
-    public void AbrirControles()
     {
-        painelControles.SetActive(true);
+        Time.timeScale = 0f;
     }
 
-    public void FecharControles()
+    public void IniciarJogo()
     {
-        painelControles.SetActive(false);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Fase1");
+    }
+
+    public void AbrirPainel()
+    {
+        painel.SetActive(true);
+    }
+
+    public void FecharPainel()
+    {
+        painel.SetActive(false);
     }
 
     public void SairJogo()
@@ -31,5 +32,4 @@ public class MenuManagerd : MonoBehaviour
         Application.Quit();
         Debug.Log("Saindo do jogo...");
     }
-    
 }
