@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: 7d0cb60aa889af044b04c0318c403613
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3197115270355514671
+    second: jungle-game-ui-design-elements-set_0
+  - first:
+      213: 2174784630718279688
+    second: jungle-game-ui-design-elements-set_1
+  - first:
+      213: 8527964877738791910
+    second: jungle-game-ui-design-elements-set_2
+  - first:
+      213: 7952251687498421509
+    second: jungle-game-ui-design-elements-set_3
+  - first:
+      213: 1962337611433371929
+    second: jungle-game-ui-design-elements-set_4
+  - first:
+      213: 184668125358472148
+    second: jungle-game-ui-design-elements-set_5
+  - first:
+      213: 2200183254344463840
+    second: jungle-game-ui-design-elements-set_6
+  - first:
+      213: -8580274858694187948
+    second: jungle-game-ui-design-elements-set_7
+  - first:
+      213: -3451083936481266733
+    second: jungle-game-ui-design-elements-set_8
+  - first:
+      213: 1562079819754678901
+    second: jungle-game-ui-design-elements-set_9
+  - first:
+      213: 103624626224831415
+    second: jungle-game-ui-design-elements-set_10
+  - first:
+      213: -2972096268222003661
+    second: jungle-game-ui-design-elements-set_11
+  - first:
+      213: 7303528098866105802
+    second: jungle-game-ui-design-elements-set_12
+  - first:
+      213: -9077454709144797540
+    second: jungle-game-ui-design-elements-set_13
+  - first:
+      213: 2006206827193052815
+    second: jungle-game-ui-design-elements-set_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: jungle-game-ui-design-elements-set_0
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 340
+        width: 164
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f25748b366f6e5c20800000000000000
+      internalID: 3197115270355514671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jungle-game-ui-design-elements-set_1
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 362
+        width: 164
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80031f069136e2e10800000000000000
+      internalID: 2174784630718279688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jungle-game-ui-design-elements-set_2
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 340
+        width: 164
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e3d0aa8fda695670800000000000000
+      internalID: 8527964877738791910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jungle-game-ui-design-elements-set_3
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 44
+        width: 656
+        height: 652
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50518d5e6c21c5e60800000000000000
+      internalID: 7952251687498421509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jungle-game-ui-design-elements-set_4
+      rect:
+        serializedVersion: 2
+        x: 1391
+        y: 423
+        width: 143
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 919efd229af9b3b10800000000000000
+      internalID: 1962337611433371929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jungle-game-ui-design-elements-set_5
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 472
+        width: 143
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4db345d7ea2109200800000000000000
+      internalID: 184668125358472148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jungle-game-ui-design-elements-set_6
+      rect:
+        serializedVersion: 2
+        x: 1739
+        y: 423
+        width: 143
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e5f6f3430f988e10800000000000000
+      internalID: 2200183254344463840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jungle-game-ui-design-elements-set_7
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 161
+        width: 164
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 454615ce97dbce880800000000000000
+      internalID: -8580274858694187948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jungle-game-ui-design-elements-set_8
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 183
+        width: 164
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d33af3c1794b10d0800000000000000
+      internalID: -3451083936481266733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jungle-game-ui-design-elements-set_9
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 161
+        width: 164
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57aa84fd15f9da510800000000000000
+      internalID: 1562079819754678901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jungle-game-ui-design-elements-set_10
+      rect:
+        serializedVersion: 2
+        x: 1394
+        y: 240
+        width: 143
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bb1d1c6c06207100800000000000000
+      internalID: 103624626224831415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jungle-game-ui-design-elements-set_11
+      rect:
+        serializedVersion: 2
+        x: 1571
+        y: 289
+        width: 142
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3360d5ed03ef0c6d0800000000000000
+      internalID: -2972096268222003661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jungle-game-ui-design-elements-set_12
+      rect:
+        serializedVersion: 2
+        x: 1742
+        y: 240
+        width: 142
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acd8ff33c185b5560800000000000000
+      internalID: 7303528098866105802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jungle-game-ui-design-elements-set_13
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 101
+        width: 71
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9e3ab45907660280800000000000000
+      internalID: -9077454709144797540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jungle-game-ui-design-elements-set_14
+      rect:
+        serializedVersion: 2
+        x: 1655
+        y: 102
+        width: 70
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8e2ec0ea7a77db10800000000000000
+      internalID: 2006206827193052815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      jungle-game-ui-design-elements-set_0: 3197115270355514671
+      jungle-game-ui-design-elements-set_1: 2174784630718279688
+      jungle-game-ui-design-elements-set_10: 103624626224831415
+      jungle-game-ui-design-elements-set_11: -2972096268222003661
+      jungle-game-ui-design-elements-set_12: 7303528098866105802
+      jungle-game-ui-design-elements-set_13: -9077454709144797540
+      jungle-game-ui-design-elements-set_14: 2006206827193052815
+      jungle-game-ui-design-elements-set_2: 8527964877738791910
+      jungle-game-ui-design-elements-set_3: 7952251687498421509
+      jungle-game-ui-design-elements-set_4: 1962337611433371929
+      jungle-game-ui-design-elements-set_5: 184668125358472148
+      jungle-game-ui-design-elements-set_6: 2200183254344463840
+      jungle-game-ui-design-elements-set_7: -8580274858694187948
+      jungle-game-ui-design-elements-set_8: -3451083936481266733
+      jungle-game-ui-design-elements-set_9: 1562079819754678901
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
