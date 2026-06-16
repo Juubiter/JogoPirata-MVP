@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Fundo Total
+    uniqueID: 2933184813
+    locked: 0
   - name: Fundo_Ceu
     uniqueID: 2190765087
     locked: 0
