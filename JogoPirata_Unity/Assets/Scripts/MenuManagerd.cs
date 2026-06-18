@@ -6,17 +6,20 @@ public class MenuManagerd : MonoBehaviour
     public GameObject menuPrincipal;
     public GameObject painel;
 
-    void Start()
-    {
-        Time.timeScale = 0f;
-    }
+   void Start()
+{
+    Time.timeScale = 0f;
 
-    public void IniciarJogo()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("Fase1");
-    }
+    if (painel != null)
+        painel.SetActive(false);
+}
 
+   public void IniciarJogo()
+{
+    Debug.Log("BOTAO CLICADO!");
+    Time.timeScale = 1f;
+    SceneManager.LoadScene("Fase1");
+}
     public void AbrirPainel()
     {
         painel.SetActive(true);
