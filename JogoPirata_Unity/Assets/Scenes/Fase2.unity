@@ -4308,7 +4308,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PirateController
   ordemAtual: 0
-  destaqueLaranja: {fileID: 0}
 --- !u!1 &1833414746
 GameObject:
   m_ObjectHideFlags: 0

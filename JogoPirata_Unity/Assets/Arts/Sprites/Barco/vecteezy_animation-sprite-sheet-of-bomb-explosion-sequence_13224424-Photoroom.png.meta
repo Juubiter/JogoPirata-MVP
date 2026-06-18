@@ -1,0 +1,392 @@
+fileFormatVersion: 2
+guid: 171b1629b49a51a49958774e7047df44
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8372349157059826396
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_0
+  - first:
+      213: -2508474589388517583
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_1
+  - first:
+      213: -1194950052944568042
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_2
+  - first:
+      213: 256526134505879297
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_3
+  - first:
+      213: -6953176313681568548
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_4
+  - first:
+      213: -3246128193179108508
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_5
+  - first:
+      213: -1899874913275498928
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_6
+  - first:
+      213: 468184415821337704
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_7
+  - first:
+      213: 6965355319665433997
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_8
+  - first:
+      213: 6645001763849285412
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_9
+  - first:
+      213: 8669486943723952509
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_10
+  - first:
+      213: 825728854189563112
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_11
+  - first:
+      213: -2306312090904699161
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_12
+  - first:
+      213: 2501851831726374333
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_13
+  - first:
+      213: -6526889443532833947
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_14
+  - first:
+      213: 3102955412382504396
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_15
+  - first:
+      213: -8287904645940423427
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_16
+  - first:
+      213: -2965480465211697552
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_17
+  - first:
+      213: -8303655820440925321
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_18
+  - first:
+      213: 327303006109013982
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_19
+  - first:
+      213: 1765438250397488219
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_20
+  - first:
+      213: 622267693803387357
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_21
+  - first:
+      213: -7758456569509526803
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_22
+  - first:
+      213: -8470339931467492985
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_23
+  - first:
+      213: -6860157993308573837
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_24
+  - first:
+      213: -4701487406592186907
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_25
+  - first:
+      213: 4503436402322143034
+    second: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_0
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 128
+        width: 98
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd29712233f803470800000000000000
+      internalID: 8372349157059826396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_1
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 98
+        width: 178
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13f4763c6ab103dd0800000000000000
+      internalID: -2508474589388517583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_2
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 97
+        width: 185
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 611a7e9024faa6fe0800000000000000
+      internalID: -1194950052944568042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_4
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 90
+        width: 238
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdc99527bfa518f90800000000000000
+      internalID: -6953176313681568548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_5
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 105
+        width: 216
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46bbd266b9f63f2d0800000000000000
+      internalID: -3246128193179108508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_6
+      rect:
+        serializedVersion: 2
+        x: 1604
+        y: 104
+        width: 198
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05ea98415d942a5e0800000000000000
+      internalID: -1899874913275498928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_3
+      rect:
+        serializedVersion: 2
+        x: 761
+        y: 89
+        width: 228
+        height: 208
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c411b8d8a7ddde947a3c90ccd40a4e8d
+      internalID: 256526134505879297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 9038d1239e0918d48a3a16ea6a1fb121
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_0: 8372349157059826396
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_1: -2508474589388517583
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_10: 8669486943723952509
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_11: 825728854189563112
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_12: -2306312090904699161
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_13: 2501851831726374333
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_14: -6526889443532833947
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_15: 3102955412382504396
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_16: -8287904645940423427
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_17: -2965480465211697552
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_18: -8303655820440925321
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_19: 327303006109013982
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_2: -1194950052944568042
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_20: 1765438250397488219
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_21: 622267693803387357
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_22: -7758456569509526803
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_23: -8470339931467492985
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_24: -6860157993308573837
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_25: -4701487406592186907
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_26: 4503436402322143034
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_3: 256526134505879297
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_4: -6953176313681568548
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_5: -3246128193179108508
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_6: -1899874913275498928
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_7: 468184415821337704
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_8: 6965355319665433997
+      vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_9: 6645001763849285412
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
