@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 434b46a801d1fbf4fa5fb218ccbfe4bc
+guid: 91a8c7568f063db498d7b7bcd7c4aa72
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5581958744073463609
-    second: Group 6 - 5_0
+      213: 5860745514155395030
+    second: Group 5 - 4_0
   - first:
-      213: -6926887248492573428
-    second: Group 6 - 5_1
+      213: -2745737667124979316
+    second: Group 5 - 4_1
   - first:
-      213: 4017307272314677875
-    second: Group 6 - 5_2
+      213: -896927779835220754
+    second: Group 5 - 4_2
   - first:
-      213: 7807962705990712185
-    second: Group 6 - 5_3
+      213: -3830786108858006899
+    second: Group 5 - 4_3
   - first:
-      213: 3499463266706734565
-    second: Group 6 - 5_4
+      213: 2210819042255161509
+    second: Group 5 - 4_4
   - first:
-      213: -2312985481371713165
-    second: Group 6 - 5_5
+      213: 8688934009470597935
+    second: Group 5 - 4_5
   - first:
-      213: -4786640234089087776
-    second: Group 6 - 5_6
+      213: -3039797445661202182
+    second: Group 5 - 4_6
   - first:
-      213: 807912186984968993
-    second: Group 6 - 5_7
+      213: -2748601321029507510
+    second: Group 5 - 4_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -93,10 +93,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 16384
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,30 +117,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 16384
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Group 6 - 5_0
+      name: Group 5 - 4_0
       rect:
         serializedVersion: 2
-        x: 2
+        x: 4
         y: 0
-        width: 30
-        height: 24
+        width: 25
+        height: 43
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,20 +136,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 937626b37e9177d40800000000000000
-      internalID: 5581958744073463609
+      spriteID: 6d7423a5efc855150800000000000000
+      internalID: 5860745514155395030
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Group 6 - 5_1
+      name: Group 5 - 4_1
       rect:
         serializedVersion: 2
-        x: 35
+        x: 36
         y: 0
-        width: 28
-        height: 26
+        width: 25
+        height: 43
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c0dca6a6fb0cedf90800000000000000
-      internalID: -6926887248492573428
+      spriteID: c891b98a32e25e9d0800000000000000
+      internalID: -2745737667124979316
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Group 6 - 5_2
+      name: Group 5 - 4_2
       rect:
         serializedVersion: 2
         x: 67
         y: 0
-        width: 27
-        height: 26
+        width: 26
+        height: 37
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +180,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 37ae8e7fda750c730800000000000000
-      internalID: 4017307272314677875
+      spriteID: eecedb5bfe87d83f0800000000000000
+      internalID: -896927779835220754
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Group 6 - 5_3
+      name: Group 5 - 4_3
       rect:
         serializedVersion: 2
         x: 99
         y: 0
-        width: 27
-        height: 27
+        width: 26
+        height: 37
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,20 +202,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 97bf21676b47b5c60800000000000000
-      internalID: 7807962705990712185
+      spriteID: d828403945056dac0800000000000000
+      internalID: -3830786108858006899
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Group 6 - 5_4
+      name: Group 5 - 4_4
       rect:
         serializedVersion: 2
-        x: 131
+        x: 132
         y: 0
-        width: 28
-        height: 26
+        width: 24
+        height: 39
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,20 +224,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5ed3594dc47909030800000000000000
-      internalID: 3499463266706734565
+      spriteID: 5a8c94c94386eae10800000000000000
+      internalID: 2210819042255161509
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Group 6 - 5_5
+      name: Group 5 - 4_5
       rect:
         serializedVersion: 2
-        x: 162
+        x: 165
         y: 0
-        width: 30
-        height: 24
+        width: 24
+        height: 41
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,20 +246,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 371043c95ff96efd0800000000000000
-      internalID: -2312985481371713165
+      spriteID: f2b3e47127b459870800000000000000
+      internalID: 8688934009470597935
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Group 6 - 5_6
+      name: Group 5 - 4_6
       rect:
         serializedVersion: 2
-        x: 194
+        x: 196
         y: 0
-        width: 30
-        height: 24
+        width: 24
+        height: 38
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,20 +268,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0ecf68b5110729db0800000000000000
-      internalID: -4786640234089087776
+      spriteID: af86936245870d5d0800000000000000
+      internalID: -3039797445661202182
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Group 6 - 5_7
+      name: Group 5 - 4_7
       rect:
         serializedVersion: 2
-        x: 226
+        x: 228
         y: 0
-        width: 30
-        height: 24
+        width: 24
+        height: 39
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -303,8 +290,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 123b2f28ad7463b00800000000000000
-      internalID: 807912186984968993
+      spriteID: a46edd649a10bd9d0800000000000000
+      internalID: -2748601321029507510
       vertices: []
       indices: 
       edges: []
@@ -313,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 25b64671ae1ec074ab136dffac3ff03f
+    spriteID: ad67d11c587a63e46b9cd10bf6ed8405
     internalID: 0
     vertices: []
     indices: 
@@ -323,14 +310,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Group 6 - 5_0: 5581958744073463609
-      Group 6 - 5_1: -6926887248492573428
-      Group 6 - 5_2: 4017307272314677875
-      Group 6 - 5_3: 7807962705990712185
-      Group 6 - 5_4: 3499463266706734565
-      Group 6 - 5_5: -2312985481371713165
-      Group 6 - 5_6: -4786640234089087776
-      Group 6 - 5_7: 807912186984968993
+      Group 5 - 4_0: 5860745514155395030
+      Group 5 - 4_1: -2745737667124979316
+      Group 5 - 4_2: -896927779835220754
+      Group 5 - 4_3: -3830786108858006899
+      Group 5 - 4_4: 2210819042255161509
+      Group 5 - 4_5: 8688934009470597935
+      Group 5 - 4_6: -3039797445661202182
+      Group 5 - 4_7: -2748601321029507510
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
