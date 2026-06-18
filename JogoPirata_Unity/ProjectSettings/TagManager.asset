@@ -68,6 +68,9 @@ TagManager:
   - name: Hud
     uniqueID: 619993323
     locked: 0
+  - name: hud.1
+    uniqueID: 2570168015
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []
