@@ -4,18 +4,23 @@ public class PirateController : MonoBehaviour
 {
     public Ordem ordemAtual = Ordem.Nenhuma;
 
-    public GameObject destaqueLaranja;
+    private SpriteRenderer spriteRenderer;
+
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     public void Selecionar()
     {
-        destaqueLaranja.SetActive(true);
+        spriteRenderer.color = new Color(1f, 0.7f, 0f);
 
         Debug.Log("Pirata selecionado!");
     }
 
     public void Deselecionar()
     {
-        destaqueLaranja.SetActive(false);
+        spriteRenderer.color = Color.white;
     }
 
     public void ReceberOrdem(Ordem novaOrdem)
