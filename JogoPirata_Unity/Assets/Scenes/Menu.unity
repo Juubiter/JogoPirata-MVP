@@ -950,8 +950,8 @@ MonoBehaviour:
     Ivo Robaina - 1250116536\nPedro Souza Cortezia Melo \u2013 1250120570\r\nRhaissa
     Medeiros Martins Galhego - 1250209548\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2cde7c25fad619f419a58e3759644248, type: 2}
-  m_sharedMaterial: {fileID: 132579157981509212, guid: 2cde7c25fad619f419a58e3759644248, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -975,8 +975,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 83
-  m_fontSizeBase: 83
+  m_fontSize: 65
+  m_fontSizeBase: 65
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -987,8 +987,8 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 25
+  m_wordSpacing: 4
+  m_lineSpacing: 50
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -1793,9 +1793,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a3898227282654f88b0a7e52e84da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovimentoAguaMenu
-  velocidade: 1.2
-  distancia: 0.1
-  posicaoInicial: {x: 0, y: 0, z: 0}
 --- !u!1 &879240441
 GameObject:
   m_ObjectHideFlags: 0
@@ -2769,9 +2766,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a3898227282654f88b0a7e52e84da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovimentoAguaMenu
-  velocidade: 0.8
-  distancia: 0.15
-  posicaoInicial: {x: 0, y: 0, z: 0}
 --- !u!1 &1440417627
 GameObject:
   m_ObjectHideFlags: 0
@@ -3043,9 +3037,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a3898227282654f88b0a7e52e84da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovimentoAguaMenu
-  velocidade: 0.5
-  distancia: 0.1
-  posicaoInicial: {x: 0, y: 0, z: 0}
 --- !u!1 &1582982450
 GameObject:
   m_ObjectHideFlags: 0
