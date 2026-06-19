@@ -79,10 +79,6 @@ public class HUDManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void AlterarVolume(float volume)
-    {
-        AudioListener.volume = volume;
-    }
 
    public void VoltarMenu()
 {

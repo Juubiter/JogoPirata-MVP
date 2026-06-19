@@ -53,7 +53,7 @@ public class EnemySpawner : MonoBehaviour
         while (isSpawning)
         {
             // Conta quantos navios inimigos estão vivos na cena agora
-            int ativos = FindObjectsByType<EnemyShip>().Length;
+            int ativos = FindObjectsByType<EnemyShip>(FindObjectsSortMode.None).Length;
 
             if (ativos < maxSimultaneous)
                 SpawnEnemy();
