@@ -192,9 +192,14 @@ public class EnemyShip : MonoBehaviour
 
     void Morrer()
     {
+        float destroyAfter = 0f;
+
         // Som de explosão
         if (explosionSound != null && audioSource != null)
+        {
             audioSource.PlayOneShot(explosionSound);
+            destroyAfter = explosionSound.length;
+        }
 
         // Partícula de explosão: desparentamos para não sumir junto com o objeto
         if (explosionParticles != null)
@@ -204,6 +209,14 @@ public class EnemyShip : MonoBehaviour
             Destroy(ps.gameObject, ps.main.duration + 1f);
         }
 
-        Destroy(transform.root.gameObject);
+        // Esconde o sprite para parecer destruído, mas mantém o objeto vivo para o som terminar
+        SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
+        if (sr != null) sr.enabled = false;
+
+        // Desativa colisão
+        Collider2D col = GetComponentInChildren<Collider2D>();
+        if (col != null) col.enabled = false;
+
+        Destroy(transform.root.gameObject, destroyAfter);
     }
 }

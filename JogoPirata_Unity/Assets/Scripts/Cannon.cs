@@ -64,7 +64,7 @@ public class Cannon : MonoBehaviour
 
     EnemyShip GetClosestEnemy()
     {
-        EnemyShip[] inimigos = FindObjectsByType<EnemyShip>();
+        EnemyShip[] inimigos = FindObjectsByType<EnemyShip>(FindObjectsSortMode.None);
         EnemyShip maisProximo = null;
         float menorDist = Mathf.Infinity;
 
