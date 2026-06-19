@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 6dbc5832bcf7e9a49a3dd6708fd3b210
+guid: 304fa1cefa0fc374eb726390ce9c9b28
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1553302592239620020
-    second: Background 2_0
+      213: -3910002735521294207
+    second: ChatGPT Image 19 jun 2026, 12_52_30 a.m._0
+  - first:
+      213: -895648828697140569
+    second: ChatGPT Image 19 jun 2026, 12_52_30 a.m._1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +103,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Background 2_0
+      name: ChatGPT Image 19 jun 2026, 12_52_30 a.m._0
       rect:
         serializedVersion: 2
-        x: 295
+        x: 11
         y: 0
-        width: 665
-        height: 263
+        width: 1494
+        height: 1024
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4bfc2275a707e8510800000000000000
-      internalID: 1553302592239620020
+      spriteID: 18892766a31ecb9c0800000000000000
+      internalID: -3910002735521294207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 19 jun 2026, 12_52_30 a.m._1
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 734
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a2230ab2240293f0800000000000000
+      internalID: -895648828697140569
       vertices: []
       indices: 
       edges: []
@@ -125,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d8ca5ef7a1d01e146b74c1223954c860
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Background 2_0: 1553302592239620020
+      ChatGPT Image 19 jun 2026, 12_52_30 a.m._0: -3910002735521294207
+      ChatGPT Image 19 jun 2026, 12_52_30 a.m._1: -895648828697140569
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

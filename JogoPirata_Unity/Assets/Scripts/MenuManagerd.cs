@@ -1,38 +1,26 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuManagerd : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
-    public GameObject menuPrincipal;
-    public GameObject painel;
-
-   void Start()
-{
-    Time.timeScale = 0f;
-
-    if (painel != null)
-        painel.SetActive(false);
-}
-
-   public void IniciarJogo()
-{
-    Debug.Log("BOTAO CLICADO!");
-    Time.timeScale = 1f;
-    SceneManager.LoadScene("Fase1");
-}
-    public void AbrirPainel()
+    private void Start()
     {
-        painel.SetActive(true);
+        Time.timeScale = 1f;
     }
 
-    public void FecharPainel()
+    public void IniciarJogo()
     {
-        painel.SetActive(false);
+        Debug.Log("BOTÃO CLICADO!");
+        SceneManager.LoadScene("Fase1");
     }
 
     public void SairJogo()
     {
-        Application.Quit();
         Debug.Log("Saindo do jogo...");
+        Application.Quit();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 }
