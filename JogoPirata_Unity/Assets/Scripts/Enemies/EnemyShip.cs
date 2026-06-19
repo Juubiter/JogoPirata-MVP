@@ -29,8 +29,6 @@ public class EnemyShip : MonoBehaviour
     public float swayFrequency = 1.2f;
 
     [Header("Configurações de Dano")]
-    [Min(1f), Tooltip("Intervalo em segundos entre cada evento de dano causado ao navio do jogador.")]
-    public float damageInterval = 8f;
     [Min(1), Tooltip("Quantidade de tiros do canhão necessários para destruir este navio.")]
     public int maxHealth = 3;
     [Tooltip("Escuna normal: os dois false → sorteia incêndio ou vazamento aleatoriamente.")]
@@ -49,7 +47,6 @@ public class EnemyShip : MonoBehaviour
     public AudioClip explosionSound;
 
     private int currentHealth;
-    private float damageTimer;
     private AudioSource audioSource;
     private Vector2 basePosition;
     private Vector2 swayAxis;
@@ -62,7 +59,6 @@ public class EnemyShip : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        damageTimer = damageInterval;
         audioSource = GetComponent<AudioSource>();
 
         moveDirection = moveDirection.normalized;
@@ -99,17 +95,10 @@ public class EnemyShip : MonoBehaviour
                 {
                     state = State.Attacking;
                     attackTimer = attackDuration;
-                    damageTimer = 0f; // dispara o primeiro ataque imediatamente
                 }
                 break;
 
             case State.Attacking:
-                damageTimer -= Time.deltaTime;
-                if (damageTimer <= 0f)
-                {
-                    CausarDano();
-                    damageTimer = damageInterval;
-                }
                 attackTimer -= Time.deltaTime;
                 if (attackTimer <= 0f)
                 {
