@@ -79,6 +79,18 @@ public class HUDManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    public void TakeDamage(float amount)
+    {
+        vida = Mathf.Max(0, vida - amount);
+        barraVida.value = vida;
+    }
+
+    public void TakeWaterDamage(float amount)
+    {
+        agua = Mathf.Min(100, agua + amount);
+        barraAgua.value = agua;
+    }
+
 
    public void VoltarMenu()
 {

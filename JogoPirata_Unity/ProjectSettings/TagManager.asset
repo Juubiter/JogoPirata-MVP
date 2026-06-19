@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - CannonFirePoint
   layers:
   - Default
   - TransparentFX
@@ -53,9 +54,6 @@ TagManager:
   - name: Fundo_Horizonte
     uniqueID: 420410145
     locked: 0
-  - name: "Fuma\xE7a"
-    uniqueID: 2185611257
-    locked: 0
   - name: Frente_Agua
     uniqueID: 1743705011
     locked: 0
@@ -64,6 +62,9 @@ TagManager:
     locked: 0
   - name: inimigo
     uniqueID: 2833809437
+    locked: 0
+  - name: "Fuma\xE7a"
+    uniqueID: 2185611257
     locked: 0
   - name: Chuva
     uniqueID: 192582557

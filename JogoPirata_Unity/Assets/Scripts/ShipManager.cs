@@ -25,15 +25,23 @@ public class ShipManager : MonoBehaviour
         spawner.StartSpawning();
     }
 
-    // TODO: Pessoa pelos sistemas do navio preenche aqui
     public void TriggerFire(Vector2 pos)
     {
-        Debug.Log($"[ShipManager] Incêndio em {pos} — implementar!");
+        HUDManager hud = FindObjectOfType<HUDManager>();
+        if (hud != null)
+        {
+            hud.TakeDamage(10f);
+            Debug.Log($"[ShipManager] Incêndio em {pos} — 10 de dano causado!");
+        }
     }
 
-    // TODO: Pessoa pelos sistemas do navio preenche aqui
     public void TriggerLeak(Vector2 pos)
     {
-        Debug.Log($"[ShipManager] Vazamento em {pos} — implementar!");
+        HUDManager hud = FindObjectOfType<HUDManager>();
+        if (hud != null)
+        {
+            hud.TakeWaterDamage(15f);
+            Debug.Log($"[ShipManager] Vazamento em {pos} — 15 de água causado!");
+        }
     }
 }
