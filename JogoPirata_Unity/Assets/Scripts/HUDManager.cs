@@ -8,118 +8,164 @@ public class HUDManager : MonoBehaviour
     public GameObject telaDerrota;
     public GameObject painelPause;
 
-    // Objetos que somem no pause
     public GameObject[] objetosParaOcultar;
 
     public Slider barraVida;
     public Slider barraAgua;
 
-    private float vida = 100f;
-    private float agua = 0f;
-    private float tempo = 0f;
+    private float vida;
+    private float agua;
+    private float tempo;
+    private bool jogoFinalizado;
 
     public float tempoParaVencer = 30f;
 
+    void Awake()
+    {
+        Time.timeScale = 1f;
+    }
+
     void Start()
     {
-        barraVida.value = vida;
-        barraAgua.value = agua;
-
-        telaVitoria.SetActive(false);
-        telaDerrota.SetActive(false);
-        painelPause.SetActive(false);
-
-        AudioListener.volume = 1f;
+        ReiniciarValores();
     }
 
     void Update()
     {
+        if (jogoFinalizado)
+            return;
+
         tempo += Time.deltaTime;
 
-        // Abrir pause com ESC
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!painelPause.activeSelf)
-                AbrirPause();
-            else
+            if (painelPause != null && painelPause.activeSelf)
                 ContinuarJogo();
+            else
+                AbrirPause();
         }
 
-        // Vitória
-        if (tempo >= tempoParaVencer)
-        {
-            telaVitoria.SetActive(true);
-            Time.timeScale = 0f;
-        }
-
-        // Teste de dano
         if (Input.GetKeyDown(KeyCode.H))
-        {
-            vida = Mathf.Max(0, vida - 10);
-            barraVida.value = vida;
-        }
+            TakeDamage(10f);
 
-        // Teste de água
         if (Input.GetKeyDown(KeyCode.J))
-        {
-            agua = Mathf.Min(100, agua + 10);
-            barraAgua.value = agua;
-        }
+            TakeWaterDamage(10f);
 
-        // Derrota
         if (vida <= 0 || agua >= 100)
         {
-            telaDerrota.SetActive(true);
-            Time.timeScale = 0f;
+            Derrota();
+            return;
+        }
+
+        if (tempo >= tempoParaVencer)
+        {
+            Vitoria();
+            return;
         }
     }
 
-    // ===== PAUSE =====
+    void ReiniciarValores()
+    {
+        Time.timeScale = 1f;
+
+        vida = 100f;
+        agua = 0f;
+        tempo = 0f;
+        jogoFinalizado = false;
+
+        if (barraVida != null)
+            barraVida.value = vida;
+
+        if (barraAgua != null)
+            barraAgua.value = agua;
+
+        if (telaVitoria != null)
+            telaVitoria.SetActive(false);
+
+        if (telaDerrota != null)
+            telaDerrota.SetActive(false);
+
+        if (painelPause != null)
+            painelPause.SetActive(false);
+
+        MostrarObjetosHUD(true);
+
+        AudioListener.volume = 1f;
+    }
+
+    void Vitoria()
+    {
+        jogoFinalizado = true;
+
+        if (telaVitoria != null)
+            telaVitoria.SetActive(true);
+
+        Time.timeScale = 0f;
+    }
+
+    void Derrota()
+    {
+        jogoFinalizado = true;
+
+        if (telaDerrota != null)
+            telaDerrota.SetActive(true);
+
+        Time.timeScale = 0f;
+    }
 
     public void AbrirPause()
     {
-        if (telaVitoria.activeSelf || telaDerrota.activeSelf)
+        if (jogoFinalizado)
             return;
 
-        painelPause.SetActive(true);
+        if (painelPause != null)
+            painelPause.SetActive(true);
 
-        foreach (GameObject obj in objetosParaOcultar)
-        {
-            if (obj != null)
-                obj.SetActive(false);
-        }
-
+        MostrarObjetosHUD(false);
         Time.timeScale = 0f;
     }
 
     public void ContinuarJogo()
     {
-        painelPause.SetActive(false);
+        if (painelPause != null)
+            painelPause.SetActive(false);
 
-        foreach (GameObject obj in objetosParaOcultar)
-        {
-            if (obj != null)
-                obj.SetActive(true);
-        }
-
+        MostrarObjetosHUD(true);
         Time.timeScale = 1f;
     }
 
-    // ===== VIDA E ÁGUA =====
+    void MostrarObjetosHUD(bool mostrar)
+    {
+        foreach (GameObject obj in objetosParaOcultar)
+        {
+            if (obj == null)
+                continue;
+
+            obj.SetActive(mostrar);
+        }
+    }
 
     public void TakeDamage(float amount)
     {
+        if (jogoFinalizado)
+            return;
+
         vida = Mathf.Max(0, vida - amount);
-        barraVida.value = vida;
+
+        if (barraVida != null)
+            barraVida.value = vida;
     }
 
     public void TakeWaterDamage(float amount)
     {
-        agua = Mathf.Min(100, agua + amount);
-        barraAgua.value = agua;
-    }
+        if (jogoFinalizado)
+            return;
 
-    // ===== MENU =====
+        agua = Mathf.Min(100, agua + amount);
+
+        if (barraAgua != null)
+            barraAgua.value = agua;
+    }
 
     public void VoltarMenu()
     {
@@ -127,34 +173,21 @@ public class HUDManager : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
-    // ===== DERROTA E VITÓRIA =====
+    public void JogarNovamente()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
-    public void ReiniciarJogo()
+    public void ProximaFase()
     {
         Time.timeScale = 1f;
 
-        vida = 100f;
-        agua = 0f;
-        tempo = 0f;
+        int proximaFase = SceneManager.GetActiveScene().buildIndex + 1;
 
-        barraVida.value = vida;
-        barraAgua.value = agua;
-
-        telaDerrota.SetActive(false);
-        telaVitoria.SetActive(false);
+        if (proximaFase < SceneManager.sceneCountInBuildSettings)
+            SceneManager.LoadScene(proximaFase);
+        else
+            SceneManager.LoadScene("Menu");
     }
-
-   public void JogarNovamente()
-{
-    Time.timeScale = 1f;
-    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-}
-
-public void ProximaFase()
-{
-    Time.timeScale = 1f;
-
-    int faseAtual = SceneManager.GetActiveScene().buildIndex;
-    SceneManager.LoadScene(faseAtual + 1);
-}
 }
