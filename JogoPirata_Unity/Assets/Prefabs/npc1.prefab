@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 930593352755496726}
   - component: {fileID: 3390606865465033630}
   - component: {fileID: 49916107417869592}
+  - component: {fileID: 1382091207853477145}
   m_Layer: 0
   m_Name: npc1
   m_TagString: Untagged
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 2054101489
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -855298285791758126, guid: b5d34958cd3370847a237d0b82a0e1af, type: 3}
@@ -128,3 +129,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   tempo: 7
+--- !u!114 &1382091207853477145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5378876139533912106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8316eea10729a4893c0eadd68a1f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
