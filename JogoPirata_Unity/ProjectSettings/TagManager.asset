@@ -60,6 +60,9 @@ TagManager:
   - name: Navio
     uniqueID: 2054101489
     locked: 0
+  - name: npcs
+    uniqueID: 1929755323
+    locked: 0
   - name: inimigo
     uniqueID: 2833809437
     locked: 0
