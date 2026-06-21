@@ -8,105 +8,186 @@ public class HUDManager : MonoBehaviour
     public GameObject telaDerrota;
     public GameObject painelPause;
 
+    public GameObject[] objetosParaOcultar;
+
     public Slider barraVida;
     public Slider barraAgua;
-    public Slider sliderVolume;
 
-    private float vida = 100f;
-    private float agua = 0f;
-    private float tempo = 0f;
+    private float vida;
+    private float agua;
+    private float tempo;
+    private bool jogoFinalizado;
 
     public float tempoParaVencer = 30f;
 
+    void Awake()
+    {
+        Time.timeScale = 1f;
+    }
+
     void Start()
     {
-        barraVida.value = vida;
-        barraAgua.value = agua;
-
-        telaVitoria.SetActive(false);
-        telaDerrota.SetActive(false);
-        painelPause.SetActive(false);
-
-        sliderVolume.value = AudioListener.volume;
+        ReiniciarValores();
     }
 
     void Update()
     {
+        if (jogoFinalizado)
+            return;
+
         tempo += Time.deltaTime;
 
-        // Abrir Pause com ESC
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            AbrirPause();
+            if (painelPause != null && painelPause.activeSelf)
+                ContinuarJogo();
+            else
+                AbrirPause();
+        }
+
+        if (Input.GetKeyDown(KeyCode.H))
+            TakeDamage(10f);
+
+        if (Input.GetKeyDown(KeyCode.J))
+            TakeWaterDamage(10f);
+
+        if (vida <= 0 || agua >= 100)
+        {
+            Derrota();
+            return;
         }
 
         if (tempo >= tempoParaVencer)
         {
-            telaVitoria.SetActive(true);
-            Time.timeScale = 0f;
-        }
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            vida = Mathf.Max(0, vida - 10);
-            barraVida.value = vida;
-        }
-
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            agua = Mathf.Min(100, agua + 10);
-            barraAgua.value = agua;
-        }
-
-        if (vida <= 0 || agua >= 100)
-        {
-            telaDerrota.SetActive(true);
-            Time.timeScale = 0f;
+            Vitoria();
+            return;
         }
     }
 
-    // ===== PAUSE =====
-
-    public void AbrirPause()
-    {
-        painelPause.SetActive(true);
-        Time.timeScale = 0f;
-    }
-
-    public void ContinuarJogo()
-    {
-        painelPause.SetActive(false);
-        Time.timeScale = 1f;
-    }
-
-
-   public void VoltarMenu()
-{
-    Time.timeScale = 1f;
-    Debug.Log("Voltando ao menu");
-    SceneManager.LoadScene("Menu");
-}
-
-    // ===== DERROTA E VITÓRIA =====
-
-    public void ReiniciarJogo()
+    void ReiniciarValores()
     {
         Time.timeScale = 1f;
 
         vida = 100f;
         agua = 0f;
         tempo = 0f;
+        jogoFinalizado = false;
 
-        barraVida.value = vida;
-        barraAgua.value = agua;
+        if (barraVida != null)
+            barraVida.value = vida;
 
-        telaDerrota.SetActive(false);
-        telaVitoria.SetActive(false);
+        if (barraAgua != null)
+            barraAgua.value = agua;
+
+        if (telaVitoria != null)
+            telaVitoria.SetActive(false);
+
+        if (telaDerrota != null)
+            telaDerrota.SetActive(false);
+
+        if (painelPause != null)
+            painelPause.SetActive(false);
+
+        MostrarObjetosHUD(true);
+
+        AudioListener.volume = 1f;
+    }
+
+    void Vitoria()
+    {
+        jogoFinalizado = true;
+
+        if (telaVitoria != null)
+            telaVitoria.SetActive(true);
+
+        Time.timeScale = 0f;
+    }
+
+    void Derrota()
+    {
+        jogoFinalizado = true;
+
+        if (telaDerrota != null)
+            telaDerrota.SetActive(true);
+
+        Time.timeScale = 0f;
+    }
+
+    public void AbrirPause()
+    {
+        if (jogoFinalizado)
+            return;
+
+        if (painelPause != null)
+            painelPause.SetActive(true);
+
+        MostrarObjetosHUD(false);
+        Time.timeScale = 0f;
+    }
+
+    public void ContinuarJogo()
+    {
+        if (painelPause != null)
+            painelPause.SetActive(false);
+
+        MostrarObjetosHUD(true);
+        Time.timeScale = 1f;
+    }
+
+    void MostrarObjetosHUD(bool mostrar)
+    {
+        foreach (GameObject obj in objetosParaOcultar)
+        {
+            if (obj == null)
+                continue;
+
+            obj.SetActive(mostrar);
+        }
+    }
+
+    public void TakeDamage(float amount)
+    {
+        if (jogoFinalizado)
+            return;
+
+        vida = Mathf.Max(0, vida - amount);
+
+        if (barraVida != null)
+            barraVida.value = vida;
+    }
+
+    public void TakeWaterDamage(float amount)
+    {
+        if (jogoFinalizado)
+            return;
+
+        agua = Mathf.Min(100, agua + amount);
+
+        if (barraAgua != null)
+            barraAgua.value = agua;
+    }
+
+    public void VoltarMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Menu");
     }
 
     public void JogarNovamente()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void ProximaFase()
+    {
+        Time.timeScale = 1f;
+
+        int proximaFase = SceneManager.GetActiveScene().buildIndex + 1;
+
+        if (proximaFase < SceneManager.sceneCountInBuildSettings)
+            SceneManager.LoadScene(proximaFase);
+        else
+            SceneManager.LoadScene("Menu");
     }
 }

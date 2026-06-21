@@ -124,7 +124,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -139,13 +139,13 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7134679933749194716}
   m_BodyType: 0
-  m_Simulated: 1
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -156,7 +156,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1209753758233708937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +166,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7134679933749194716}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38b1883dbb2aea8488830e683b1e0bc1, type: 3}
+  m_Script: {fileID: 11500000, guid: 9666fd4cde87c6346a3cf964223f16be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BalaInimiga
+  speed: 16
+  isGuided: 0
+  damageAmount: 5
+  damagesEnemy: 1
+  useDepthScaling: 1
+  depthScaleMin: 1.2
+  depthScaleMax: 6
+  maxDistance: 51.9

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6dbc5832bcf7e9a49a3dd6708fd3b210
+guid: 1401bc3d6ea6bf64d9a3f6a44cadae33
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1553302592239620020
-    second: Background 2_0
+      213: 3405806658452629725
+    second: Captura de tela 2026-06-18 231833_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Background 2_0
+      name: Captura de tela 2026-06-18 231833_0
       rect:
         serializedVersion: 2
-        x: 295
+        x: 0
         y: 0
-        width: 665
-        height: 263
+        width: 1002
+        height: 545
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4bfc2275a707e8510800000000000000
-      internalID: 1553302592239620020
+      spriteID: dd8aab27c1bd34f20800000000000000
+      internalID: 3405806658452629725
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d8ca5ef7a1d01e146b74c1223954c860
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Background 2_0: 1553302592239620020
+      Captura de tela 2026-06-18 231833_0: 3405806658452629725
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
