@@ -3379,6 +3379,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BarraTempo
   sliderTempo: {fileID: 1400606600}
   tempoDaFase: 30
+--- !u!1 &1023846799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1023846800}
+  m_Layer: 0
+  m_Name: Canhao_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1023846800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023846799}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.30921, y: -2.75674, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1038847994
 GameObject:
   m_ObjectHideFlags: 0
@@ -4431,6 +4462,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27a0ad562b2ae974cb53b0fc911f848c, type: 3}
+--- !u!1 &1378567058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1378567059}
+  m_Layer: 0
+  m_Name: Canhao_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1378567059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378567058}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.30921, y: -2.75674, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1398228076
 GameObject:
   m_ObjectHideFlags: 0
@@ -6002,7 +6064,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1514900959
-  m_SortingLayer: 12
+  m_SortingLayer: 13
   m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4813764642844622474, guid: a0f8f77a21bfd994dbaf147b10d20b58, type: 3}
@@ -6206,7 +6268,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1514900959
-  m_SortingLayer: 12
+  m_SortingLayer: 13
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2798582885993535878, guid: 428dd98f60a5e83458556ef40e9683e5, type: 3}
@@ -6812,3 +6874,5 @@ SceneRoots:
   - {fileID: 967448668}
   - {fileID: 1299327501}
   - {fileID: 751855724}
+  - {fileID: 1378567059}
+  - {fileID: 1023846800}

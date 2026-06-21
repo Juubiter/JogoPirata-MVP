@@ -1336,32 +1336,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30447d00f48f89458de1828f9f12f1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShip
-  moveSpeed: 2
-  moveDirection: {x: -1, y: 0}
-  stopViewportX: 1
-  decelerationRange: 0.15
-  minSpeedFactor: 0.05
-  accelerationTime: 1.5
-  destroyDelay: 1
-  projectilePrefab: {fileID: 0}
-  firePoints:
-  - {fileID: 8620360391039279866}
-  - {fileID: 1851036231413836814}
-  playerTarget: {fileID: 0}
-  useGuided: 0
-  tirosNormais: 1
-  tirosRajada: 4
-  intervaloTiroNormal: 1.2
+  velocidadeDoNavio: 2
+  direcaoMovimento: {x: -1, y: 0}
+  posicaoDeParada: 0.6
+  distanciaDesaceleracao: 0.15
+  velocidadeMinima: 0.05
+  tempoAceleracao: 1.5
+  tempoParaDestruir: 1
+  prefabDaBala: {fileID: 7134679933749194716, guid: 45bceca59551a624b950414c7f20c53b, type: 3}
+  canhoesDoNavio:
+  - {fileID: 0}
+  - {fileID: 0}
+  alvoDoJogador: {fileID: 8527123688361220308, guid: d1c5a4789b18ff440b5e857b00663f0f, type: 3}
+  tiroGuiado: 0
+  tirosNormais: 4
+  tirosRajada: 8
+  intervaloTiroNormal: 0.5
   pausaAntesRajada: 0.8
   intervaloRajada: 0.25
-  swayAmplitude: 0.15
-  swayFrequency: 1.2
-  maxHealth: 3
-  causesFloodOnly: 0
-  causesBoth: 0
-  damagePoints: []
-  explosionParticles: {fileID: 0}
-  explosionSound: {fileID: 0}
+  alturaBalanco: 0.15
+  velocidadeBalanco: 1.2
+  vidaMaxima: 3
+  causaApenasVazamento: 0
+  causaIncendioEVazamento: 0
+  pontosDeDano: []
+  particulasExplosao: {fileID: 0}
+  somExplosao: {fileID: 0}
 --- !u!1 &5057618681606563401
 GameObject:
   m_ObjectHideFlags: 0
