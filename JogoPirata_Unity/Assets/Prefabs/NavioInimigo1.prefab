@@ -428,7 +428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1851036231413836814}
   m_Layer: 0
-  m_Name: Firepoint_2
+  m_Name: Canhao_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -513,7 +513,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8620360391039279866}
   m_Layer: 0
-  m_Name: Firepoint_1
+  m_Name: Canhao_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1338,28 +1338,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShip
   velocidadeDoNavio: 2
   direcaoMovimento: {x: -1, y: 0}
-  posicaoDeParada: 0.6
-  distanciaDesaceleracao: 0.15
-  velocidadeMinima: 0.05
+  posicaoDeParada: 0.939
+  distanciaDesaceleracao: 0.05
+  velocidadeMinima: 0.2
   tempoAceleracao: 1.5
   tempoParaDestruir: 1
   prefabDaBala: {fileID: 7134679933749194716, guid: 45bceca59551a624b950414c7f20c53b, type: 3}
   canhoesDoNavio:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8620360391039279866}
+  - {fileID: 1851036231413836814}
   alvoDoJogador: {fileID: 8527123688361220308, guid: d1c5a4789b18ff440b5e857b00663f0f, type: 3}
   tiroGuiado: 0
-  tirosNormais: 4
+  tirosNormais: 5
   tirosRajada: 8
-  intervaloTiroNormal: 0.5
-  pausaAntesRajada: 0.8
-  intervaloRajada: 0.25
+  intervaloTiroNormal: 0.6
+  pausaAntesRajada: 1
+  intervaloRajada: 0.2
   alturaBalanco: 0.15
   velocidadeBalanco: 1.2
   vidaMaxima: 3
   causaApenasVazamento: 0
   causaIncendioEVazamento: 0
-  pontosDeDano: []
+  pontosDeDano:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   particulasExplosao: {fileID: 0}
   somExplosao: {fileID: 0}
 --- !u!1 &5057618681606563401

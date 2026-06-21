@@ -4,16 +4,16 @@ public class Projectile : MonoBehaviour
 {
     [Header("Movimento")]
     public float speed = 12f;
-    [Tooltip("true = guiado (segue alvo), false = reto (linha direta)")]
     public bool isGuided = true;
 
     [Header("Dano")]
     public float damageAmount = 5f;
-    [Tooltip("true = causa dano em inimigo (EnemyShip), false = causa dano em jogador (Player)")]
     public bool damagesEnemy = true;
 
+    [Header("Buraco")]
+    public GameObject buracoPrefab;
+
     [Header("Visual")]
-    [Tooltip("Adiciona escala progressiva conforme distância (efeito de profundidade)")]
     public bool useDepthScaling = true;
     public float depthScaleMin = 1.2f;
     public float depthScaleMax = 6f;
@@ -65,7 +65,6 @@ public class Projectile : MonoBehaviour
 
     void MoverReto()
     {
-        velocidade.y -= 9.8f * Time.deltaTime;
         transform.Translate(velocidade * Time.deltaTime, Space.World);
 
         if (Vector2.Distance(transform.position, posicaoInicial) > 100f)
@@ -76,8 +75,13 @@ public class Projectile : MonoBehaviour
     {
         float distancia = Vector3.Distance(transform.position, posicaoInicial);
         float escala = Mathf.Lerp(depthScaleMin, depthScaleMax, Mathf.Clamp01(distancia / maxDistance));
+
         transform.localScale = Vector3.one * escala;
-        transform.position = new Vector3(transform.position.x, transform.position.y, -Mathf.Clamp01(distancia / maxDistance) * 2f);
+        transform.position = new Vector3(
+            transform.position.x,
+            transform.position.y,
+            -Mathf.Clamp01(distancia / maxDistance) * 2f
+        );
     }
 
     void Acertar()
@@ -90,7 +94,7 @@ public class Projectile : MonoBehaviour
         }
         else if (!damagesEnemy)
         {
-            HUDManager hud = FindObjectOfType<HUDManager>();
+            HUDManager hud = FindFirstObjectByType<HUDManager>();
             if (hud != null)
                 hud.TakeDamage(damageAmount);
         }
@@ -98,9 +102,26 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+   void OnTriggerEnter2D(Collider2D collider)
+   {
+    if (!damagesEnemy && collider.CompareTag("Player"))
     {
-        if (!damagesEnemy && collider.gameObject.CompareTag("Player"))
-            Acertar();
+        if (buracoPrefab != null)
+        {
+            Vector3 posicaoBuraco = transform.position;
+            posicaoBuraco.z = -5f;
+
+            GameObject buraco = Instantiate(
+                buracoPrefab,
+                posicaoBuraco,
+                Quaternion.identity
+            );
+
+            buraco.transform.SetParent(collider.transform, true);
+            buraco.transform.localScale = Vector3.one * 0.3f;
+        }
+
+        Acertar();
     }
+   }
 }
