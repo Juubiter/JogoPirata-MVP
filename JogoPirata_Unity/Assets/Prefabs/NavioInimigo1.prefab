@@ -289,7 +289,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6531399535025612840
 Transform:
   m_ObjectHideFlags: 0
@@ -323,8 +323,10 @@ MonoBehaviour:
   fireInterval: 3
   initialDelay: 1
   useGuided: 0
-  particles: {fileID: 7389272393703648291, guid: 7cd10eb29b7db034a82094c20b5f7cde, type: 3}
+  fireVFXPrefab: {fileID: 0}
+  fireVFXDuration: 0.5
   fireSound: {fileID: 8300000, guid: df4cd5b9515babe4286eb0522e4736f0, type: 3}
+  fireVolume: 1
 --- !u!1 &1781979671983651135
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,6 +418,37 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1992274867308488121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1851036231413836814}
+  m_Layer: 0
+  m_Name: Firepoint_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1851036231413836814
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992274867308488121}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.341, y: -1.136, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5144244124603730882}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2374762611320503734
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,7 +465,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4970470296780878422
 Transform:
   m_ObjectHideFlags: 0
@@ -463,11 +496,44 @@ MonoBehaviour:
   projectilePrefab: {fileID: 7134679933749194716, guid: 45bceca59551a624b950414c7f20c53b, type: 3}
   shootPoint: {fileID: 0}
   targetPoint: {fileID: 0}
-  fireInterval: 3
+  fireInterval: 1
   initialDelay: 0
   useGuided: 0
-  particles: {fileID: 7389272393703648291, guid: 7cd10eb29b7db034a82094c20b5f7cde, type: 3}
+  fireVFXPrefab: {fileID: 0}
+  fireVFXDuration: 0.5
   fireSound: {fileID: 8300000, guid: df4cd5b9515babe4286eb0522e4736f0, type: 3}
+  fireVolume: 1
+--- !u!1 &2430826892689036069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8620360391039279866}
+  m_Layer: 0
+  m_Name: Firepoint_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8620360391039279866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2430826892689036069}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.917, y: -1.121, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5144244124603730882}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2437042401901721362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1205,7 +1271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5144244124603730882}
-  - component: {fileID: 421227893736141801}
+  - component: {fileID: 6357732204015260055}
   m_Layer: 0
   m_Name: NavioInimigo1
   m_TagString: Untagged
@@ -1222,7 +1288,7 @@ Transform:
   m_GameObject: {fileID: 5030654172949061217}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.638, y: 0.22225, z: 0}
+  m_LocalPosition: {x: -18.707, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1254,9 +1320,11 @@ Transform:
   - {fileID: 1102945670951160060}
   - {fileID: 4970470296780878422}
   - {fileID: 6531399535025612840}
+  - {fileID: 8620360391039279866}
+  - {fileID: 1851036231413836814}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &421227893736141801
+--- !u!114 &6357732204015260055
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1268,16 +1336,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30447d00f48f89458de1828f9f12f1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShip
-  moveSpeed: 0.7
+  moveSpeed: 2
   moveDirection: {x: -1, y: 0}
-  stopViewportX: 0.937
-  attackDuration: 6
-  decelerationRange: 0.063
-  minSpeedFactor: 0.063
+  stopViewportX: 1
+  decelerationRange: 0.15
+  minSpeedFactor: 0.05
   accelerationTime: 1.5
-  destroyDelay: 2
+  destroyDelay: 1
+  projectilePrefab: {fileID: 0}
+  firePoints:
+  - {fileID: 8620360391039279866}
+  - {fileID: 1851036231413836814}
+  playerTarget: {fileID: 0}
+  useGuided: 0
+  tirosNormais: 1
+  tirosRajada: 4
+  intervaloTiroNormal: 1.2
+  pausaAntesRajada: 0.8
+  intervaloRajada: 0.25
   swayAmplitude: 0.15
-  swayFrequency: 0.6
+  swayFrequency: 1.2
   maxHealth: 3
   causesFloodOnly: 0
   causesBoth: 0
