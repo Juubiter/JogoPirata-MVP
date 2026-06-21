@@ -194,12 +194,12 @@ TextureImporter:
       name: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_0
       rect:
         serializedVersion: 2
-        x: 130
-        y: 128
-        width: 98
-        height: 100
+        x: 84
+        y: 77
+        width: 200
+        height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -216,12 +216,12 @@ TextureImporter:
       name: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_1
       rect:
         serializedVersion: 2
-        x: 292
-        y: 98
-        width: 178
-        height: 147
+        x: 280
+        y: 72
+        width: 200
+        height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -238,12 +238,12 @@ TextureImporter:
       name: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_2
       rect:
         serializedVersion: 2
-        x: 519
-        y: 97
-        width: 185
-        height: 161
+        x: 515
+        y: 81
+        width: 200
+        height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -260,12 +260,12 @@ TextureImporter:
       name: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_4
       rect:
         serializedVersion: 2
-        x: 1053
-        y: 90
+        x: 1051
+        y: 76
         width: 238
         height: 233
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -282,12 +282,12 @@ TextureImporter:
       name: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_5
       rect:
         serializedVersion: 2
-        x: 1368
-        y: 105
+        x: 1365
+        y: 108
         width: 216
         height: 183
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -304,12 +304,12 @@ TextureImporter:
       name: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_6
       rect:
         serializedVersion: 2
-        x: 1604
+        x: 1608
         y: 104
         width: 198
         height: 184
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -326,12 +326,12 @@ TextureImporter:
       name: vecteezy_animation-sprite-sheet-of-bomb-explosion-sequence_13224424-Photoroom_3
       rect:
         serializedVersion: 2
-        x: 761
-        y: 89
-        width: 228
-        height: 208
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 776
+        y: 78
+        width: 211
+        height: 229
+      alignment: 9
+      pivot: {x: 0.48310426, y: 0.42883307}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []

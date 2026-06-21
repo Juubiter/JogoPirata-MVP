@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Linq;
 
 public class Weapon : MonoBehaviour
 {
@@ -16,21 +15,18 @@ public class Weapon : MonoBehaviour
     public bool useGuided = false;
 
     [Header("VFX e Áudio")]
-    public ParticleSystem particles;
+    [Tooltip("Prefab do efeito (sprite/partícula) que será instanciado a cada tiro.")]
+    public GameObject fireVFXPrefab;
+    [Tooltip("Tempo até o efeito instanciado ser destruído.")]
+    public float fireVFXDuration = 0.5f;
     public AudioClip fireSound;
+    [Range(0f, 1f)] public float fireVolume = 1f;
 
     private float fireTimer;
-    private AudioSource audioSource;
 
     void Start()
     {
         fireTimer = fireInterval + initialDelay;
-
-        audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
-            audioSource = GetComponentInChildren<AudioSource>();
-
-        Debug.Log($"[Weapon] audioSource: {audioSource}, particles: {particles}");
 
         if (shootPoint == null)
             shootPoint = transform;
@@ -58,7 +54,6 @@ public class Weapon : MonoBehaviour
         if (shootPoint == null || targetPoint == null || projectilePrefab == null) return;
 
         GameObject proj = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
-        Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
         Projectile projectile = proj.GetComponent<Projectile>();
 
         if (useGuided && projectile != null)
@@ -72,7 +67,37 @@ public class Weapon : MonoBehaviour
             proj.transform.rotation = Quaternion.Euler(0, 0, angulo);
         }
 
-        if (particles != null) particles.Play();
-        if (fireSound != null && audioSource != null) audioSource.PlayOneShot(fireSound);
+        if (fireVFXPrefab != null)
+        {
+            // Z negativo = à frente do cenário (o shootPoint fica em Z=1, no fundo).
+            Vector3 vfxPos = shootPoint.position;
+            vfxPos.z = -1f;
+
+            // Mantém a rotação ORIGINAL do prefab — importante para ParticleSystem,
+            // que pode estar tiltado para emitir no plano da câmera.
+            GameObject vfx = Instantiate(fireVFXPrefab, vfxPos, fireVFXPrefab.transform.rotation);
+
+            float vida = fireVFXDuration;
+            ParticleSystem ps = vfx.GetComponent<ParticleSystem>();
+            if (ps != null)
+            {
+                ps.Play();
+                vida = ps.main.duration + ps.main.startLifetime.constantMax;
+            }
+
+            Destroy(vfx, vida);
+        }
+
+        if (fireSound != null)
+        {
+            GameObject sfxObj = new GameObject("SFX_Cannon");
+            sfxObj.transform.position = shootPoint.position;
+            AudioSource sfx = sfxObj.AddComponent<AudioSource>();
+            sfx.clip = fireSound;
+            sfx.volume = fireVolume;
+            sfx.spatialBlend = 0f;
+            sfx.Play();
+            Destroy(sfxObj, fireSound.length);
+        }
     }
 }
