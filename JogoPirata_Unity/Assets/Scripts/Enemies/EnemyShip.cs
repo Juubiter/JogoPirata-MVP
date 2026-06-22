@@ -18,7 +18,8 @@ public class EnemyShip : MonoBehaviour
     [Header("Tiro do Inimigo")]
     public GameObject prefabDaBala;
     public Transform[] canhoesDoNavio;
-    public Transform alvoDoJogador;
+    public Transform[] alvosDoJogador;
+    public Transform grupoDeAlvos;
     public bool tiroGuiado = false;
 
     [Min(0)] public int tirosNormais = 3;
@@ -45,6 +46,10 @@ public class EnemyShip : MonoBehaviour
 
     [Header("Áudio")]
     public AudioClip somExplosao;
+private System.Collections.Generic.List<Transform> alvosDisponiveis =
+    new System.Collections.Generic.List<Transform>();
+
+private Transform ultimoAlvoUsado;
 
     private int vidaAtual;
     private AudioSource audioSource;
@@ -63,29 +68,42 @@ public class EnemyShip : MonoBehaviour
     private bool emRajada = false;
     private bool ataqueFinalizado = false;
 
-    void Start()
+void Start()
+{
+    vidaAtual = vidaMaxima;
+    audioSource = GetComponent<AudioSource>();
+
+    GameObject grupo = GameObject.Find("AlvosDoNavio");
+
+    if (grupo != null)
     {
-        vidaAtual = vidaMaxima;
-        audioSource = GetComponent<AudioSource>();
+        alvosDoJogador = new Transform[grupo.transform.childCount];
 
-        if (alvoDoJogador == null)
+        for (int i = 0; i < grupo.transform.childCount; i++)
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-
-            if (player == null)
-                player = GameObject.Find("NavioPrincipal");
-
-            if (player != null)
-                alvoDoJogador = player.transform;
+            alvosDoJogador[i] = grupo.transform.GetChild(i);
         }
 
-        direcaoMovimento = direcaoMovimento.normalized;
-        eixoBalanco = new Vector2(-direcaoMovimento.y, direcaoMovimento.x);
-        deslocamentoBalanco = Random.Range(0f, Mathf.PI * 2f);
-
-        posicaoBase = (Vector2)transform.root.position;
+        Debug.Log("Alvos encontrados no grupo: " + alvosDoJogador.Length);
     }
+    else
+    {
+        Debug.LogWarning("Objeto AlvosDoNavio não encontrado na cena!");
+    }
+    alvosDisponiveis.Clear();
 
+foreach (Transform alvo in alvosDoJogador)
+{
+    if (alvo != null)
+        alvosDisponiveis.Add(alvo);
+}
+
+    direcaoMovimento = direcaoMovimento.normalized;
+    eixoBalanco = new Vector2(-direcaoMovimento.y, direcaoMovimento.x);
+    deslocamentoBalanco = Random.Range(0f, Mathf.PI * 2f);
+
+    posicaoBase = (Vector2)transform.root.position;
+}
     void Update()
     {
         AtualizarEstado();
@@ -216,29 +234,55 @@ public class EnemyShip : MonoBehaviour
 
         return disparos;
     }
-
-    bool PodeAtirar()
+bool PodeAtirar()
+{
+    if (prefabDaBala == null)
     {
-        if (prefabDaBala == null)
-        {
-            Debug.LogWarning("[EnemyShip] Falta Prefab da Bala!");
-            return false;
-        }
-
-        if (canhoesDoNavio == null || canhoesDoNavio.Length == 0)
-        {
-            Debug.LogWarning("[EnemyShip] Faltam os Canhões do Navio!");
-            return false;
-        }
-
-        if (alvoDoJogador == null)
-        {
-            Debug.LogWarning("[EnemyShip] Falta o Alvo do Jogador!");
-            return false;
-        }
-
-        return true;
+        Debug.LogWarning("[EnemyShip] Falta Prefab da Bala!");
+        return false;
     }
+
+    if (canhoesDoNavio == null || canhoesDoNavio.Length == 0)
+    {
+        Debug.LogWarning("[EnemyShip] Faltam os Canhões!");
+        return false;
+    }
+
+    if (alvosDoJogador == null || alvosDoJogador.Length == 0)
+    {
+        Debug.LogWarning("[EnemyShip] Nenhum alvo encontrado!");
+        return false;
+    }
+
+    return true;
+}
+
+    
+Transform EscolherAlvoAleatorio()
+{
+    if (alvosDoJogador == null || alvosDoJogador.Length == 0)
+        return null;
+
+    if (alvosDisponiveis.Count == 0)
+    {
+        foreach (Transform alvo in alvosDoJogador)
+        {
+            if (alvo != null && alvo != ultimoAlvoUsado)
+                alvosDisponiveis.Add(alvo);
+        }
+    }
+
+    if (alvosDisponiveis.Count == 0)
+        return null;
+
+    int index = Random.Range(0, alvosDisponiveis.Count);
+    Transform escolhido = alvosDisponiveis[index];
+
+    alvosDisponiveis.RemoveAt(index);
+    ultimoAlvoUsado = escolhido;
+
+    return escolhido;
+}
 
     void CriarProjetil(Transform canhao)
     {
@@ -248,26 +292,33 @@ public class EnemyShip : MonoBehaviour
             return;
         }
 
+        Transform alvoEscolhido = EscolherAlvoAleatorio();
+
+        if (alvoEscolhido == null)
+        {
+            Debug.LogWarning("[EnemyShip] Nenhum alvo válido encontrado!");
+            return;
+        }
+
         GameObject tiro = Instantiate(prefabDaBala, canhao.position, Quaternion.identity);
 
-        Projectile proj = tiro.GetComponent<Projectile>();
+       Projectile proj = tiro.GetComponent<Projectile>();
 
-        if (proj != null)
-        {
-            proj.damagesEnemy = false;
-            proj.isGuided = tiroGuiado;
+if (proj != null)
+{
+    proj.damagesEnemy = false;
+    proj.isGuided = tiroGuiado;
 
-            if (tiroGuiado)
-            {
-                proj.SetTarget(alvoDoJogador);
-            }
-            else
-            {
-                Vector2 direcao = (alvoDoJogador.position - canhao.position).normalized;
-                float angulo = Mathf.Atan2(direcao.y, direcao.x) * Mathf.Rad2Deg;
-                tiro.transform.rotation = Quaternion.Euler(0, 0, angulo);
-            }
-        }
+    // IMPORTANTE: salva o alvo escolhido na bala
+    proj.SetTarget(alvoEscolhido);
+
+    if (!tiroGuiado)
+    {
+        Vector2 direcao = (alvoEscolhido.position - canhao.position).normalized;
+        float angulo = Mathf.Atan2(direcao.y, direcao.x) * Mathf.Rad2Deg;
+        tiro.transform.rotation = Quaternion.Euler(0, 0, angulo);
+    }
+}
     }
 
     void AtualizarVisual()

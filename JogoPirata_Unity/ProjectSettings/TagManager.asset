@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - CannonFirePoint
+  - AlvoJogador
   layers:
   - Default
   - TransparentFX
@@ -65,6 +66,9 @@ TagManager:
     locked: 0
   - name: inimigo
     uniqueID: 2833809437
+    locked: 0
+  - name: buracos
+    uniqueID: 3474875649
     locked: 0
   - name: "Fuma\xE7a"
     uniqueID: 2185611257

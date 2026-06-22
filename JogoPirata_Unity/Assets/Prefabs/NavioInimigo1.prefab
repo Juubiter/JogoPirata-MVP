@@ -1336,23 +1336,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30447d00f48f89458de1828f9f12f1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShip
-  velocidadeDoNavio: 2
+  velocidadeDoNavio: 1.5
   direcaoMovimento: {x: -1, y: 0}
-  posicaoDeParada: 0.939
-  distanciaDesaceleracao: 0.05
-  velocidadeMinima: 0.2
-  tempoAceleracao: 1.5
+  posicaoDeParada: 0.892
+  distanciaDesaceleracao: 0.143
+  velocidadeMinima: 0.171
+  tempoAceleracao: 2
   tempoParaDestruir: 1
   prefabDaBala: {fileID: 7134679933749194716, guid: 45bceca59551a624b950414c7f20c53b, type: 3}
   canhoesDoNavio:
   - {fileID: 8620360391039279866}
   - {fileID: 1851036231413836814}
-  alvoDoJogador: {fileID: 8527123688361220308, guid: d1c5a4789b18ff440b5e857b00663f0f, type: 3}
+  alvosDoJogador:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  grupoDeAlvos: {fileID: 0}
   tiroGuiado: 0
-  tirosNormais: 5
-  tirosRajada: 8
-  intervaloTiroNormal: 0.6
-  pausaAntesRajada: 1
+  tirosNormais: 3
+  tirosRajada: 4
+  intervaloTiroNormal: 0.9
+  pausaAntesRajada: 1.2
   intervaloRajada: 0.2
   alturaBalanco: 0.15
   velocidadeBalanco: 1.2
