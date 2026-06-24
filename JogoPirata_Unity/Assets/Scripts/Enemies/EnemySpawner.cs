@@ -48,7 +48,7 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnRoutine()
     {
-        yield return new WaitForSeconds(5f); // pequeno delay antes do primeiro navio
+        yield return new WaitForSeconds(7f); // pequeno delay antes do primeiro navio
 
         while (isSpawning)
         {
