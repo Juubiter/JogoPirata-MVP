@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 1dece3458dd725647a5aaf88d6e8ce01
+guid: cfc554f1ce123f844ac713fe3f911f1b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6619111317931664985
-    second: image-removebg-preview (1)_0
+      213: -1824977806310969557
+    second: backgroundwater_0
+  - first:
+      213: -5585505834767628632
+    second: backgroundwater_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,40 +99,93 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: image-removebg-preview (1)_0
+      name: backgroundwater_0
       rect:
         serializedVersion: 2
-        x: 104
-        y: 59
-        width: 339
-        height: 377
+        x: 1
+        y: 1
+        width: 48
+        height: 45
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7a95aed63513424a0800000000000000
-      internalID: -6619111317931664985
+      spriteID: b2fecd3ba506ca6e0800000000000000
+      internalID: -1824977806310969557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: backgroundwater_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1
+        width: 48
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a6cdcb590c4c72b0800000000000000
+      internalID: -5585505834767628632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: backgroundwater_2
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 46
+        width: 32
+        height: 3
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40565ecf8c4a18b4f9d945930412dcdf
+      internalID: -397258249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: backgroundwater_3
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 46
+        width: 32
+        height: 3
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad007195a5b6c4942b70f69cab2ba495
+      internalID: -2097615384
       vertices: []
       indices: 
       edges: []
@@ -138,7 +194,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5623adca2cc3d3f4d8cd40d4b8610c8a
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +204,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      image-removebg-preview (1)_0: -6619111317931664985
+      backgroundwater_0: -1824977806310969557
+      backgroundwater_1: -5585505834767628632
+      backgroundwater_2: -397258249
+      backgroundwater_3: -2097615384
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
