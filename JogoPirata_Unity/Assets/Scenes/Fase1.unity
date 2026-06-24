@@ -1383,7 +1383,7 @@ MonoBehaviour:
   warshipPrefab: {fileID: 7249319305265720485, guid: fcbddd5b51cc36948a0878394eee1d2b, type: 3}
   spawnPoints:
   - {fileID: 1521053844}
-  spawnInterval: 2
+  spawnInterval: 10
   maxSimultaneous: 1
   spawnWarship: 0
 --- !u!4 &434093838

@@ -1336,9 +1336,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30447d00f48f89458de1828f9f12f1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShip
-  velocidadeDoNavio: 1.5
+  velocidadeDoNavio: 1
   direcaoMovimento: {x: -1, y: 0}
-  posicaoDeParada: 0.892
+  posicaoDeParada: 0.958
   distanciaDesaceleracao: 0.143
   velocidadeMinima: 0.171
   tempoAceleracao: 2
@@ -1355,13 +1355,13 @@ MonoBehaviour:
   tiroGuiado: 0
   tirosNormais: 3
   tirosRajada: 4
-  intervaloTiroNormal: 0.9
+  intervaloTiroNormal: 5
   pausaAntesRajada: 1.2
   intervaloRajada: 0.2
   alturaBalanco: 0.15
   velocidadeBalanco: 1.2
   vidaMaxima: 3
-  causaApenasVazamento: 0
+  causaApenasVazamento: 1
   causaIncendioEVazamento: 0
   pontosDeDano:
   - {fileID: 0}
