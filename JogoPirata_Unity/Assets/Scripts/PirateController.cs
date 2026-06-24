@@ -1,32 +1,36 @@
 using UnityEngine;
 
+
 public class PirateController : MonoBehaviour
 {
-    public Ordem ordemAtual = Ordem.Nenhuma;
 
-    private SpriteRenderer spriteRenderer;
+    public GameObject highlight;
 
-    private void Awake()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
+
 
     public void Selecionar()
     {
-        spriteRenderer.color = new Color(1f, 0.7f, 0f);
+        highlight.SetActive(true);
 
-        Debug.Log("Pirata selecionado!");
+        Debug.Log("PIRATA SELECIONADO");
     }
+
+
 
     public void Deselecionar()
     {
-        spriteRenderer.color = Color.white;
+        highlight.SetActive(false);
+
+        Debug.Log("PIRATA DESSELECIONADO");
     }
 
-    public void ReceberOrdem(Ordem novaOrdem)
+
+
+    public void ReceberOrdem(Ordem ordem)
     {
-        ordemAtual = novaOrdem;
-
-        Debug.Log("Nova ordem: " + novaOrdem);
+        Debug.Log(
+            "Pirata recebeu ordem: " + ordem
+        );
     }
+
 }

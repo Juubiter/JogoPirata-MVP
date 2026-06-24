@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class SelectionManager : MonoBehaviour
 {
-    public GameObject menuOrdens;
+    public MenuAcoes menuAcoes;
 
     private PirateController pirataSelecionado;
+
 
     void Update()
     {
@@ -13,75 +14,165 @@ public class SelectionManager : MonoBehaviour
             VerificarClique();
         }
 
+
         if (Input.GetMouseButtonDown(1))
         {
             CancelarSelecao();
         }
     }
 
+
+
     void VerificarClique()
     {
         Vector2 mousePos =
-            Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
 
         RaycastHit2D hit =
-            Physics2D.Raycast(mousePos, Vector2.zero);
+        Physics2D.Raycast(mousePos, Vector2.zero);
 
-        if (hit.collider != null)
+
+
+        if (hit.collider == null)
         {
-            PirateController pirata =
-                hit.collider.GetComponent<PirateController>();
-
-            if (pirata != null)
-            {
-                if (pirataSelecionado != null)
-                {
-                    pirataSelecionado.Deselecionar();
-                }
-
-                pirataSelecionado = pirata;
-
-                pirataSelecionado.Selecionar();
-
-                menuOrdens.SetActive(true);
-            }
+            return;
         }
+
+
+
+        Debug.Log("Clicou em: " + hit.collider.name);
+
+
+
+        // Primeiro verifica se clicou em um pirata
+
+        PirateController pirata =
+        hit.collider.GetComponent<PirateController>();
+
+
+        if (pirata != null)
+        {
+
+            if (pirataSelecionado != null)
+            {
+                pirataSelecionado.Deselecionar();
+            }
+
+
+            pirataSelecionado = pirata;
+
+
+            pirataSelecionado.Selecionar();
+
+
+            // abre a roleta em cima do pirata
+
+            menuAcoes.Abrir(
+            pirata.transform.position
+            );
+
+
+            return;
+        }
+
+
+
+        // Se futuramente clicar em objetos do mapa
+        // fica preparado aqui
+
+
+        ObjetoInterativo objeto =
+        hit.collider.GetComponent<ObjetoInterativo>();
+
+
+        if (objeto != null && pirataSelecionado != null)
+        {
+            objeto.ReceberOrdem(pirataSelecionado);
+
+            menuAcoes.Fechar();
+        }
+
     }
+
+
+
+
 
     void CancelarSelecao()
     {
+
         if (pirataSelecionado != null)
         {
             pirataSelecionado.Deselecionar();
+
             pirataSelecionado = null;
         }
 
-        menuOrdens.SetActive(false);
+
+        menuAcoes.Fechar();
+
 
         Debug.Log("Seleção cancelada");
     }
 
+
+
+
+
     public void OrdemCanhao()
     {
+        if (pirataSelecionado == null)
+            return;
+
+
         pirataSelecionado.ReceberOrdem(Ordem.Canhao);
-        menuOrdens.SetActive(false);
+
+        menuAcoes.Fechar();
     }
+
+
+
+
 
     public void OrdemIncendio()
     {
+        if (pirataSelecionado == null)
+            return;
+
+
         pirataSelecionado.ReceberOrdem(Ordem.Incendio);
-        menuOrdens.SetActive(false);
+
+        menuAcoes.Fechar();
     }
+
+
+
+
 
     public void OrdemAgua()
     {
+        if (pirataSelecionado == null)
+            return;
+
+
         pirataSelecionado.ReceberOrdem(Ordem.Agua);
-        menuOrdens.SetActive(false);
+
+        menuAcoes.Fechar();
     }
+
+
+
+
 
     public void OrdemBuraco()
     {
+        if (pirataSelecionado == null)
+            return;
+
+
         pirataSelecionado.ReceberOrdem(Ordem.Buraco);
-        menuOrdens.SetActive(false);
+
+        menuAcoes.Fechar();
     }
 }
