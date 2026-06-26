@@ -258,7 +258,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 87
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1547,8 +1547,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 25.970001, y: -4.5300007}
-  m_SizeDelta: {x: 7.89, y: 111.51}
+  m_AnchoredPosition: {x: 23.380005, y: -4.5300007}
+  m_SizeDelta: {x: 13.07, y: 111.51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &519420028
 GameObject:
@@ -3059,8 +3059,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -23.670013, y: 11.150002}
-  m_SizeDelta: {x: -34.22, y: -54.11}
+  m_AnchoredPosition: {x: -21.700012, y: 10.700001}
+  m_SizeDelta: {x: -35.68, y: -54.11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &945313106
 MonoBehaviour:
@@ -3087,7 +3087,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.87
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
