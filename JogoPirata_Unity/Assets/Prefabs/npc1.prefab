@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3390606865465033630}
   - component: {fileID: 49916107417869592}
   - component: {fileID: 1382091207853477145}
+  - component: {fileID: 9102606991345965928}
   m_Layer: 0
   m_Name: npc1
   m_TagString: Untagged
@@ -123,7 +124,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5378876139533912106}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 304e920b4a73f344697f0fa24b35b7c1, type: 3}
   m_Name: 
@@ -141,3 +142,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf8316eea10729a4893c0eadd68a1f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
+  velocidade: 2
+  pontoA: {fileID: 0}
+  pontoB: {fileID: 0}
+--- !u!114 &9102606991345965928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5378876139533912106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c38eb85f7bd4cb47bc765a61f695ee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimacaoMovimento
+  parametroAndando: Andando
+  limiteMovimento: 0.01
+  virarSprite: 1
