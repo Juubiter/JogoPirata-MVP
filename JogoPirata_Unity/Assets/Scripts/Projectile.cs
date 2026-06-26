@@ -136,12 +136,20 @@ if (sr != null)
 }
 
     Debug.Log("BURACO CRIADO EM: " + posicaoBuraco);
+
+ControleAgua controleAgua = FindFirstObjectByType<ControleAgua>();
+
+if (controleAgua != null)
+{
+    controleAgua.AdicionarBuraco();
 }
-    void OnTriggerEnter2D(Collider2D collider)
+}
+
+void OnTriggerEnter2D(Collider2D collider)
+{
+    if (!damagesEnemy && collider.CompareTag("Player"))
     {
-        if (!damagesEnemy && collider.CompareTag("Player"))
-        {
-            Acertar();
-        }
+        Acertar();
     }
+}
 }
