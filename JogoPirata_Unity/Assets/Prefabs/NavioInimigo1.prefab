@@ -1360,7 +1360,7 @@ MonoBehaviour:
   intervaloRajada: 0.2
   alturaBalanco: 0.15
   velocidadeBalanco: 1.2
-  vidaMaxima: 3
+  vidaMaxima: 6
   causaApenasVazamento: 1
   causaIncendioEVazamento: 0
   pontosDeDano:

@@ -174,6 +174,9 @@ MonoBehaviour:
   damageAmount: 5
   damagesEnemy: 1
   buracoPrefab: {fileID: 3831277297085913366, guid: 28cafff41d7ab5c4283003011d1416e1, type: 3}
+  tamanhoBuraco: 0.35
+  variacaoPosicaoBuraco: 0.15
+  chanceCriarBuraco: 61.1
   useDepthScaling: 1
   depthScaleMin: 1.2
   depthScaleMax: 6
