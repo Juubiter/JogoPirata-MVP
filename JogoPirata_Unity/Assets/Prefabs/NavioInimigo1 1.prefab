@@ -910,6 +910,37 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &4280634487986845292
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1049183603895586898}
+  m_Layer: 0
+  m_Name: Canhao_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1049183603895586898
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4280634487986845292}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.845, y: -1.064, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5144244124603730882}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4447300011828429499
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,6 +1179,8 @@ Transform:
   - {fileID: 4228733161833285820}
   - {fileID: 3197984333285178141}
   - {fileID: 1102945670951160060}
+  - {fileID: 1049183603895586898}
+  - {fileID: 4923734493957097591}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &421227893736141801
@@ -1162,22 +1195,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30447d00f48f89458de1828f9f12f1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShip
-  moveSpeed: 0.7
-  moveDirection: {x: -1, y: 0}
-  stopViewportX: 0.937
-  attackDuration: 6
-  decelerationRange: 0.063
-  minSpeedFactor: 0.063
-  accelerationTime: 1.5
-  destroyDelay: 2
-  swayAmplitude: 0.15
-  swayFrequency: 0.6
-  maxHealth: 3
-  causesFloodOnly: 0
-  causesBoth: 0
-  damagePoints: []
-  explosionParticles: {fileID: 0}
-  explosionSound: {fileID: 0}
+  velocidadeDoNavio: 2
+  direcaoMovimento: {x: -1, y: 0}
+  posicaoDeParada: 0.937
+  distanciaDesaceleracao: 0.15
+  velocidadeMinima: 0.05
+  tempoAceleracao: 1.5
+  tempoParaDestruir: 1
+  prefabDaBala: {fileID: 7134679933749194716, guid: 45bceca59551a624b950414c7f20c53b, type: 3}
+  canhoesDoNavio:
+  - {fileID: 1049183603895586898}
+  - {fileID: 4923734493957097591}
+  alvosDoJogador:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  grupoDeAlvos: {fileID: 0}
+  tiroGuiado: 0
+  tirosNormais: 3
+  tirosRajada: 3
+  intervaloTiroNormal: 1.2
+  pausaAntesRajada: 0.8
+  intervaloRajada: 0.25
+  alturaBalanco: 0.15
+  velocidadeBalanco: 1.2
+  vidaMaxima: 3
+  causaApenasVazamento: 0
+  causaIncendioEVazamento: 0
+  pontosDeDano: []
+  particulasExplosao: {fileID: 0}
+  somExplosao: {fileID: 0}
 --- !u!1 &5057618681606563401
 GameObject:
   m_ObjectHideFlags: 0
@@ -1360,6 +1407,37 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &5462051868408126143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4923734493957097591}
+  m_Layer: 0
+  m_Name: Canhao_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4923734493957097591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5462051868408126143}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.293, y: -1.064, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5144244124603730882}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5976581840899462613
 GameObject:
   m_ObjectHideFlags: 0
