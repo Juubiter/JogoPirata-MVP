@@ -624,9 +624,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 50
   m_WholeNumbers: 1
-  m_Value: 87
+  m_Value: 4
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1751,8 +1751,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 5, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: 4.524002, y: 0}
+  m_SizeDelta: {x: -20.952, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &585843869
 GameObject:
@@ -2372,7 +2372,7 @@ Canvas:
   m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 619993323
+  m_SortingLayerID: -1724799281
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &751855724
@@ -3428,7 +3428,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.87
+  m_FillAmount: 0.08
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -4577,7 +4577,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 43.6
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5129,7 +5129,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.8000183, y: 9.8}
+  m_AnchoredPosition: {x: 5, y: 13.9}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1573358779
@@ -6120,7 +6120,7 @@ MonoBehaviour:
   - -5
   - -4.5
   - -3.3
-  velocidadeSubida: 1
+  velocidadeSubida: 0.5
 --- !u!1 &1967885523
 GameObject:
   m_ObjectHideFlags: 0
@@ -6183,8 +6183,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -1514900959
-  m_SortingLayer: 14
+  m_SortingLayerID: 192582557
+  m_SortingLayer: 11
   m_SortingOrder: 1
   m_MaskInteraction: 1
   m_Sprite: {fileID: -4727073203965218669, guid: cf53cadfba22db34e88c3887c6d66b85, type: 3}
@@ -6365,12 +6365,12 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -1514900959
-  m_SortingLayer: 14
+  m_SortingLayerID: 192582557
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1455096403836856330, guid: 11a1ef3a163b77643a86d2c0196c01af, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6446,7 +6446,7 @@ MonoBehaviour:
   - {fileID: 320013341}
   barraVida: {fileID: 60500491}
   barraAgua: {fileID: 144962953}
-  tempoParaVencer: 30
+  tempoParaVencer: 100
 --- !u!4 &1998172242
 Transform:
   m_ObjectHideFlags: 0

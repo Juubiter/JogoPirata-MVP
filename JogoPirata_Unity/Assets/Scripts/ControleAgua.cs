@@ -45,13 +45,23 @@ public class ControleAgua : MonoBehaviour
     }
 
     public void AumentarNivelAgua()
+{
+    if (nivelAtual < nivelMaximo)
     {
-        if (nivelAtual < nivelMaximo)
+        nivelAtual++;
+        AtualizarHUD();
+    }
+
+    if (nivelAtual >= nivelMaximo)
+    {
+        HUDManager hud = FindFirstObjectByType<HUDManager>();
+
+        if (hud != null)
         {
-            nivelAtual++;
-            AtualizarHUD();
+            hud.Derrota();
         }
     }
+}
 
     public void DiminuirNivelAgua()
     {
