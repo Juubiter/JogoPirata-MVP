@@ -177,6 +177,9 @@ MonoBehaviour:
   tamanhoBuraco: 0.35
   variacaoPosicaoBuraco: 0.15
   chanceCriarBuraco: 61.1
+  fogoPrefab: {fileID: 4180486188527203653, guid: c418f1ead77130e4bb32ac7698bef9e7, type: 3}
+  chanceIncendio: 63.5
+  tamanhoFogo: 1
   useDepthScaling: 1
   depthScaleMin: 1.2
   depthScaleMax: 6

@@ -19,6 +19,14 @@ public class Projectile : MonoBehaviour
     [Range(0f, 100f)]
     public float chanceCriarBuraco = 35f;
 
+    [Header("Incêndio")]
+    public GameObject fogoPrefab;
+
+    [Range(0f, 100f)]
+    public float chanceIncendio = 20f;
+
+    public float tamanhoFogo = 0.08f;
+
     [Header("Visual")]
     public bool useDepthScaling = true;
     public float depthScaleMin = 1.2f;
@@ -59,7 +67,11 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(
+            transform.position,
+            target.position,
+            speed * Time.deltaTime
+        );
 
         if (Vector2.Distance(transform.position, target.position) < 0.2f)
             Acertar();
@@ -79,7 +91,11 @@ public class Projectile : MonoBehaviour
         float escala = Mathf.Lerp(depthScaleMin, depthScaleMax, Mathf.Clamp01(distancia / maxDistance));
 
         transform.localScale = Vector3.one * escala;
-        transform.position = new Vector3(transform.position.x, transform.position.y, -Mathf.Clamp01(distancia / maxDistance) * 2f);
+        transform.position = new Vector3(
+            transform.position.x,
+            transform.position.y,
+            -Mathf.Clamp01(distancia / maxDistance) * 2f
+        );
     }
 
     void Acertar()
@@ -106,6 +122,15 @@ public class Projectile : MonoBehaviour
             {
                 Debug.Log("Tiro acertou, mas não criou buraco.");
             }
+
+            if (Random.Range(0f, 100f) <= chanceIncendio)
+            {
+                CriarIncendioNoNavio();
+            }
+            else
+            {
+                Debug.Log("Tiro acertou, mas não criou incêndio.");
+            }
         }
 
         Destroy(gameObject);
@@ -128,9 +153,7 @@ public class Projectile : MonoBehaviour
         GameObject navio = GameObject.FindGameObjectWithTag("Player");
 
         if (navio != null)
-        {
             buraco.transform.SetParent(navio.transform, true);
-        }
 
         buraco.transform.localScale = Vector3.one * 0.06f;
 
@@ -150,9 +173,59 @@ public class Projectile : MonoBehaviour
         ControleAgua controleAgua = FindFirstObjectByType<ControleAgua>();
 
         if (controleAgua != null)
-        {
             controleAgua.AdicionarBuraco();
+    }
+
+    void CriarIncendioNoNavio()
+    {
+        if (fogoPrefab == null)
+        {
+            Debug.LogWarning("FOGO PREFAB NÃO FOI COLOCADO!");
+            return;
         }
+
+        GameObject objetoPontos = GameObject.Find("PontosIncendio");
+
+        if (objetoPontos == null)
+        {
+            Debug.LogWarning("PontosIncendio não encontrado na cena!");
+            return;
+        }
+
+        Transform[] pontos = objetoPontos.GetComponentsInChildren<Transform>();
+
+        if (pontos.Length <= 1)
+        {
+            Debug.LogWarning("Nenhum ponto filho encontrado em PontosIncendio!");
+            return;
+        }
+
+        Transform pontoEscolhido = pontos[Random.Range(1, pontos.Length)];
+
+        GameObject fogo = Instantiate(
+            fogoPrefab,
+            pontoEscolhido.position,
+            Quaternion.identity
+        );
+
+        fogo.name = "Fogo_Criado";
+
+        GameObject navio = GameObject.FindGameObjectWithTag("Player");
+
+        if (navio != null)
+            fogo.transform.SetParent(navio.transform, true);
+
+        fogo.transform.localScale = Vector3.one * tamanhoFogo;
+
+        SpriteRenderer sr = fogo.GetComponent<SpriteRenderer>();
+
+        if (sr != null)
+        {
+            sr.sortingLayerName = "Fumaça";
+            sr.sortingOrder = 10000;
+        }
+
+        Debug.Log("FOGO CRIADO EM: " + pontoEscolhido.name);
     }
 
     void OnTriggerEnter2D(Collider2D collider)
