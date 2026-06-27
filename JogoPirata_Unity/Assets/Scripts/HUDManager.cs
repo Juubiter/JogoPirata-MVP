@@ -18,7 +18,7 @@ public class HUDManager : MonoBehaviour
     private float tempo;
     private bool jogoFinalizado;
 
-    public float tempoParaVencer = 30f;
+    public float tempoParaVencer = 100f;
 
     void Awake()
     {
@@ -103,7 +103,7 @@ public class HUDManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    void Derrota()
+    public void Derrota()
     {
         jogoFinalizado = true;
 

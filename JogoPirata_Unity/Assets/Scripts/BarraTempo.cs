@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class BarraTempo : MonoBehaviour
 {
     public Slider sliderTempo;
-    public float tempoDaFase = 30f;
+    public float tempoDaFase = 100f;
 
     private float tempoAtual;
 
