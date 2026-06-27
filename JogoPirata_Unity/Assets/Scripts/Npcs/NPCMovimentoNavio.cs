@@ -10,6 +10,13 @@ public class NPCMovimentoNavio : MonoBehaviour
     public float tempoMaximoParado = 3f;
     public float chanceTrocarAndar = 0.3f;
 
+    private Animator meuAnimator;
+    private SpriteRenderer meuSpriteRenderer;
+    private Vector3 posicaoAnterior;
+    private float limiteMovimento = 0.001f;    
+    
+    private int estadoAtual = 0;    
+
     // --- NOVOS LIMITES INDIVIDUAIS POR ANDAR ---
     [Header("Limites do Baixo (Andar 0)")]
     public Transform limiteEsquerdaBaixo;
@@ -44,6 +51,9 @@ public class NPCMovimentoNavio : MonoBehaviour
 
     void Start()
     {
+        meuAnimator = GetComponent<Animator>();
+        meuSpriteRenderer = GetComponent<SpriteRenderer>();
+        posicaoAnterior = transform.localPosition;
         // 1. Sorteia um andar aleatório entre 0 e 3 
         // (Random.Range com int exclui o número final, por isso 4)
         andarAtual = Random.Range(0, 4);
@@ -70,6 +80,29 @@ public class NPCMovimentoNavio : MonoBehaviour
 
         AndarHorizontal();
     }
+
+    void LateUpdate()
+    {
+        float distanciaMovimentada = Vector3.Distance(transform.localPosition, posicaoAnterior);
+        bool estaSeMovendo = distanciaMovimentada > limiteMovimento;
+        if (!estaSeMovendo) 
+        estadoAtual = 0; 
+        else if (Mathf.Abs(transform.localPosition.y - posicaoAnterior.y) > 0.01f) 
+        estadoAtual = 2; 
+        else 
+        estadoAtual = 1; 
+        if (meuAnimator != null)
+        {
+            meuAnimator.SetInteger("EstadoMovimento", estadoAtual);
+        }
+        if (estaSeMovendo && meuSpriteRenderer != null)
+        {
+            if (transform.localPosition.x > posicaoAnterior.x) meuSpriteRenderer.flipX = false;
+            else if (transform.localPosition.x < posicaoAnterior.x) meuSpriteRenderer.flipX = true;
+        }
+        posicaoAnterior = transform.localPosition;
+    }
+
 
     void AndarHorizontal()
     {
@@ -126,7 +159,7 @@ public class NPCMovimentoNavio : MonoBehaviour
             minX = limiteEsquerdaBaixo.localPosition.x;
             maxX = limiteDireitaBaixo.localPosition.x;
         }
-
+        
         destinoX = Random.Range(minX, maxX);
     }
 
