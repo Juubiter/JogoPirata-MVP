@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5821491478736599517}
   - component: {fileID: 4956837637470654637}
   - component: {fileID: 2219891461933785488}
-  - component: {fileID: 8786464870196379735}
   m_Layer: 0
   m_Name: npc4
   m_TagString: Untagged
@@ -80,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 2054101489
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -855298285791758126, guid: 6d09ae13fb8c05b41857fd69b11fa41e, type: 3}
@@ -115,16 +114,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8786464870196379735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2678662285654257725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 304e920b4a73f344697f0fa24b35b7c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Virar
-  tempo: 4

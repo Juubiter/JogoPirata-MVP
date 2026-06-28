@@ -44,12 +44,12 @@ public class SelectionManager : MonoBehaviour
 
             pirataSelecionado.Selecionar();
 
-            menuAcoes.Abrir(pirata.transform.position);
+            menuAcoes.Abrir(pirata.transform);
 
             return;
         }
 
-        // Futuramente servirá para clicar em objetos do cenário
+        // Futuramente servirï¿½ para clicar em objetos do cenï¿½rio
         ObjetoInterativo objeto = hit.collider.GetComponent<ObjetoInterativo>();
 
         if (objeto != null && pirataSelecionado != null)
@@ -64,10 +64,10 @@ public class SelectionManager : MonoBehaviour
     {
         FinalizarSelecao();
 
-        Debug.Log("Seleção cancelada");
+        Debug.Log("Seleï¿½ï¿½o cancelada");
     }
 
-    // Fecha o menu e remove a seleção do pirata
+    // Fecha o menu e remove a seleï¿½ï¿½o do pirata
     void FinalizarSelecao()
     {
         if (pirataSelecionado != null)

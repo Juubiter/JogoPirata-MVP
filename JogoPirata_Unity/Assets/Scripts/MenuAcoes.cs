@@ -2,17 +2,30 @@ using UnityEngine;
 
 public class MenuAcoes : MonoBehaviour
 {
-    public void Abrir(Vector3 posicao)
+    private Transform alvo; // Guarda a referência do NPC
+    
+    // Opcional: Um ajuste para o menu não ficar exatamente em cima do sprite do NPC
+    public Vector3 offset = new Vector3(0, 1.5f, 0); 
+
+    public void Abrir(Transform npcTransform)
     {
-        Vector3 posTela = Camera.main.WorldToScreenPoint(posicao);
-
-        transform.position = posTela;
-
+        alvo = npcTransform;
         gameObject.SetActive(true);
+    }
+
+    void Update()
+    {
+        // O Update roda todo frame. Se houver um alvo, ele recalcula a posição na tela.
+        if (alvo != null)
+        {
+            Vector3 posTela = Camera.main.WorldToScreenPoint(alvo.position + offset);
+            transform.position = posTela;
+        }
     }
 
     public void Fechar()
     {
+        alvo = null;
         gameObject.SetActive(false);
     }
 }
