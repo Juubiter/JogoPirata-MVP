@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3840856400389328058}
   - component: {fileID: 4922009413380418015}
   m_Layer: 0
-  m_Name: balde
+  m_Name: Balde
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 7758826781474847338}
   - component: {fileID: 5464228670988808981}
   m_Layer: 0
-  m_Name: municao
+  m_Name: BalaCanhao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

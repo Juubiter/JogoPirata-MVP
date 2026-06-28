@@ -137,18 +137,44 @@ public class NPCMovimentoNavio : MonoBehaviour
         tarefaAtual = novaTarefa;
         ocupado = true;
     }
-
-    IEnumerator Rotina_ExecutarTarefa(Transform alvo, int andarDestino, string nomeAcao)
+    IEnumerator IrAteXGlobal(float xGlobal)
+{
+    while (Mathf.Abs(transform.position.x - xGlobal) > 0.05f)
     {
-        yield return StartCoroutine(NavegarParaAndarEspecifico(andarDestino));
-        yield return StartCoroutine(IrAteX(alvo.localPosition.x));
-        Debug.Log("NPC CHEGOU! Executando ação: " + nomeAcao);
-        yield return new WaitForSeconds(2f); 
-        tarefaAtual = Tarefa.Aleatorio;
-        ocupado = false;
-        EscolherDestinoHorizontal();
+        Vector3 pos = transform.position;
+        pos.x = Mathf.MoveTowards(pos.x, xGlobal, velocidadeAndar * Time.deltaTime);
+        transform.position = pos;
+
+        yield return null;
+    }
+}
+IEnumerator Rotina_ExecutarTarefa(Transform alvo, int andarDestino, string nomeAcao)
+{
+    yield return StartCoroutine(NavegarParaAndarEspecifico(andarDestino));
+
+    Transform pontoAcao = alvo.Find("PontoApagar");
+    if (pontoAcao == null)
+    {
+        pontoAcao = alvo;
     }
 
+    yield return StartCoroutine(IrAteXGlobal(pontoAcao.position.x));
+
+    Debug.Log("NPC CHEGOU! Executando ação: " + nomeAcao);
+
+    if (nomeAcao == "ApagarFogo")
+    {
+        yield return StartCoroutine(ApagarFogoAosPoucos(alvo));
+    }
+    else
+    {
+        yield return new WaitForSeconds(2f);
+    }
+
+    tarefaAtual = Tarefa.Aleatorio;
+    ocupado = false;
+    EscolherDestinoHorizontal();
+}
     IEnumerator Rotina_Canhao(Transform municao, int andarMunicao, Transform canhao, int andarCanhao)
     {
         yield return StartCoroutine(NavegarParaAndarEspecifico(andarMunicao));
@@ -170,7 +196,35 @@ public class NPCMovimentoNavio : MonoBehaviour
         ocupado = false;
         EscolherDestinoHorizontal();
     }
+   IEnumerator ApagarFogoAosPoucos(Transform fogo)
+{
+    if (fogo == null)
+        yield break;
 
+    Debug.Log("COMEÇOU A APAGAR O FOGO: " + fogo.name);
+
+    float tempoTotal = 2f;
+    float tempoAtual = 0f;
+
+    Vector3 escalaInicial = fogo.localScale;
+
+    while (tempoAtual < tempoTotal)
+    {
+        if (fogo == null)
+            yield break;
+
+        tempoAtual += Time.deltaTime;
+
+        float porcentagem = tempoAtual / tempoTotal;
+        fogo.localScale = Vector3.Lerp(escalaInicial, Vector3.zero, porcentagem);
+
+        yield return null;
+    }
+
+    Debug.Log("DESATIVANDO FOGO: " + fogo.name);
+
+    fogo.gameObject.SetActive(false);
+}
     public void Comando_TirarAgua(int andarDaAgua, Transform localBeiradaConves)
     {
         PrepararNovaTarefa(Tarefa.TirandoAgua);

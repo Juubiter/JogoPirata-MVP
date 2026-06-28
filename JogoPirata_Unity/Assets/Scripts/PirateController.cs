@@ -13,6 +13,7 @@ public class PirateController : MonoBehaviour
     public void Selecionar()
     {
         highlight.SetActive(true);
+
         if (GerenciadorMenuAcoes.Instancia != null)
         {
             GerenciadorMenuAcoes.Instancia.pirataSelecionado = this;
@@ -22,6 +23,7 @@ public class PirateController : MonoBehaviour
     public void Deselecionar()
     {
         highlight.SetActive(false);
+
         if (GerenciadorMenuAcoes.Instancia != null && GerenciadorMenuAcoes.Instancia.pirataSelecionado == this)
         {
             GerenciadorMenuAcoes.Instancia.pirataSelecionado = null;
@@ -37,30 +39,99 @@ public class PirateController : MonoBehaviour
             case OrdemPirata.ApagarFogo:
                 BuscarEApagarFogo();
                 break;
+
             case OrdemPirata.TamparBuraco:
                 BuscarETamparBuraco();
                 break;
+
             case OrdemPirata.TirarAgua:
                 IrTirarAgua();
                 break;
+
             case OrdemPirata.AtirarCanhao:
                 BuscarMunicaoEAtirar();
                 break;
         }
     }
 
-    private void BuscarEApagarFogo()
+private void BuscarEApagarFogo()
+{
+    Transform alvo = EncontrarFogoMaisProximoDisponivel();
+
+    if (alvo == null)
     {
-        Transform alvo = EncontrarMaisProximo("Fogo");
-        if (alvo != null)
+        Debug.LogWarning("Nenhum fogo disponível encontrado!");
+        return;
+    }
+
+    FogoReservado fogo = alvo.GetComponent<FogoReservado>();
+    if (fogo != null)
+    {
+        fogo.Reservar(this);
+    }
+
+    Transform pontoApagar = alvo.Find("PontoApagar");
+    if (pontoApagar == null)
+    {
+        pontoApagar = alvo;
+    }
+
+    int andarDoFogo = DescobrirAndarPelaAlturaGlobal(pontoApagar.position.y);
+
+    scriptMovimento.Comando_ApagarFogo(alvo, andarDoFogo);
+}
+private int DescobrirAndarPelaAlturaGlobal(float alturaYGlobal)
+{
+    float yConves = scriptMovimento.pontoConves.position.y;
+    float yMeio = scriptMovimento.pontoMeio.position.y;
+
+    if (alturaYGlobal > yConves - 0.5f) return 2;
+    if (alturaYGlobal > yMeio - 0.5f) return 1;
+    return 0;
+}
+    private Transform EncontrarFogoMaisProximoDisponivel()
+    {
+        GameObject[] fogos = GameObject.FindGameObjectsWithTag("Fogo");
+
+        if (fogos.Length == 0)
         {
-            scriptMovimento.Comando_ApagarFogo(alvo, DescobrirAndarPelaAltura(alvo.position.y));
+            Debug.LogWarning("Não encontrei nenhum objeto com a tag: Fogo");
+            return null;
         }
+
+        Transform maisProximo = null;
+        float menorDistancia = Mathf.Infinity;
+
+        foreach (GameObject fogoObj in fogos)
+        {
+            FogoReservado fogo = fogoObj.GetComponent<FogoReservado>();
+
+            if (fogo == null)
+            {
+                fogo = fogoObj.AddComponent<FogoReservado>();
+            }
+
+            if (fogo.EstaReservado())
+            {
+                continue;
+            }
+
+            float distancia = Vector3.Distance(transform.position, fogoObj.transform.position);
+
+            if (distancia < menorDistancia)
+            {
+                menorDistancia = distancia;
+                maisProximo = fogoObj.transform;
+            }
+        }
+
+        return maisProximo;
     }
 
     private void BuscarETamparBuraco()
     {
         Transform alvo = EncontrarMaisProximo("Buraco");
+
         if (alvo != null)
         {
             scriptMovimento.Comando_TamparBuraco(alvo, DescobrirAndarPelaAltura(alvo.position.y));
@@ -69,13 +140,13 @@ public class PirateController : MonoBehaviour
 
     private void IrTirarAgua()
     {
-        GameObject aguaObj = GameObject.Find("AguaInundacao"); 
-        Transform beirada = EncontrarMaisProximo("PontoAgua"); 
+        GameObject aguaObj = GameObject.Find("AguaInundacao");
+        Transform beirada = EncontrarMaisProximo("PontoAgua");
 
         if (aguaObj != null && beirada != null)
         {
             float alturaTopoAgua = aguaObj.transform.position.y + (aguaObj.transform.localScale.y / 2f);
-            
+
             int andarDaAgua = DescobrirAndarPelaAltura(alturaTopoAgua);
             scriptMovimento.Comando_TirarAgua(andarDaAgua, beirada);
         }
@@ -94,6 +165,7 @@ public class PirateController : MonoBehaviour
         {
             int andarMunicao = DescobrirAndarPelaAltura(municao.position.y);
             int andarCanhao = DescobrirAndarPelaAltura(canhao.position.y);
+
             scriptMovimento.Comando_AtirarCanhao(municao, andarMunicao, canhao, andarCanhao);
         }
     }
@@ -101,7 +173,7 @@ public class PirateController : MonoBehaviour
     private Transform EncontrarMaisProximo(string tagDoObjeto)
     {
         GameObject[] todosOsObjetos = GameObject.FindGameObjectsWithTag(tagDoObjeto);
-        
+
         if (todosOsObjetos.Length == 0)
         {
             Debug.LogWarning("Não encontrei nenhum objeto com a tag: " + tagDoObjeto);
@@ -114,12 +186,14 @@ public class PirateController : MonoBehaviour
         foreach (GameObject obj in todosOsObjetos)
         {
             float distancia = Vector3.Distance(transform.position, obj.transform.position);
+
             if (distancia < menorDistancia)
             {
                 menorDistancia = distancia;
                 maisProximo = obj.transform;
             }
         }
+
         return maisProximo;
     }
 
