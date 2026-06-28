@@ -84,7 +84,7 @@ public class SelectionManager : MonoBehaviour
         if (pirataSelecionado == null)
             return;
 
-        pirataSelecionado.ReceberOrdem(Ordem.Canhao);
+        pirataSelecionado.ReceberOrdem(OrdemPirata.AtirarCanhao);
 
         FinalizarSelecao();
     }
@@ -94,7 +94,7 @@ public class SelectionManager : MonoBehaviour
         if (pirataSelecionado == null)
             return;
 
-        pirataSelecionado.ReceberOrdem(Ordem.Incendio);
+        pirataSelecionado.ReceberOrdem(OrdemPirata.ApagarFogo);
 
         FinalizarSelecao();
     }
@@ -104,7 +104,7 @@ public class SelectionManager : MonoBehaviour
         if (pirataSelecionado == null)
             return;
 
-        pirataSelecionado.ReceberOrdem(Ordem.Agua);
+        pirataSelecionado.ReceberOrdem(OrdemPirata.TirarAgua);
 
         FinalizarSelecao();
     }
@@ -114,7 +114,7 @@ public class SelectionManager : MonoBehaviour
         if (pirataSelecionado == null)
             return;
 
-        pirataSelecionado.ReceberOrdem(Ordem.Buraco);
+        pirataSelecionado.ReceberOrdem(OrdemPirata.TamparBuraco);
 
         FinalizarSelecao();
     }

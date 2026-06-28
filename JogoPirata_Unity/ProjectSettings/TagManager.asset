@@ -6,6 +6,11 @@ TagManager:
   tags:
   - CannonFirePoint
   - AlvoJogador
+  - Buraco
+  - Fogo
+  - PontoAgua
+  - Municao
+  - Canhao
   layers:
   - Default
   - TransparentFX

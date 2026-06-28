@@ -1353,14 +1353,14 @@ MonoBehaviour:
   - {fileID: 0}
   grupoDeAlvos: {fileID: 0}
   tiroGuiado: 0
-  tirosNormais: 3
-  tirosRajada: 4
-  intervaloTiroNormal: 5
+  tirosNormais: 2
+  tirosRajada: 3
+  intervaloTiroNormal: 7
   pausaAntesRajada: 1.2
   intervaloRajada: 0.2
   alturaBalanco: 0.15
   velocidadeBalanco: 1.2
-  vidaMaxima: 6
+  vidaMaxima: 2
   causaApenasVazamento: 1
   causaIncendioEVazamento: 0
   pontosDeDano:
