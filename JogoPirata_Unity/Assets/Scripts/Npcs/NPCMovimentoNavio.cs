@@ -1,10 +1,10 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class NPCMovimentoNavio : MonoBehaviour
 {
     public enum Tarefa { Aleatorio, IndoApagarFogo, IndoTamparBuraco, TirandoAgua, BuscandoMunicao, IndoAtirar }
+
     [Header("Estado Atual")]
     public Tarefa tarefaAtual = Tarefa.Aleatorio;
 
@@ -18,40 +18,39 @@ public class NPCMovimentoNavio : MonoBehaviour
     private Animator meuAnimator;
     private SpriteRenderer meuSpriteRenderer;
     private Vector3 posicaoAnterior;
-    private float limiteMovimento = 0.001f;    
-    
-    private int estadoAnimacaoAtual = 0; 
+    private float limiteMovimento = 0.001f;
+    private int estadoAnimacaoAtual = 0;
 
-    [Header("Itens na Mão (Visuais)")]
+    [Header("Itens na Mão")]
     public GameObject iconeMunicaoMao;
     public GameObject iconeBaldeCheio;
 
-    [Header("Limites do Baixo (Andar 0)")]
+    [Header("Limites do Baixo")]
     public Transform limiteEsquerdaBaixo;
     public Transform limiteDireitaBaixo;
 
-    [Header("Limites do Meio (Andar 1)")]
+    [Header("Limites do Meio")]
     public Transform limiteEsquerdaMeio;
     public Transform limiteDireitaMeio;
 
-    [Header("Limites do Convés (Andar 2)")]
+    [Header("Limites do Convés")]
     public Transform limiteEsquerdaConves;
     public Transform limiteDireitaConves;
 
-    [Header("Limites do Leme (Andar 3)")]
+    [Header("Limites do Leme")]
     public Transform limiteEsquerdaLeme;
     public Transform limiteDireitaLeme;
 
     [Header("Escadas")]
     public Transform escadaEsquerda;
     public Transform escadaDireita;
-    public Transform escadaLeme; 
+    public Transform escadaLeme;
 
-    [Header("Pontos de Altura (Y)")]
+    [Header("Pontos de Altura")]
     public Transform pontoConves;
     public Transform pontoMeio;
     public Transform pontoBaixo;
-    public Transform pontoLeme; 
+    public Transform pontoLeme;
 
     private int andarAtual;
     private float destinoX;
@@ -64,9 +63,11 @@ public class NPCMovimentoNavio : MonoBehaviour
         posicaoAnterior = transform.localPosition;
 
         andarAtual = Random.Range(0, 4);
-        EscolherDestinoHorizontal(); 
+
+        EscolherDestinoHorizontal();
+
         Vector3 pos = transform.localPosition;
-        pos.x = destinoX; 
+        pos.x = destinoX;
         transform.localPosition = pos;
 
         FixarYNoAndarAtual();
@@ -86,21 +87,25 @@ public class NPCMovimentoNavio : MonoBehaviour
     {
         float distanciaMovimentada = Vector3.Distance(transform.localPosition, posicaoAnterior);
         bool estaSeMovendo = distanciaMovimentada > limiteMovimento;
-        if (!estaSeMovendo) 
-            estadoAnimacaoAtual = 0; 
-        else if (Mathf.Abs(transform.localPosition.y - posicaoAnterior.y) > 0.01f) 
-            estadoAnimacaoAtual = 2; 
-        else 
-            estadoAnimacaoAtual = 1; 
+
+        if (!estaSeMovendo)
+            estadoAnimacaoAtual = 0;
+        else if (Mathf.Abs(transform.localPosition.y - posicaoAnterior.y) > 0.01f)
+            estadoAnimacaoAtual = 2;
+        else
+            estadoAnimacaoAtual = 1;
 
         if (meuAnimator != null)
             meuAnimator.SetInteger("EstadoMovimento", estadoAnimacaoAtual);
-        
+
         if (estaSeMovendo && meuSpriteRenderer != null)
         {
-            if (transform.localPosition.x > posicaoAnterior.x) meuSpriteRenderer.flipX = false;
-            else if (transform.localPosition.x < posicaoAnterior.x) meuSpriteRenderer.flipX = true;
+            if (transform.localPosition.x > posicaoAnterior.x)
+                meuSpriteRenderer.flipX = false;
+            else if (transform.localPosition.x < posicaoAnterior.x)
+                meuSpriteRenderer.flipX = true;
         }
+
         posicaoAnterior = transform.localPosition;
     }
 
@@ -131,100 +136,94 @@ public class NPCMovimentoNavio : MonoBehaviour
     private void PrepararNovaTarefa(Tarefa novaTarefa)
     {
         StopAllCoroutines();
+
         if (iconeMunicaoMao != null) iconeMunicaoMao.SetActive(false);
         if (iconeBaldeCheio != null) iconeBaldeCheio.SetActive(false);
 
         tarefaAtual = novaTarefa;
         ocupado = true;
     }
-    IEnumerator IrAteXGlobal(float xGlobal)
-{
-    while (Mathf.Abs(transform.position.x - xGlobal) > 0.05f)
+
+    IEnumerator Rotina_ExecutarTarefa(Transform alvo, int andarDestino, string nomeAcao)
     {
-        Vector3 pos = transform.position;
-        pos.x = Mathf.MoveTowards(pos.x, xGlobal, velocidadeAndar * Time.deltaTime);
-        transform.position = pos;
+        if (alvo == null)
+        {
+            FinalizarTarefa();
+            yield break;
+        }
 
-        yield return null;
+        yield return StartCoroutine(NavegarParaAndarEspecifico(andarDestino));
+
+        if (alvo == null)
+        {
+            FinalizarTarefa();
+            yield break;
+        }
+
+        yield return StartCoroutine(IrAteX(alvo.localPosition.x));
+
+        Debug.Log("NPC CHEGOU! Executando ação: " + nomeAcao);
+
+        if (nomeAcao == "ApagarFogo")
+        {
+            yield return StartCoroutine(ApagarFogoAosPoucos(alvo));
+        }
+        else
+        {
+            yield return new WaitForSeconds(2f);
+        }
+
+        FinalizarTarefa();
     }
-}
-IEnumerator Rotina_ExecutarTarefa(Transform alvo, int andarDestino, string nomeAcao)
-{
-    yield return StartCoroutine(NavegarParaAndarEspecifico(andarDestino));
 
-    Transform pontoAcao = alvo.Find("PontoApagar");
-    if (pontoAcao == null)
+    IEnumerator ApagarFogoAosPoucos(Transform fogo)
     {
-        pontoAcao = alvo;
+        if (fogo == null)
+            yield break;
+
+        Debug.Log("COMEÇOU A APAGAR O FOGO: " + fogo.name);
+
+        yield return new WaitForSeconds(1.5f);
+
+        if (fogo != null)
+        {
+            Debug.Log("DESTRUINDO FOGO: " + fogo.name);
+            Destroy(fogo.gameObject);
+        }
     }
 
-    yield return StartCoroutine(IrAteXGlobal(pontoAcao.position.x));
-
-    Debug.Log("NPC CHEGOU! Executando ação: " + nomeAcao);
-
-    if (nomeAcao == "ApagarFogo")
+    private void FinalizarTarefa()
     {
-        yield return StartCoroutine(ApagarFogoAosPoucos(alvo));
-    }
-    else
-    {
-        yield return new WaitForSeconds(2f);
+        tarefaAtual = Tarefa.Aleatorio;
+        ocupado = false;
+        EscolherDestinoHorizontal();
     }
 
-    tarefaAtual = Tarefa.Aleatorio;
-    ocupado = false;
-    EscolherDestinoHorizontal();
-}
     IEnumerator Rotina_Canhao(Transform municao, int andarMunicao, Transform canhao, int andarCanhao)
     {
         yield return StartCoroutine(NavegarParaAndarEspecifico(andarMunicao));
         yield return StartCoroutine(IrAteX(municao.localPosition.x));
-        
-        yield return new WaitForSeconds(1.5f); 
-        if (iconeMunicaoMao != null) iconeMunicaoMao.SetActive(true);
+
+        yield return new WaitForSeconds(1.5f);
+
+        if (iconeMunicaoMao != null)
+            iconeMunicaoMao.SetActive(true);
+
         tarefaAtual = Tarefa.IndoAtirar;
 
         yield return StartCoroutine(NavegarParaAndarEspecifico(andarCanhao));
         yield return StartCoroutine(IrAteX(canhao.localPosition.x));
 
-        if (iconeMunicaoMao != null) iconeMunicaoMao.SetActive(false);
+        if (iconeMunicaoMao != null)
+            iconeMunicaoMao.SetActive(false);
+
         yield return new WaitForSeconds(3f);
 
         Debug.Log("BUM! Atirou o Canhão!");
 
-        tarefaAtual = Tarefa.Aleatorio;
-        ocupado = false;
-        EscolherDestinoHorizontal();
-    }
-   IEnumerator ApagarFogoAosPoucos(Transform fogo)
-{
-    if (fogo == null)
-        yield break;
-
-    Debug.Log("COMEÇOU A APAGAR O FOGO: " + fogo.name);
-
-    float tempoTotal = 2f;
-    float tempoAtual = 0f;
-
-    Vector3 escalaInicial = fogo.localScale;
-
-    while (tempoAtual < tempoTotal)
-    {
-        if (fogo == null)
-            yield break;
-
-        tempoAtual += Time.deltaTime;
-
-        float porcentagem = tempoAtual / tempoTotal;
-        fogo.localScale = Vector3.Lerp(escalaInicial, Vector3.zero, porcentagem);
-
-        yield return null;
+        FinalizarTarefa();
     }
 
-    Debug.Log("DESATIVANDO FOGO: " + fogo.name);
-
-    fogo.gameObject.SetActive(false);
-}
     public void Comando_TirarAgua(int andarDaAgua, Transform localBeiradaConves)
     {
         PrepararNovaTarefa(Tarefa.TirandoAgua);
@@ -234,21 +233,23 @@ IEnumerator Rotina_ExecutarTarefa(Transform alvo, int andarDestino, string nomeA
     IEnumerator Rotina_CicloAgua(int andarDaAgua, Transform localBeiradaConves)
     {
         yield return StartCoroutine(NavegarParaAndarEspecifico(andarDaAgua));
-        
+
         yield return new WaitForSeconds(1.5f);
-        if (iconeBaldeCheio != null) iconeBaldeCheio.SetActive(true);
+
+        if (iconeBaldeCheio != null)
+            iconeBaldeCheio.SetActive(true);
 
         yield return StartCoroutine(NavegarParaAndarEspecifico(2));
         yield return StartCoroutine(IrAteX(localBeiradaConves.localPosition.x));
 
         yield return new WaitForSeconds(1f);
-        if (iconeBaldeCheio != null) iconeBaldeCheio.SetActive(false);
-        
+
+        if (iconeBaldeCheio != null)
+            iconeBaldeCheio.SetActive(false);
+
         Debug.Log("Jogou água no mar! Diminuindo a barra...");
 
-        tarefaAtual = Tarefa.Aleatorio;
-        ocupado = false;
-        EscolherDestinoHorizontal();
+        FinalizarTarefa();
     }
 
     IEnumerator NavegarParaAndarEspecifico(int andarDestino)
@@ -278,9 +279,13 @@ IEnumerator Rotina_ExecutarTarefa(Transform alvo, int andarDestino, string nomeA
 
                 yield return StartCoroutine(IrAteX(xInicio));
                 yield return StartCoroutine(MoverNaEscada(xFim, PegarYDoAndar(proximoAndar)));
-                
+
                 andarAtual = proximoAndar;
                 FixarYNoAndarAtual();
+            }
+            else
+            {
+                yield break;
             }
         }
     }
@@ -291,6 +296,7 @@ IEnumerator Rotina_ExecutarTarefa(Transform alvo, int andarDestino, string nomeA
 
         pos.x = Mathf.MoveTowards(pos.x, destinoX, velocidadeAndar * Time.deltaTime);
         pos.y = PegarYDoAndar(andarAtual);
+
         transform.localPosition = pos;
 
         if (Mathf.Abs(transform.localPosition.x - destinoX) < 0.05f)
@@ -350,12 +356,12 @@ IEnumerator Rotina_ExecutarTarefa(Transform alvo, int andarDestino, string nomeA
             minX = limiteEsquerdaMeio.localPosition.x;
             maxX = limiteDireitaMeio.localPosition.x;
         }
-        else if (andarAtual == 0)
+        else
         {
             minX = limiteEsquerdaBaixo.localPosition.x;
             maxX = limiteDireitaBaixo.localPosition.x;
         }
-        
+
         destinoX = Random.Range(minX, maxX);
     }
 
@@ -364,9 +370,12 @@ IEnumerator Rotina_ExecutarTarefa(Transform alvo, int andarDestino, string nomeA
         while (Mathf.Abs(transform.localPosition.x - xAlvo) > 0.05f)
         {
             Vector3 pos = transform.localPosition;
+
             pos.x = Mathf.MoveTowards(pos.x, xAlvo, velocidadeAndar * Time.deltaTime);
             pos.y = PegarYDoAndar(andarAtual);
+
             transform.localPosition = pos;
+
             yield return null;
         }
     }
@@ -377,7 +386,12 @@ IEnumerator Rotina_ExecutarTarefa(Transform alvo, int andarDestino, string nomeA
 
         while (Vector3.Distance(transform.localPosition, destino) > 0.05f)
         {
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, destino, velocidadeEscada * Time.deltaTime);
+            transform.localPosition = Vector3.MoveTowards(
+                transform.localPosition,
+                destino,
+                velocidadeEscada * Time.deltaTime
+            );
+
             yield return null;
         }
     }

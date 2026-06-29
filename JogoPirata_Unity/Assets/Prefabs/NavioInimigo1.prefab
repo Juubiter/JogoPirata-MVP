@@ -1338,6 +1338,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShip
   velocidadeDoNavio: 1
   direcaoMovimento: {x: -1, y: 0}
+  chanceTiroAgua: 50
+  chanceTiroFogo: 50
   posicaoDeParada: 0.958
   distanciaDesaceleracao: 0.143
   velocidadeMinima: 0.171
@@ -1364,6 +1366,20 @@ MonoBehaviour:
   causaApenasVazamento: 1
   causaIncendioEVazamento: 0
   pontosDeDano:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  alvosFogo:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  alvosAgua:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

@@ -7,7 +7,9 @@ public class EnemyShip : MonoBehaviour
     [Header("Movimento")]
     [Min(0f)] public float velocidadeDoNavio = 2f;
     public Vector2 direcaoMovimento = Vector2.left;
-
+    [Header("Chance dos Ataques")]
+[Range(0, 100)] public int chanceTiroAgua = 70;
+[Range(0, 100)] public int chanceTiroFogo = 30;
     [Header("Parada para Ataque")]
     [Range(0f, 1f)] public float posicaoDeParada = 0.6f;
     [Range(0f, 1f)] public float distanciaDesaceleracao = 0.15f;
@@ -40,6 +42,8 @@ public class EnemyShip : MonoBehaviour
 
     [Header("Pontos de Dano")]
     public Transform[] pontosDeDano;
+    public Transform[] alvosFogo;
+    public Transform[] alvosAgua;
 
     [Header("VFX")]
     public ParticleSystem particulasExplosao;
@@ -73,30 +77,45 @@ void Start()
     vidaAtual = vidaMaxima;
     audioSource = GetComponent<AudioSource>();
 
-    GameObject grupo = GameObject.Find("AlvosDoNavio");
+    GameObject navioPrincipal = GameObject.Find("NavioPrincipal");
 
-    if (grupo != null)
+    if (navioPrincipal != null)
     {
-        alvosDoJogador = new Transform[grupo.transform.childCount];
+        Transform grupoFogo = navioPrincipal.transform.Find("AlvosDoNavio/AlvosFogo");
+        Transform grupoAgua = navioPrincipal.transform.Find("AlvosDoNavio/AlvosAgua");
 
-        for (int i = 0; i < grupo.transform.childCount; i++)
+        if (grupoFogo != null)
         {
-            alvosDoJogador[i] = grupo.transform.GetChild(i);
+            alvosFogo = new Transform[grupoFogo.childCount];
+
+            for (int i = 0; i < grupoFogo.childCount; i++)
+                alvosFogo[i] = grupoFogo.GetChild(i);
+
+            Debug.Log("Alvos de fogo encontrados: " + alvosFogo.Length);
+        }
+        else
+        {
+            Debug.LogWarning("Grupo AlvosFogo não encontrado!");
         }
 
-        Debug.Log("Alvos encontrados no grupo: " + alvosDoJogador.Length);
+        if (grupoAgua != null)
+        {
+            alvosAgua = new Transform[grupoAgua.childCount];
+
+            for (int i = 0; i < grupoAgua.childCount; i++)
+                alvosAgua[i] = grupoAgua.GetChild(i);
+
+            Debug.Log("Alvos de água encontrados: " + alvosAgua.Length);
+        }
+        else
+        {
+            Debug.LogWarning("Grupo AlvosAgua não encontrado!");
+        }
     }
     else
     {
-        Debug.LogWarning("Objeto AlvosDoNavio não encontrado na cena!");
+        Debug.LogWarning("NavioPrincipal não encontrado!");
     }
-    alvosDisponiveis.Clear();
-
-foreach (Transform alvo in alvosDoJogador)
-{
-    if (alvo != null)
-        alvosDisponiveis.Add(alvo);
-}
 
     direcaoMovimento = direcaoMovimento.normalized;
     eixoBalanco = new Vector2(-direcaoMovimento.y, direcaoMovimento.x);
@@ -285,41 +304,81 @@ Transform EscolherAlvoAleatorio()
 }
 
     void CriarProjetil(Transform canhao)
-    {
-        if (canhao == null)
-        {
-            Debug.LogWarning("[EnemyShip] Um canhão está vazio!");
-            return;
-        }
-
-        Transform alvoEscolhido = EscolherAlvoAleatorio();
-
-        if (alvoEscolhido == null)
-        {
-            Debug.LogWarning("[EnemyShip] Nenhum alvo válido encontrado!");
-            return;
-        }
-
-        GameObject tiro = Instantiate(prefabDaBala, canhao.position, Quaternion.identity);
-
-       Projectile proj = tiro.GetComponent<Projectile>();
-
-if (proj != null)
 {
-    proj.damagesEnemy = false;
-    proj.isGuided = tiroGuiado;
-
-    // IMPORTANTE: salva o alvo escolhido na bala
-    proj.SetTarget(alvoEscolhido);
-
-    if (!tiroGuiado)
+    if (canhao == null)
     {
-        Vector2 direcao = (alvoEscolhido.position - canhao.position).normalized;
-        float angulo = Mathf.Atan2(direcao.y, direcao.x) * Mathf.Rad2Deg;
-        tiro.transform.rotation = Quaternion.Euler(0, 0, angulo);
+        Debug.LogWarning("[EnemyShip] Um canhão está vazio!");
+        return;
+    }
+
+    TipoTiro tipoEscolhido;
+
+    int somaChances = chanceTiroAgua + chanceTiroFogo;
+
+    if (somaChances <= 0)
+    {
+        Debug.LogWarning("[EnemyShip] Chances de tiro estão zeradas!");
+        return;
+    }
+
+    int sorteio = Random.Range(0, somaChances);
+
+    if (sorteio < chanceTiroAgua)
+        tipoEscolhido = TipoTiro.Agua;
+    else
+        tipoEscolhido = TipoTiro.Fogo;
+
+    Transform alvoEscolhido = null;
+
+    if (tipoEscolhido == TipoTiro.Agua)
+    {
+        if (alvosAgua == null || alvosAgua.Length == 0)
+        {
+            Debug.LogWarning("[EnemyShip] Não existem alvos de água!");
+            return;
+        }
+
+        alvoEscolhido = alvosAgua[Random.Range(0, alvosAgua.Length)];
+    }
+    else
+    {
+        if (alvosFogo == null || alvosFogo.Length == 0)
+        {
+            Debug.LogWarning("[EnemyShip] Não existem alvos de fogo!");
+            return;
+        }
+
+        alvoEscolhido = alvosFogo[Random.Range(0, alvosFogo.Length)];
+    }
+
+    if (alvoEscolhido == null)
+    {
+        Debug.LogWarning("[EnemyShip] Alvo escolhido está vazio!");
+        return;
+    }
+
+    GameObject tiro = Instantiate(prefabDaBala, canhao.position, Quaternion.identity);
+
+    Projectile proj = tiro.GetComponent<Projectile>();
+
+    if (proj != null)
+    {
+        proj.damagesEnemy = false;
+        proj.isGuided = tiroGuiado;
+        proj.tipoTiro = tipoEscolhido;
+
+        proj.SetTarget(alvoEscolhido);
+
+        Debug.Log("TIRO CRIADO: " + tipoEscolhido + " -> " + alvoEscolhido.name);
+
+        if (!tiroGuiado)
+        {
+            Vector2 direcao = (alvoEscolhido.position - canhao.position).normalized;
+            float angulo = Mathf.Atan2(direcao.y, direcao.x) * Mathf.Rad2Deg;
+            tiro.transform.rotation = Quaternion.Euler(0, 0, angulo);
+        }
     }
 }
-    }
 
     void AtualizarVisual()
     {

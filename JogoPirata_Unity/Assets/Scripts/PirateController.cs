@@ -12,19 +12,20 @@ public class PirateController : MonoBehaviour
 
     public void Selecionar()
     {
-        highlight.SetActive(true);
+        if (highlight != null)
+            highlight.SetActive(true);
 
         if (GerenciadorMenuAcoes.Instancia != null)
-        {
             GerenciadorMenuAcoes.Instancia.pirataSelecionado = this;
-        }
     }
 
     public void Deselecionar()
     {
-        highlight.SetActive(false);
+        if (highlight != null)
+            highlight.SetActive(false);
 
-        if (GerenciadorMenuAcoes.Instancia != null && GerenciadorMenuAcoes.Instancia.pirataSelecionado == this)
+        if (GerenciadorMenuAcoes.Instancia != null &&
+            GerenciadorMenuAcoes.Instancia.pirataSelecionado == this)
         {
             GerenciadorMenuAcoes.Instancia.pirataSelecionado = null;
         }
@@ -33,6 +34,12 @@ public class PirateController : MonoBehaviour
     public void ReceberOrdem(OrdemPirata ordem)
     {
         Debug.Log(gameObject.name + " recebeu ordem: " + ordem);
+
+        if (scriptMovimento == null)
+        {
+            Debug.LogWarning("NPCMovimentoNavio não encontrado no pirata!");
+            return;
+        }
 
         switch (ordem)
         {
@@ -54,48 +61,37 @@ public class PirateController : MonoBehaviour
         }
     }
 
-private void BuscarEApagarFogo()
-{
-    Transform alvo = EncontrarFogoMaisProximoDisponivel();
-
-    if (alvo == null)
+    private void BuscarEApagarFogo()
     {
-        Debug.LogWarning("Nenhum fogo disponível encontrado!");
-        return;
+        Transform alvo = EncontrarFogoMaisProximoDisponivel();
+
+        if (alvo == null)
+        {
+            Debug.LogWarning("Nenhum fogo disponível encontrado!");
+            return;
+        }
+
+        FogoReservado fogoReservado = alvo.GetComponent<FogoReservado>();
+
+        if (fogoReservado == null)
+            fogoReservado = alvo.gameObject.AddComponent<FogoReservado>();
+
+        fogoReservado.Reservar(this);
+
+        int andarDoFogo = DescobrirAndarPelaAltura(alvo.position.y);
+
+        Debug.Log("FOGO ESCOLHIDO: " + alvo.name + " | ANDAR: " + andarDoFogo);
+
+        scriptMovimento.Comando_ApagarFogo(alvo, andarDoFogo);
     }
 
-    FogoReservado fogo = alvo.GetComponent<FogoReservado>();
-    if (fogo != null)
-    {
-        fogo.Reservar(this);
-    }
-
-    Transform pontoApagar = alvo.Find("PontoApagar");
-    if (pontoApagar == null)
-    {
-        pontoApagar = alvo;
-    }
-
-    int andarDoFogo = DescobrirAndarPelaAlturaGlobal(pontoApagar.position.y);
-
-    scriptMovimento.Comando_ApagarFogo(alvo, andarDoFogo);
-}
-private int DescobrirAndarPelaAlturaGlobal(float alturaYGlobal)
-{
-    float yConves = scriptMovimento.pontoConves.position.y;
-    float yMeio = scriptMovimento.pontoMeio.position.y;
-
-    if (alturaYGlobal > yConves - 0.5f) return 2;
-    if (alturaYGlobal > yMeio - 0.5f) return 1;
-    return 0;
-}
     private Transform EncontrarFogoMaisProximoDisponivel()
     {
         GameObject[] fogos = GameObject.FindGameObjectsWithTag("Fogo");
 
         if (fogos.Length == 0)
         {
-            Debug.LogWarning("Não encontrei nenhum objeto com a tag: Fogo");
+            Debug.LogWarning("Não encontrei nenhum objeto com a tag Fogo.");
             return null;
         }
 
@@ -104,17 +100,16 @@ private int DescobrirAndarPelaAlturaGlobal(float alturaYGlobal)
 
         foreach (GameObject fogoObj in fogos)
         {
-            FogoReservado fogo = fogoObj.GetComponent<FogoReservado>();
-
-            if (fogo == null)
-            {
-                fogo = fogoObj.AddComponent<FogoReservado>();
-            }
-
-            if (fogo.EstaReservado())
-            {
+            if (fogoObj == null)
                 continue;
-            }
+
+            FogoReservado fogoReservado = fogoObj.GetComponent<FogoReservado>();
+
+            if (fogoReservado == null)
+                fogoReservado = fogoObj.AddComponent<FogoReservado>();
+
+            if (fogoReservado.EstaReservado())
+                continue;
 
             float distancia = Vector3.Distance(transform.position, fogoObj.transform.position);
 
@@ -134,7 +129,8 @@ private int DescobrirAndarPelaAlturaGlobal(float alturaYGlobal)
 
         if (alvo != null)
         {
-            scriptMovimento.Comando_TamparBuraco(alvo, DescobrirAndarPelaAltura(alvo.position.y));
+            int andarDoBuraco = DescobrirAndarPelaAltura(alvo.position.y);
+            scriptMovimento.Comando_TamparBuraco(alvo, andarDoBuraco);
         }
     }
 
@@ -146,13 +142,13 @@ private int DescobrirAndarPelaAlturaGlobal(float alturaYGlobal)
         if (aguaObj != null && beirada != null)
         {
             float alturaTopoAgua = aguaObj.transform.position.y + (aguaObj.transform.localScale.y / 2f);
-
             int andarDaAgua = DescobrirAndarPelaAltura(alturaTopoAgua);
+
             scriptMovimento.Comando_TirarAgua(andarDaAgua, beirada);
         }
         else
         {
-            Debug.LogWarning("Não encontrei a AguaInundacao ou o PontoAgua!");
+            Debug.LogWarning("Não encontrei AguaInundacao ou PontoAgua!");
         }
     }
 
@@ -167,6 +163,10 @@ private int DescobrirAndarPelaAlturaGlobal(float alturaYGlobal)
             int andarCanhao = DescobrirAndarPelaAltura(canhao.position.y);
 
             scriptMovimento.Comando_AtirarCanhao(municao, andarMunicao, canhao, andarCanhao);
+        }
+        else
+        {
+            Debug.LogWarning("Não encontrei Municao ou Canhao!");
         }
     }
 
@@ -199,8 +199,15 @@ private int DescobrirAndarPelaAlturaGlobal(float alturaYGlobal)
 
     private int DescobrirAndarPelaAltura(float alturaY)
     {
-        if (alturaY > scriptMovimento.pontoConves.position.y - 0.5f) return 2;
-        if (alturaY > scriptMovimento.pontoMeio.position.y - 0.5f) return 1;
+        if (scriptMovimento == null)
+            return 0;
+
+        if (alturaY > scriptMovimento.pontoConves.position.y - 0.5f)
+            return 2;
+
+        if (alturaY > scriptMovimento.pontoMeio.position.y - 0.5f)
+            return 1;
+
         return 0;
     }
 }

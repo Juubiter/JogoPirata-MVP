@@ -138,9 +138,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 600487706733657043}
+  - component: {fileID: 7597325729311260881}
   m_Layer: 0
   m_Name: BarreiraFogo
-  m_TagString: Untagged
+  m_TagString: Fogo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,14 +159,26 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8478804274481469413}
   - {fileID: 4475718910947653033}
+  - {fileID: 8161328704459446974}
   - {fileID: 5862766588953506963}
   - {fileID: 4990973037764634262}
   - {fileID: 4764251365192011598}
-  - {fileID: 8161328704459446974}
-  - {fileID: 8478804274481469413}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7597325729311260881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4180486188527203653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cac873434e952b74fb2b543eb8019f9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FogoReservado
 --- !u!1001 &3897773549247434664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -232,7 +245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2820036473958533000, guid: 000a749fed07bda4d94a851d865b1f03, type: 3}
       propertyPath: m_Name
-      value: Fogo (2)
+      value: Fogo (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3631456594958855228, guid: 000a749fed07bda4d94a851d865b1f03, type: 3}
       propertyPath: m_LocalScale.x
@@ -268,7 +281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6505650020045304197, guid: 000a749fed07bda4d94a851d865b1f03, type: 3}
       propertyPath: m_SortingLayer
-      value: 8
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6505650020045304197, guid: 000a749fed07bda4d94a851d865b1f03, type: 3}
       propertyPath: m_SortingLayerID
@@ -350,7 +363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2820036473958533000, guid: f842445717deece40989469b400823c5, type: 3}
       propertyPath: m_Name
-      value: Fogo 2
+      value: Fogo (5)
       objectReference: {fileID: 0}
     - target: {fileID: 4913378037204474751, guid: f842445717deece40989469b400823c5, type: 3}
       propertyPath: m_LocalScale.x
@@ -456,7 +469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2820036473958533000, guid: 000a749fed07bda4d94a851d865b1f03, type: 3}
       propertyPath: m_Name
-      value: Fogo (6)
+      value: Fogo (4)
       objectReference: {fileID: 0}
     - target: {fileID: 3631456594958855228, guid: 000a749fed07bda4d94a851d865b1f03, type: 3}
       propertyPath: m_LocalScale.x
@@ -492,7 +505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6505650020045304197, guid: 000a749fed07bda4d94a851d865b1f03, type: 3}
       propertyPath: m_SortingLayer
-      value: 8
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6505650020045304197, guid: 000a749fed07bda4d94a851d865b1f03, type: 3}
       propertyPath: m_SortingLayerID
@@ -574,7 +587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2820036473958533000, guid: 000a749fed07bda4d94a851d865b1f03, type: 3}
       propertyPath: m_Name
-      value: Fogo (4)
+      value: Fogo (3)
       objectReference: {fileID: 0}
     - target: {fileID: 3631456594958855228, guid: 000a749fed07bda4d94a851d865b1f03, type: 3}
       propertyPath: m_LocalScale.x
@@ -610,7 +623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6505650020045304197, guid: 000a749fed07bda4d94a851d865b1f03, type: 3}
       propertyPath: m_SortingLayer
-      value: 8
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6505650020045304197, guid: 000a749fed07bda4d94a851d865b1f03, type: 3}
       propertyPath: m_SortingLayerID
@@ -692,7 +705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2820036473958533000, guid: f842445717deece40989469b400823c5, type: 3}
       propertyPath: m_Name
-      value: Fogo 2 (1)
+      value: Fogo (2)
       objectReference: {fileID: 0}
     - target: {fileID: 4913378037204474751, guid: f842445717deece40989469b400823c5, type: 3}
       propertyPath: m_LocalScale.x
