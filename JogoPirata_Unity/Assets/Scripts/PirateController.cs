@@ -60,31 +60,33 @@ public class PirateController : MonoBehaviour
                 break;
         }
     }
+private void BuscarEApagarFogo()
+{
+    Transform alvo = EncontrarFogoMaisProximoDisponivel();
 
-    private void BuscarEApagarFogo()
+    if (alvo == null)
     {
-        Transform alvo = EncontrarFogoMaisProximoDisponivel();
-
-        if (alvo == null)
-        {
-            Debug.LogWarning("Nenhum fogo disponível encontrado!");
-            return;
-        }
-
-        FogoReservado fogoReservado = alvo.GetComponent<FogoReservado>();
-
-        if (fogoReservado == null)
-            fogoReservado = alvo.gameObject.AddComponent<FogoReservado>();
-
-        fogoReservado.Reservar(this);
-
-        int andarDoFogo = DescobrirAndarPelaAltura(alvo.position.y);
-
-        Debug.Log("FOGO ESCOLHIDO: " + alvo.name + " | ANDAR: " + andarDoFogo);
-
-        scriptMovimento.Comando_ApagarFogo(alvo, andarDoFogo);
+        Debug.LogWarning("Nenhum fogo disponível encontrado!");
+        return;
     }
 
+    AlvoReservado AlvoReservado = alvo.GetComponent<AlvoReservado>();
+
+    if (AlvoReservado == null)
+        AlvoReservado = alvo.gameObject.AddComponent<AlvoReservado>();
+
+    if (!AlvoReservado.Reservar(this))
+    {
+        Debug.LogWarning("Esse fogo já foi reservado por outro NPC!");
+        return;
+    }
+
+    int andarDoFogo = DescobrirAndarPelaAltura(alvo.position.y);
+
+    Debug.Log("FOGO RESERVADO POR: " + gameObject.name);
+
+    scriptMovimento.Comando_ApagarFogo(alvo, andarDoFogo);
+}
     private Transform EncontrarFogoMaisProximoDisponivel()
     {
         GameObject[] fogos = GameObject.FindGameObjectsWithTag("Fogo");
@@ -103,12 +105,12 @@ public class PirateController : MonoBehaviour
             if (fogoObj == null)
                 continue;
 
-            FogoReservado fogoReservado = fogoObj.GetComponent<FogoReservado>();
+            AlvoReservado AlvoReservado = fogoObj.GetComponent<AlvoReservado>();
 
-            if (fogoReservado == null)
-                fogoReservado = fogoObj.AddComponent<FogoReservado>();
+            if (AlvoReservado == null)
+                AlvoReservado = fogoObj.AddComponent<AlvoReservado>();
 
-            if (fogoReservado.EstaReservado())
+            if (AlvoReservado.EstaReservado())
                 continue;
 
             float distancia = Vector3.Distance(transform.position, fogoObj.transform.position);
@@ -122,17 +124,65 @@ public class PirateController : MonoBehaviour
 
         return maisProximo;
     }
+    private Transform EncontrarAlvoDisponivelMaisProximo(string tagDoObjeto)
+{
+    GameObject[] objetos = GameObject.FindGameObjectsWithTag(tagDoObjeto);
 
-    private void BuscarETamparBuraco()
+    if (objetos.Length == 0)
     {
-        Transform alvo = EncontrarMaisProximo("Buraco");
+        Debug.LogWarning("Não encontrei nenhum objeto com a tag: " + tagDoObjeto);
+        return null;
+    }
 
-        if (alvo != null)
+    Transform maisProximo = null;
+    AlvoReservado reservaMaisProxima = null;
+    float menorDistancia = Mathf.Infinity;
+
+    foreach (GameObject obj in objetos)
+    {
+        if (obj == null)
+            continue;
+
+        AlvoReservado reserva = obj.GetComponent<AlvoReservado>();
+
+        if (reserva == null)
+            reserva = obj.AddComponent<AlvoReservado>();
+
+        if (reserva.EstaReservado())
+            continue;
+
+        float distancia = Vector3.Distance(transform.position, obj.transform.position);
+
+        if (distancia < menorDistancia)
         {
-            int andarDoBuraco = DescobrirAndarPelaAltura(alvo.position.y);
-            scriptMovimento.Comando_TamparBuraco(alvo, andarDoBuraco);
+            menorDistancia = distancia;
+            maisProximo = obj.transform;
+            reservaMaisProxima = reserva;
         }
     }
+
+    if (maisProximo != null && reservaMaisProxima != null)
+    {
+        if (!reservaMaisProxima.Reservar(this))
+            return null;
+    }
+
+    return maisProximo;
+}
+
+    private void BuscarETamparBuraco()
+{
+    Transform alvo = EncontrarAlvoDisponivelMaisProximo("BuracoAgua");
+
+    if (alvo == null)
+    {
+        Debug.LogWarning("Nenhum buraco de água disponível encontrado!");
+        return;
+    }
+
+    int andarDoBuraco = DescobrirAndarPelaAltura(alvo.position.y);
+    scriptMovimento.Comando_TamparBuraco(alvo, andarDoBuraco);
+}
 
     private void IrTirarAgua()
     {

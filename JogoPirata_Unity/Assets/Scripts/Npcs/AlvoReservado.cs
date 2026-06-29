@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FogoReservado : MonoBehaviour
+public class AlvoReservado : MonoBehaviour
 {
     private PirateController npcReservado;
 
@@ -13,18 +13,18 @@ public class FogoReservado : MonoBehaviour
         return true;
     }
 
+    public void Liberar()
+    {
+        npcReservado = null;
+    }
+
     public bool EstaReservado()
     {
         return npcReservado != null;
     }
 
-    public bool ReservadoPor(PirateController npc)
+    public PirateController QuemReservou()
     {
-        return npcReservado == npc;
-    }
-
-    public void Liberar()
-    {
-        npcReservado = null;
+        return npcReservado;
     }
 }

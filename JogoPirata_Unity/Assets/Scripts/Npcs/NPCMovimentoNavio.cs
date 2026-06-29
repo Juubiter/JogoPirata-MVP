@@ -163,18 +163,22 @@ public class NPCMovimentoNavio : MonoBehaviour
         yield return StartCoroutine(IrAteX(alvo.localPosition.x));
 
         Debug.Log("NPC CHEGOU! Executando ação: " + nomeAcao);
-
-        if (nomeAcao == "ApagarFogo")
-        {
-            yield return StartCoroutine(ApagarFogoAosPoucos(alvo));
-        }
-        else
-        {
-            yield return new WaitForSeconds(2f);
-        }
+if (nomeAcao == "ApagarFogo")
+{
+    yield return StartCoroutine(ApagarFogoAosPoucos(alvo));
+}
+else if (nomeAcao == "TamparBuraco")
+{
+    yield return StartCoroutine(TamparBuracoAosPoucos(alvo));
+}
+else
+{
+    yield return new WaitForSeconds(2f);
+}
 
         FinalizarTarefa();
     }
+
 
     IEnumerator ApagarFogoAosPoucos(Transform fogo)
     {
@@ -191,7 +195,25 @@ public class NPCMovimentoNavio : MonoBehaviour
             Destroy(fogo.gameObject);
         }
     }
+ IEnumerator TamparBuracoAosPoucos(Transform buraco)
+{
+    if (buraco == null)
+        yield break;
 
+    Debug.Log("COMEÇOU A TAMPAR O BURACO: " + buraco.name);
+
+    BuracoAgua scriptBuraco = buraco.GetComponent<BuracoAgua>();
+
+    if (scriptBuraco != null)
+    {
+        scriptBuraco.Tampar();
+        yield return new WaitForSeconds(0.2f);
+    }
+    else
+    {
+        Debug.LogWarning("O buraco não possui o script BuracoAgua!");
+    }
+}
     private void FinalizarTarefa()
     {
         tarefaAtual = Tarefa.Aleatorio;

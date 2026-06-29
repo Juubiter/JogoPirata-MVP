@@ -11,23 +11,16 @@ public class Projectile : MonoBehaviour
     public bool damagesEnemy = true;
     public TipoTiro tipoTiro = TipoTiro.Agua;
 
-   [Header("Buraco de Água")]
-public GameObject buracoAguaPrefab;
-public float tamanhoBuracoAgua = 0.06f;
+    [Header("Buraco de Água")]
+    public GameObject buracoAguaPrefab;
+    public float tamanhoBuracoAgua = 0.06f;
 
-[Header("Buraco de Fogo")]
-public GameObject buracoFogoPrefab;
-public float tamanhoBuracoFogo = 0.08f;
-    public float variacaoPosicaoBuraco = 0.15f;
-
-    [Header("Chance de Buraco")]
-   
+    [Header("Buraco de Fogo")]
+    public GameObject buracoFogoPrefab;
+    public float tamanhoBuracoFogo = 0.08f;
 
     [Header("Incêndio")]
     public GameObject fogoPrefab;
-
-    
-
     public float tamanhoFogo = 0.08f;
 
     [Header("Visual")]
@@ -103,83 +96,83 @@ public float tamanhoBuracoFogo = 0.08f;
     }
 
     void Acertar()
-{
-    if (damagesEnemy && target != null)
     {
-        EnemyShip navio = target.GetComponent<EnemyShip>();
+        if (damagesEnemy && target != null)
+        {
+            EnemyShip navio = target.GetComponent<EnemyShip>();
+
+            if (navio != null)
+                navio.TakeHit();
+        }
+        else if (!damagesEnemy)
+        {
+            HUDManager hud = FindAnyObjectByType<HUDManager>();
+
+            if (hud != null)
+                hud.TakeDamage(damageAmount);
+
+            switch (tipoTiro)
+            {
+                case TipoTiro.Agua:
+                    Debug.Log("TIRO DE ÁGUA!");
+                    CriarBuracoNoNavio();
+                    break;
+
+                case TipoTiro.Fogo:
+                    Debug.Log("TIRO DE FOGO!");
+                    CriarIncendioNoNavio();
+                    break;
+            }
+        }
+
+        Destroy(gameObject);
+    }
+
+    void CriarBuracoNoNavio()
+    {
+        if (buracoAguaPrefab == null)
+        {
+            Debug.LogWarning("BURACO DE ÁGUA PREFAB NÃO FOI COLOCADO!");
+            return;
+        }
+
+        Vector3 posicaoBuraco = target != null ? target.position : transform.position;
+        posicaoBuraco.z = 0f;
+
+        GameObject buraco = Instantiate(buracoAguaPrefab, posicaoBuraco, Quaternion.identity);
+        buraco.name = "Buraco_Agua_Criado";
+        buraco.tag = "BuracoAgua";
+
+        if (buraco.GetComponent<AlvoReservado>() == null)
+            buraco.AddComponent<AlvoReservado>();
+
+        GameObject navio = GameObject.FindGameObjectWithTag("Player");
 
         if (navio != null)
-            navio.TakeHit();
-    }
-    else if (!damagesEnemy)
-    {
-        HUDManager hud = FindAnyObjectByType<HUDManager>();
+            buraco.transform.SetParent(navio.transform, true);
 
-        if (hud != null)
-            hud.TakeDamage(damageAmount);
+        buraco.transform.localScale = Vector3.one * tamanhoBuracoAgua;
 
-        switch (tipoTiro)
+        Animator anim = buraco.GetComponent<Animator>();
+        if (anim != null)
+            anim.enabled = false;
+
+        SpriteRenderer[] renderers = buraco.GetComponentsInChildren<SpriteRenderer>();
+
+        foreach (SpriteRenderer sr in renderers)
         {
-            case TipoTiro.Agua:
-
-                Debug.Log("TIRO DE ÁGUA!");
-
-                CriarBuracoNoNavio();
-
-                break;
-
-            case TipoTiro.Fogo:
-
-                Debug.Log("TIRO DE FOGO!");
-
-                CriarIncendioNoNavio();
-
-                break;
+            sr.sortingLayerName = "Fumaça";
+            sr.sortingOrder = 9999;
         }
+
+        Debug.Log("BURACO DE ÁGUA CRIADO EM: " + posicaoBuraco);
+
+        ControleAgua controleAgua = FindFirstObjectByType<ControleAgua>();
+
+        if (controleAgua != null)
+            controleAgua.AdicionarBuraco();
     }
 
-    Destroy(gameObject);
-}
-  void CriarBuracoNoNavio()
-{
-    if (buracoAguaPrefab == null)
-    {
-        Debug.LogWarning("BURACO DE ÁGUA PREFAB NÃO FOI COLOCADO!");
-        return;
-    }
-
-    Vector3 posicaoBuraco = target != null ? target.position : transform.position;
-    posicaoBuraco.z = 0f;
-
-    GameObject buraco = Instantiate(buracoAguaPrefab, posicaoBuraco, Quaternion.identity);
-    buraco.name = "Buraco_Agua_Criado";
-
-    GameObject navio = GameObject.FindGameObjectWithTag("Player");
-
-    if (navio != null)
-        buraco.transform.SetParent(navio.transform, true);
-
-    buraco.transform.localScale = Vector3.one * tamanhoBuracoAgua;
-
-    Animator anim = buraco.GetComponent<Animator>();
-    if (anim != null)
-        anim.enabled = false;
-
-    SpriteRenderer[] renderers = buraco.GetComponentsInChildren<SpriteRenderer>();
-
-    foreach (SpriteRenderer sr in renderers)
-    {
-        sr.sortingLayerName = "Fumaça";
-        sr.sortingOrder = 9999;
-    }
-
-    Debug.Log("BURACO DE ÁGUA CRIADO EM: " + posicaoBuraco);
-
-    ControleAgua controleAgua = FindFirstObjectByType<ControleAgua>();
-
-    if (controleAgua != null)
-        controleAgua.AdicionarBuraco();
-}
     void CriarIncendioNoNavio()
     {
         if (fogoPrefab == null)
@@ -205,8 +198,8 @@ public float tamanhoBuracoFogo = 0.08f;
 
         fogo.transform.localScale = Vector3.one * tamanhoFogo;
 
-        if (fogo.GetComponent<FogoReservado>() == null)
-            fogo.AddComponent<FogoReservado>();
+        if (fogo.GetComponent<AlvoReservado>() == null)
+            fogo.AddComponent<AlvoReservado>();
 
         SpriteRenderer[] renderers = fogo.GetComponentsInChildren<SpriteRenderer>();
 

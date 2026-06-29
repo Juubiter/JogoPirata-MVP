@@ -138,7 +138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 600487706733657043}
-  - component: {fileID: 7597325729311260881}
+  - component: {fileID: 4343026244212134190}
   m_Layer: 0
   m_Name: BarreiraFogo
   m_TagString: Fogo
@@ -167,7 +167,7 @@ Transform:
   - {fileID: 4764251365192011598}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7597325729311260881
+--- !u!114 &4343026244212134190
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,9 +176,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4180486188527203653}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cac873434e952b74fb2b543eb8019f9f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5818a701988cc884b9c251bda222a9c3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FogoReservado
+  m_EditorClassIdentifier: Assembly-CSharp::AlvoReservado
 --- !u!1001 &3897773549247434664
 PrefabInstance:
   m_ObjectHideFlags: 0
