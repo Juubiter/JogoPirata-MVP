@@ -1736,7 +1736,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   particulasExplosao: {fileID: 0}
-  somExplosao: {fileID: 0}
+  somExplosao: {fileID: 8300000, guid: f613f41cc5d7dd748a7d07cd45db52b7, type: 3}
 --- !u!114 &1123839601832449393
 MonoBehaviour:
   m_ObjectHideFlags: 0
