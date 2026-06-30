@@ -1532,6 +1532,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5144244124603730882}
   - component: {fileID: 421227893736141801}
+  - component: {fileID: 8579891207370795741}
   m_Layer: 0
   m_Name: NavioInimigo1 1
   m_TagString: Untagged
@@ -1555,6 +1556,7 @@ Transform:
   - {fileID: 843582205472647031}
   - {fileID: 134455955037939508}
   - {fileID: 8566070667522527589}
+  - {fileID: 1456256934207765176}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &421227893736141801
@@ -1603,6 +1605,23 @@ MonoBehaviour:
   alvosAgua: []
   particulasExplosao: {fileID: 0}
   somExplosao: {fileID: 0}
+--- !u!114 &8579891207370795741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5030654172949061217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e17dffe3843b0044880551be911d2cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VidaNavioInimigo
+  caveiras: []
+  explosaoPrefab: {fileID: 0}
+  pontosExplosao: []
+  intervaloEntreExplosoes: 0.3
+  tempoParaDesaparecer: 3
 --- !u!1 &5057618681606563401
 GameObject:
   m_ObjectHideFlags: 0
@@ -3093,6 +3112,37 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &8893964701251809157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1456256934207765176}
+  m_Layer: 0
+  m_Name: AlvoCentro
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1456256934207765176
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8893964701251809157}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.976, y: -1.309, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5144244124603730882}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8963804501942030459
 GameObject:
   m_ObjectHideFlags: 0

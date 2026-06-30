@@ -1,9 +1,18 @@
+using System.Collections;
 using UnityEngine;
 
 public class VidaNavioInimigo : MonoBehaviour
 {
     [Header("Vida visual por caveiras")]
     public GameObject[] caveiras;
+
+    [Header("Explosões")]
+    public GameObject explosaoPrefab;
+    public Transform[] pontosExplosao;
+    public float intervaloEntreExplosoes = 0.3f;
+
+    [Header("Derrota")]
+    public float tempoParaDesaparecer = 3f;
 
     private int danoAtual = 0;
     private bool derrotado = false;
@@ -26,7 +35,7 @@ public class VidaNavioInimigo : MonoBehaviour
         if (danoAtual >= caveiras.Length)
         {
             derrotado = true;
-            DerrotarNavio();
+            StartCoroutine(RotinaDerrota());
         }
     }
 
@@ -39,15 +48,44 @@ public class VidaNavioInimigo : MonoBehaviour
         }
     }
 
-    void DerrotarNavio()
+    IEnumerator RotinaDerrota()
     {
         Debug.Log("NAVIO INIMIGO DERROTADO!");
 
-        HUDManager hud = FindAnyObjectByType<HUDManager>();
+        // Para o navio
+        EnemyShip enemy = GetComponent<EnemyShip>();
 
-        if (hud != null)
-            hud.Vitoria();
+        if (enemy == null)
+            enemy = GetComponentInParent<EnemyShip>();
 
-        Destroy(gameObject);
+        if (enemy != null)
+            enemy.enabled = false;
+
+        // Explosões sequenciais
+        if (explosaoPrefab != null && pontosExplosao != null)
+        {
+            foreach (Transform ponto in pontosExplosao)
+            {
+                if (ponto == null)
+                    continue;
+
+                GameObject explosao = Instantiate(
+                    explosaoPrefab,
+                    ponto.position,
+                    Quaternion.identity
+                );
+
+                // Faz a explosão ser filha do navio
+                explosao.transform.SetParent(transform.root, true);
+
+                yield return new WaitForSeconds(intervaloEntreExplosoes);
+            }
+        }
+
+        // Espera antes de desaparecer
+        yield return new WaitForSeconds(tempoParaDesaparecer);
+
+        // Destrói o navio inteiro
+        Destroy(transform.root.gameObject);
     }
 }
