@@ -116,10 +116,10 @@ TextureImporter:
       name: image-removebg-preview_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 139
-        width: 709
-        height: 196
+        x: 7
+        y: 140
+        width: 707
+        height: 194
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
