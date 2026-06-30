@@ -203,9 +203,11 @@ private void BuscarEApagarFogo()
         return;
     }
 
-    int andarDaAgua = Mathf.Clamp(nivelAgua - 1, 0, 2);
+   int andarDaAgua = Mathf.Clamp(nivelAgua - 1, 0, 2);
 
-    scriptMovimento.Comando_TirarAgua(andarDaAgua, beirada);
+float xColetaAgua = controleAgua.objetoAgua.localPosition.x;
+
+scriptMovimento.Comando_TirarAgua(andarDaAgua, xColetaAgua, beirada);
 }
 
     private void BuscarMunicaoEAtirar()

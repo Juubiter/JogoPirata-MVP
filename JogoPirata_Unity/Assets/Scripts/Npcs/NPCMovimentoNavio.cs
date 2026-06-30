@@ -130,12 +130,11 @@ public GameObject iconeBaldeCheio;
         PrepararNovaTarefa(Tarefa.IndoTamparBuraco);
         StartCoroutine(Rotina_ExecutarTarefa(alvoBuraco, andarDoBuraco, "TamparBuraco"));
     }
-
-    public void Comando_TirarAgua(Transform localBeirada, int andarDaBeirada)
-    {
-        PrepararNovaTarefa(Tarefa.TirandoAgua);
-        StartCoroutine(Rotina_ExecutarTarefa(localBeirada, andarDaBeirada, "TirarAgua"));
-    }
+public void Comando_TirarAgua(int andarDaAgua, float xColetaAgua, Transform localBeiradaConves)
+{
+    PrepararNovaTarefa(Tarefa.TirandoAgua);
+    StartCoroutine(Rotina_CicloAgua(andarDaAgua, xColetaAgua, localBeiradaConves));
+}
 
     public void Comando_AtirarCanhao(Transform localMunicao, int andarMunicao, Transform localCanhao, int andarCanhao)
     {
@@ -273,15 +272,9 @@ private void FinalizarTarefa()
     FinalizarTarefa();
 }
 
-    public void Comando_TirarAgua(int andarDaAgua, Transform localBeiradaConves)
-    {
-        PrepararNovaTarefa(Tarefa.TirandoAgua);
-        StartCoroutine(Rotina_CicloAgua(andarDaAgua, localBeiradaConves));
-    }
-
-   IEnumerator Rotina_CicloAgua(int andarDaAgua, Transform localBeiradaConves)
+  
+IEnumerator Rotina_CicloAgua(int andarDaAgua, float xColetaAgua, Transform localBeiradaConves)
 {
-    // O NPC pega o balde vazio
     if (iconeBaldeVazio != null)
         iconeBaldeVazio.SetActive(true);
 
@@ -291,45 +284,35 @@ private void FinalizarTarefa()
     // Vai até o andar onde a água está
     yield return StartCoroutine(NavegarParaAndarEspecifico(andarDaAgua));
 
-    // Vai até a água
-    yield return StartCoroutine(IrAteX(localBeiradaConves.localPosition.x));
+    // Vai até a posição da água
+    yield return StartCoroutine(IrAteX(xColetaAgua));
 
     Debug.Log("ENCHENDO O BALDE...");
+    yield return new WaitForSeconds(4f);
 
-    yield return new WaitForSeconds(2f);
-
-    // Troca o balde vazio pelo cheio
     if (iconeBaldeVazio != null)
         iconeBaldeVazio.SetActive(false);
 
     if (iconeBaldeCheio != null)
         iconeBaldeCheio.SetActive(true);
 
-    // Vai para o convés (andar 2)
+    // Vai até o convés
     yield return StartCoroutine(NavegarParaAndarEspecifico(2));
 
-    // Vai até a beirada do navio
-    yield return StartCoroutine(IrAteX(localBeiradaConves.localPosition.x));
+    // Vai até a beira do navio
+ yield return StartCoroutine(IrAteX(xColetaAgua));
 
     Debug.Log("JOGANDO ÁGUA NO MAR...");
+    yield return new WaitForSeconds(4f);
 
-    yield return new WaitForSeconds(1f);
-
-    // Joga a água
     if (iconeBaldeCheio != null)
         iconeBaldeCheio.SetActive(false);
-
-    if (iconeBaldeVazio != null)
-        iconeBaldeVazio.SetActive(true);
 
     ControleAgua controleAgua = FindFirstObjectByType<ControleAgua>();
 
     if (controleAgua != null)
         controleAgua.DiminuirNivelAgua();
 
-    yield return new WaitForSeconds(0.5f);
-
-    // Guarda o balde
     if (iconeBaldeVazio != null)
         iconeBaldeVazio.SetActive(false);
 

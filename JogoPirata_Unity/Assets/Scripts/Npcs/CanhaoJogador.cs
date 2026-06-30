@@ -46,7 +46,9 @@ public class CanhaoJogador : MonoBehaviour
 
     if (arco != null)
     {
-        arco.Disparar(pontoDisparo.position, alvoInimigo.position);
+      arco.DefinirAlvo(alvoInimigo);
+arco.DefinirAlvo(alvoInimigo);
+arco.Disparar(pontoDisparo.position, alvoInimigo.position);
     }
     else
     {

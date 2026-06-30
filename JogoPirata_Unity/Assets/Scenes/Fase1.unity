@@ -597,6 +597,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &93854050 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8809374102676566583, guid: dda4bbca9a08a7d47b155f7997c97cdd, type: 3}
+  m_PrefabInstance: {fileID: 384661988}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &108822187
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,7 +881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CanhaoJogador
   prefabBalaJogador: {fileID: 1063173203337554696, guid: 9e2d08b5bff59f943ba9b369a41cdc83, type: 3}
   pontoDisparo: {fileID: 1831002830}
-  tamanhoBala: 0.5
+  tamanhoBala: 0.3
   velocidadeBala: 5
 --- !u!1 &203859375 stripped
 GameObject:
@@ -2420,6 +2425,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &552528298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5215702587532880626, guid: 3dfe09954d3e30c4ea897b14b252c6e1, type: 3}
+  m_PrefabInstance: {fileID: 1500536004}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &565148874
 GameObject:
   m_ObjectHideFlags: 0
@@ -2479,7 +2489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CanhaoJogador
   prefabBalaJogador: {fileID: 1063173203337554696, guid: 9e2d08b5bff59f943ba9b369a41cdc83, type: 3}
   pontoDisparo: {fileID: 1414942237}
-  tamanhoBala: 0.5
+  tamanhoBala: 0.3
   velocidadeBala: 5
 --- !u!1 &576403134
 GameObject:
@@ -2923,8 +2933,8 @@ MonoBehaviour:
   tempoMaximoParado: 5
   chanceTrocarAndar: 1
   iconeMunicaoMao: {fileID: 1763623302}
-  iconeBaldeVazio: {fileID: 0}
-  iconeBaldeCheio: {fileID: 1716677468}
+  iconeBaldeVazio: {fileID: 1716677468}
+  iconeBaldeCheio: {fileID: 93854050}
   limiteEsquerdaBaixo: {fileID: 392530753}
   limiteDireitaBaixo: {fileID: 961749450}
   limiteEsquerdaMeio: {fileID: 407830317}
@@ -2952,6 +2962,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac873434e952b74fb2b543eb8019f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FogoReservado
+--- !u!1 &647008082 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3338918563019258793, guid: 6808c61ed228d164e900ce366acacac5, type: 3}
+  m_PrefabInstance: {fileID: 2133607806}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &659390104
 GameObject:
   m_ObjectHideFlags: 0
@@ -3321,8 +3336,8 @@ MonoBehaviour:
   tempoMaximoParado: 5
   chanceTrocarAndar: 1
   iconeMunicaoMao: {fileID: 771288513}
-  iconeBaldeVazio: {fileID: 0}
-  iconeBaldeCheio: {fileID: 203859375}
+  iconeBaldeVazio: {fileID: 203859375}
+  iconeBaldeCheio: {fileID: 552528298}
   limiteEsquerdaBaixo: {fileID: 392530753}
   limiteDireitaBaixo: {fileID: 961749450}
   limiteEsquerdaMeio: {fileID: 407830317}
@@ -5112,8 +5127,8 @@ MonoBehaviour:
   tempoMaximoParado: 5
   chanceTrocarAndar: 1
   iconeMunicaoMao: {fileID: 226417521}
-  iconeBaldeVazio: {fileID: 0}
-  iconeBaldeCheio: {fileID: 388172829}
+  iconeBaldeVazio: {fileID: 388172829}
+  iconeBaldeCheio: {fileID: 1462381048}
   limiteEsquerdaBaixo: {fileID: 392530753}
   limiteDireitaBaixo: {fileID: 961749450}
   limiteEsquerdaMeio: {fileID: 407830317}
@@ -6757,6 +6772,11 @@ MonoBehaviour:
   limiteEsquerdo: -12
   limiteDireito: 12
   pontoDeRetorno: 12
+--- !u!1 &1462381048 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2082449396152025990, guid: 27a0ad562b2ae974cb53b0fc911f848c, type: 3}
+  m_PrefabInstance: {fileID: 216624249}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1468334606
 GameObject:
   m_ObjectHideFlags: 0
@@ -7882,8 +7902,8 @@ MonoBehaviour:
   tempoMaximoParado: 5
   chanceTrocarAndar: 1
   iconeMunicaoMao: {fileID: 1710544340}
-  iconeBaldeVazio: {fileID: 0}
-  iconeBaldeCheio: {fileID: 269044413}
+  iconeBaldeVazio: {fileID: 269044413}
+  iconeBaldeCheio: {fileID: 647008082}
   limiteEsquerdaBaixo: {fileID: 392530753}
   limiteDireitaBaixo: {fileID: 961749450}
   limiteEsquerdaMeio: {fileID: 407830317}

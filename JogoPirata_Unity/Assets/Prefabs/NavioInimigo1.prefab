@@ -559,8 +559,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 314874723
+  m_SortingLayer: 15
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -3645223913846566688, guid: 299c2dc1367e478408a1fd328f27b785, type: 3}
@@ -1311,7 +1311,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1935220687477124641
 Transform:
   m_ObjectHideFlags: 0
@@ -1487,6 +1487,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5144244124603730882}
   - component: {fileID: 6357732204015260055}
+  - component: {fileID: 1123839601832449393}
   m_Layer: 0
   m_Name: NavioInimigo1
   m_TagString: Untagged
@@ -1543,10 +1544,10 @@ MonoBehaviour:
   - {fileID: 0}
   grupoDeAlvos: {fileID: 0}
   tiroGuiado: 0
-  tirosNormais: 2
+  tirosNormais: 3
   tirosRajada: 3
-  intervaloTiroNormal: 5
-  pausaAntesRajada: 1.5
+  intervaloTiroNormal: 10
+  pausaAntesRajada: 2
   intervaloRajada: 0.2
   alturaBalanco: 0.15
   velocidadeBalanco: 1.2
@@ -1575,6 +1576,21 @@ MonoBehaviour:
   - {fileID: 0}
   particulasExplosao: {fileID: 0}
   somExplosao: {fileID: 0}
+--- !u!114 &1123839601832449393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5030654172949061217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e17dffe3843b0044880551be911d2cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VidaNavioInimigo
+  caveiras:
+  - {fileID: 6663949131634680334}
+  - {fileID: 4523934860644886945}
 --- !u!1 &5057618681606563401
 GameObject:
   m_ObjectHideFlags: 0
@@ -2172,7 +2188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1329288988928403580
 Transform:
   m_ObjectHideFlags: 0
@@ -2597,8 +2613,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 314874723
+  m_SortingLayer: 15
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -3645223913846566688, guid: 299c2dc1367e478408a1fd328f27b785, type: 3}

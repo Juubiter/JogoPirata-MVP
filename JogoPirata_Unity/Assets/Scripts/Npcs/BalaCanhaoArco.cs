@@ -10,6 +10,13 @@ public class BalaCanhaoArco : MonoBehaviour
     private float tempo;
     private bool voando = false;
 
+    private Transform alvo;
+
+    public void DefinirAlvo(Transform novoAlvo)
+    {
+        alvo = novoAlvo;
+    }
+
     public void Disparar(Vector3 pontoInicial, Vector3 pontoDestino)
     {
         inicio = pontoInicial;
@@ -22,7 +29,8 @@ public class BalaCanhaoArco : MonoBehaviour
 
     void Update()
     {
-        if (!voando) return;
+        if (!voando)
+            return;
 
         tempo += Time.deltaTime;
         float t = tempo / duracaoVoo;
@@ -31,6 +39,15 @@ public class BalaCanhaoArco : MonoBehaviour
         {
             transform.position = destino;
             voando = false;
+
+            if (alvo != null)
+            {
+                VidaNavioInimigo vida = alvo.GetComponentInParent<VidaNavioInimigo>();
+
+                if (vida != null)
+                    vida.ReceberDano();
+            }
+
             Destroy(gameObject);
             return;
         }

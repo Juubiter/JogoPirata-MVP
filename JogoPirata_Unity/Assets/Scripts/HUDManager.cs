@@ -92,16 +92,15 @@ public class HUDManager : MonoBehaviour
 
         AudioListener.volume = 1f;
     }
+public void Vitoria()
+{
+    jogoFinalizado = true;
 
-    void Vitoria()
-    {
-        jogoFinalizado = true;
+    if (telaVitoria != null)
+        telaVitoria.SetActive(true);
 
-        if (telaVitoria != null)
-            telaVitoria.SetActive(true);
-
-        Time.timeScale = 0f;
-    }
+    Time.timeScale = 0f;
+}
 
     public void Derrota()
     {
