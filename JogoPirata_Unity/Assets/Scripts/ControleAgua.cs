@@ -115,4 +115,18 @@ public class ControleAgua : MonoBehaviour
             barraAguaSlider.value = nivelAtual;
         }
     }
+    public int PegarNivelAtual()
+{
+    return nivelAtual;
+}
+
+public void DiminuirNivelAgua()
+{
+    if (nivelAtual > 0)
+    {
+        nivelAtual--;
+        AtualizarHUD();
+        Debug.Log("Nível da água diminuiu: " + nivelAtual);
+    }
+}
 }

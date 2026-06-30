@@ -21,8 +21,7 @@ public class BuracoAgua : MonoBehaviour
 
         StartCoroutine(RotinaTampar());
     }
-
-    IEnumerator RotinaTampar()
+IEnumerator RotinaTampar()
 {
     if (spriteRenderer != null && buracoTampado != null)
         spriteRenderer.sprite = buracoTampado;
