@@ -1573,12 +1573,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShip
   velocidadeDoNavio: 2
   direcaoMovimento: {x: -1, y: 0}
-  chanceTiroAgua: 70
-  chanceTiroFogo: 30
+  chanceTiroAgua: 60
+  chanceTiroFogo: 60
   posicaoDeParada: 0.937
   distanciaDesaceleracao: 0.15
   velocidadeMinima: 0.05
-  tempoAceleracao: 1.5
+  tempoAceleracao: 2
   tempoParaDestruir: 1
   prefabDaBala: {fileID: 7134679933749194716, guid: 45bceca59551a624b950414c7f20c53b, type: 3}
   canhoesDoNavio:
@@ -1590,14 +1590,14 @@ MonoBehaviour:
   - {fileID: 0}
   grupoDeAlvos: {fileID: 0}
   tiroGuiado: 0
-  tirosNormais: 3
-  tirosRajada: 3
-  intervaloTiroNormal: 1.2
-  pausaAntesRajada: 0.8
-  intervaloRajada: 0.25
+  tirosNormais: 5
+  tirosRajada: 4
+  intervaloTiroNormal: 7
+  pausaAntesRajada: 2
+  intervaloRajada: 0.2
   alturaBalanco: 0.15
   velocidadeBalanco: 1.2
-  vidaMaxima: 3
+  vidaMaxima: 4
   causaApenasVazamento: 0
   causaIncendioEVazamento: 0
   pontosDeDano: []
