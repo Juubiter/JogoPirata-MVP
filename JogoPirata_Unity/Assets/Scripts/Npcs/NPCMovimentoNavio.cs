@@ -22,8 +22,9 @@ public class NPCMovimentoNavio : MonoBehaviour
     private int estadoAnimacaoAtual = 0;
 
     [Header("Itens na Mão")]
-    public GameObject iconeMunicaoMao;
-    public GameObject iconeBaldeCheio;
+public GameObject iconeMunicaoMao;
+public GameObject iconeBaldeVazio;
+public GameObject iconeBaldeCheio;
 
     [Header("Limites do Baixo")]
     public Transform limiteEsquerdaBaixo;
@@ -32,6 +33,8 @@ public class NPCMovimentoNavio : MonoBehaviour
     [Header("Limites do Meio")]
     public Transform limiteEsquerdaMeio;
     public Transform limiteDireitaMeio;
+    
+
 
     [Header("Limites do Convés")]
     public Transform limiteEsquerdaConves;
@@ -57,23 +60,30 @@ public class NPCMovimentoNavio : MonoBehaviour
     private bool ocupado = false;
 
     void Start()
-    {
-        meuAnimator = GetComponent<Animator>();
-        meuSpriteRenderer = GetComponent<SpriteRenderer>();
-        posicaoAnterior = transform.localPosition;
+{
+    meuAnimator = GetComponent<Animator>();
+    meuSpriteRenderer = GetComponent<SpriteRenderer>();
+    posicaoAnterior = transform.localPosition;
 
-        andarAtual = Random.Range(0, 4);
+    if (iconeMunicaoMao != null)
+        iconeMunicaoMao.SetActive(false);
+        if (iconeBaldeVazio != null)
+    iconeBaldeVazio.SetActive(false);
 
-        EscolherDestinoHorizontal();
+    if (iconeBaldeCheio != null)
+        iconeBaldeCheio.SetActive(false);
 
-        Vector3 pos = transform.localPosition;
-        pos.x = destinoX;
-        transform.localPosition = pos;
+    andarAtual = Random.Range(0, 4);
 
-        FixarYNoAndarAtual();
-        EscolherDestinoHorizontal();
-    }
+    EscolherDestinoHorizontal();
 
+    Vector3 pos = transform.localPosition;
+    pos.x = destinoX;
+    transform.localPosition = pos;
+
+    FixarYNoAndarAtual();
+    EscolherDestinoHorizontal();
+}
     void Update()
     {
         if (tarefaAtual == Tarefa.Aleatorio)
@@ -139,6 +149,7 @@ public class NPCMovimentoNavio : MonoBehaviour
 
         if (iconeMunicaoMao != null) iconeMunicaoMao.SetActive(false);
         if (iconeBaldeCheio != null) iconeBaldeCheio.SetActive(false);
+        if (iconeBaldeVazio != null) iconeBaldeVazio.SetActive(false);
 
         tarefaAtual = novaTarefa;
         ocupado = true;
@@ -195,56 +206,72 @@ else
             Destroy(fogo.gameObject);
         }
     }
- IEnumerator TamparBuracoAosPoucos(Transform buraco)
+IEnumerator TamparBuracoAosPoucos(Transform buraco)
 {
     if (buraco == null)
         yield break;
 
     Debug.Log("COMEÇOU A TAMPAR O BURACO: " + buraco.name);
 
+    yield return new WaitForSeconds(3f);
+
     BuracoAgua scriptBuraco = buraco.GetComponent<BuracoAgua>();
 
     if (scriptBuraco != null)
     {
         scriptBuraco.Tampar();
-        yield return new WaitForSeconds(0.2f);
     }
     else
     {
         Debug.LogWarning("O buraco não possui o script BuracoAgua!");
     }
 }
-    private void FinalizarTarefa()
+private void FinalizarTarefa()
+{
+    tarefaAtual = Tarefa.Aleatorio;
+    ocupado = false;
+    EscolherDestinoHorizontal();
+}
+
+  IEnumerator Rotina_Canhao(Transform municao, int andarMunicao, Transform canhao, int andarCanhao)
+{
+    yield return StartCoroutine(NavegarParaAndarEspecifico(andarMunicao));
+    yield return StartCoroutine(IrAteX(municao.localPosition.x));
+
+    Debug.Log("PEGANDO MUNIÇÃO...");
+
+    yield return new WaitForSeconds(2.5f);
+
+    if (iconeMunicaoMao != null)
+        iconeMunicaoMao.SetActive(true);
+
+    tarefaAtual = Tarefa.IndoAtirar;
+
+    yield return StartCoroutine(NavegarParaAndarEspecifico(andarCanhao));
+    yield return StartCoroutine(IrAteX(canhao.localPosition.x));
+
+    Debug.Log("CARREGANDO O CANHÃO...");
+
+    yield return new WaitForSeconds(2.5f);
+
+    if (iconeMunicaoMao != null)
+        iconeMunicaoMao.SetActive(false);
+
+    yield return new WaitForSeconds(0.3f);
+
+    CanhaoJogador canhaoJogador = canhao.GetComponent<CanhaoJogador>();
+
+    if (canhaoJogador != null)
     {
-        tarefaAtual = Tarefa.Aleatorio;
-        ocupado = false;
-        EscolherDestinoHorizontal();
+        canhaoJogador.Atirar();
+    }
+    else
+    {
+        Debug.LogWarning("O canhão não tem CanhaoJogador!");
     }
 
-    IEnumerator Rotina_Canhao(Transform municao, int andarMunicao, Transform canhao, int andarCanhao)
-    {
-        yield return StartCoroutine(NavegarParaAndarEspecifico(andarMunicao));
-        yield return StartCoroutine(IrAteX(municao.localPosition.x));
-
-        yield return new WaitForSeconds(1.5f);
-
-        if (iconeMunicaoMao != null)
-            iconeMunicaoMao.SetActive(true);
-
-        tarefaAtual = Tarefa.IndoAtirar;
-
-        yield return StartCoroutine(NavegarParaAndarEspecifico(andarCanhao));
-        yield return StartCoroutine(IrAteX(canhao.localPosition.x));
-
-        if (iconeMunicaoMao != null)
-            iconeMunicaoMao.SetActive(false);
-
-        yield return new WaitForSeconds(3f);
-
-        Debug.Log("BUM! Atirou o Canhão!");
-
-        FinalizarTarefa();
-    }
+    FinalizarTarefa();
+}
 
     public void Comando_TirarAgua(int andarDaAgua, Transform localBeiradaConves)
     {
@@ -252,27 +279,62 @@ else
         StartCoroutine(Rotina_CicloAgua(andarDaAgua, localBeiradaConves));
     }
 
-    IEnumerator Rotina_CicloAgua(int andarDaAgua, Transform localBeiradaConves)
-    {
-        yield return StartCoroutine(NavegarParaAndarEspecifico(andarDaAgua));
+   IEnumerator Rotina_CicloAgua(int andarDaAgua, Transform localBeiradaConves)
+{
+    // O NPC pega o balde vazio
+    if (iconeBaldeVazio != null)
+        iconeBaldeVazio.SetActive(true);
 
-        yield return new WaitForSeconds(1.5f);
+    if (iconeBaldeCheio != null)
+        iconeBaldeCheio.SetActive(false);
 
-        if (iconeBaldeCheio != null)
-            iconeBaldeCheio.SetActive(true);
+    // Vai até o andar onde a água está
+    yield return StartCoroutine(NavegarParaAndarEspecifico(andarDaAgua));
 
-        yield return StartCoroutine(NavegarParaAndarEspecifico(2));
-        yield return StartCoroutine(IrAteX(localBeiradaConves.localPosition.x));
+    // Vai até a água
+    yield return StartCoroutine(IrAteX(localBeiradaConves.localPosition.x));
 
-        yield return new WaitForSeconds(1f);
+    Debug.Log("ENCHENDO O BALDE...");
 
-        if (iconeBaldeCheio != null)
-            iconeBaldeCheio.SetActive(false);
+    yield return new WaitForSeconds(2f);
 
-        Debug.Log("Jogou água no mar! Diminuindo a barra...");
+    // Troca o balde vazio pelo cheio
+    if (iconeBaldeVazio != null)
+        iconeBaldeVazio.SetActive(false);
 
-        FinalizarTarefa();
-    }
+    if (iconeBaldeCheio != null)
+        iconeBaldeCheio.SetActive(true);
+
+    // Vai para o convés (andar 2)
+    yield return StartCoroutine(NavegarParaAndarEspecifico(2));
+
+    // Vai até a beirada do navio
+    yield return StartCoroutine(IrAteX(localBeiradaConves.localPosition.x));
+
+    Debug.Log("JOGANDO ÁGUA NO MAR...");
+
+    yield return new WaitForSeconds(1f);
+
+    // Joga a água
+    if (iconeBaldeCheio != null)
+        iconeBaldeCheio.SetActive(false);
+
+    if (iconeBaldeVazio != null)
+        iconeBaldeVazio.SetActive(true);
+
+    ControleAgua controleAgua = FindFirstObjectByType<ControleAgua>();
+
+    if (controleAgua != null)
+        controleAgua.DiminuirNivelAgua();
+
+    yield return new WaitForSeconds(0.5f);
+
+    // Guarda o balde
+    if (iconeBaldeVazio != null)
+        iconeBaldeVazio.SetActive(false);
+
+    FinalizarTarefa();
+}
 
     IEnumerator NavegarParaAndarEspecifico(int andarDestino)
     {

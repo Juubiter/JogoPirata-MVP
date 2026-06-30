@@ -184,23 +184,29 @@ private void BuscarEApagarFogo()
     scriptMovimento.Comando_TamparBuraco(alvo, andarDoBuraco);
 }
 
-    private void IrTirarAgua()
+  private void IrTirarAgua()
+{
+    ControleAgua controleAgua = FindFirstObjectByType<ControleAgua>();
+    Transform beirada = EncontrarMaisProximo("PontoAgua");
+
+    if (controleAgua == null || beirada == null)
     {
-        GameObject aguaObj = GameObject.Find("AguaInundacao");
-        Transform beirada = EncontrarMaisProximo("PontoAgua");
-
-        if (aguaObj != null && beirada != null)
-        {
-            float alturaTopoAgua = aguaObj.transform.position.y + (aguaObj.transform.localScale.y / 2f);
-            int andarDaAgua = DescobrirAndarPelaAltura(alturaTopoAgua);
-
-            scriptMovimento.Comando_TirarAgua(andarDaAgua, beirada);
-        }
-        else
-        {
-            Debug.LogWarning("Não encontrei AguaInundacao ou PontoAgua!");
-        }
+        Debug.LogWarning("Não encontrei ControleAgua ou PontoAgua!");
+        return;
     }
+
+    int nivelAgua = controleAgua.PegarNivelAtual();
+
+    if (nivelAgua <= 0)
+    {
+        Debug.LogWarning("Não há água para tirar!");
+        return;
+    }
+
+    int andarDaAgua = Mathf.Clamp(nivelAgua - 1, 0, 2);
+
+    scriptMovimento.Comando_TirarAgua(andarDaAgua, beirada);
+}
 
     private void BuscarMunicaoEAtirar()
     {
