@@ -1573,12 +1573,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShip
   velocidadeDoNavio: 2
   direcaoMovimento: {x: -1, y: 0}
-  chanceTiroAgua: 70
-  chanceTiroFogo: 30
+  chanceTiroAgua: 60
+  chanceTiroFogo: 60
   posicaoDeParada: 0.937
   distanciaDesaceleracao: 0.15
   velocidadeMinima: 0.05
-  tempoAceleracao: 1.5
+  tempoAceleracao: 2
   tempoParaDestruir: 1
   prefabDaBala: {fileID: 7134679933749194716, guid: 45bceca59551a624b950414c7f20c53b, type: 3}
   canhoesDoNavio:
@@ -1590,21 +1590,21 @@ MonoBehaviour:
   - {fileID: 0}
   grupoDeAlvos: {fileID: 0}
   tiroGuiado: 0
-  tirosNormais: 3
-  tirosRajada: 3
-  intervaloTiroNormal: 1.2
-  pausaAntesRajada: 0.8
-  intervaloRajada: 0.25
+  tirosNormais: 5
+  tirosRajada: 4
+  intervaloTiroNormal: 7
+  pausaAntesRajada: 2
+  intervaloRajada: 0.2
   alturaBalanco: 0.15
   velocidadeBalanco: 1.2
-  vidaMaxima: 3
+  vidaMaxima: 4
   causaApenasVazamento: 0
   causaIncendioEVazamento: 0
   pontosDeDano: []
   alvosFogo: []
   alvosAgua: []
   particulasExplosao: {fileID: 0}
-  somExplosao: {fileID: 0}
+  somExplosao: {fileID: 8300000, guid: f613f41cc5d7dd748a7d07cd45db52b7, type: 3}
 --- !u!114 &8579891207370795741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1617,8 +1617,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e17dffe3843b0044880551be911d2cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VidaNavioInimigo
-  caveiras: []
-  explosaoPrefab: {fileID: 0}
+  caveiras:
+  - {fileID: 6088277765385063091}
+  - {fileID: 4344380877028030060}
+  - {fileID: 3180481273798719392}
+  - {fileID: 2696788626991825010}
+  explosaoPrefab: {fileID: 1530883628459045667, guid: afa739533d2d00a44a3142d022a75b6e, type: 3}
   pontosExplosao: []
   intervaloEntreExplosoes: 0.3
   tempoParaDesaparecer: 3

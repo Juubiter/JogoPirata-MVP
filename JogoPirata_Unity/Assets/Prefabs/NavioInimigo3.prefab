@@ -4828,6 +4828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5078014177766390125}
   - component: {fileID: 1701011414613567229}
+  - component: {fileID: 8587121603312544547}
   m_Layer: 0
   m_Name: NavioInimigo3
   m_TagString: Untagged
@@ -4875,15 +4876,15 @@ MonoBehaviour:
   tempoAceleracao: 1.5
   tempoParaDestruir: 1
   prefabDaBala: {fileID: 7134679933749194716, guid: 45bceca59551a624b950414c7f20c53b, type: 3}
-  canhoesDoNavio: []
-  alvosDoJogador:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  canhoesDoNavio:
+  - {fileID: 8450318439990181360}
+  - {fileID: 4228338665941260546}
+  - {fileID: 1074074890833089948}
+  alvosDoJogador: []
   grupoDeAlvos: {fileID: 0}
   tiroGuiado: 0
-  tirosNormais: 3
-  tirosRajada: 3
+  tirosNormais: 5
+  tirosRajada: 5
   intervaloTiroNormal: 1.2
   pausaAntesRajada: 0.8
   intervaloRajada: 0.25
@@ -4896,7 +4897,35 @@ MonoBehaviour:
   alvosFogo: []
   alvosAgua: []
   particulasExplosao: {fileID: 0}
-  somExplosao: {fileID: 0}
+  somExplosao: {fileID: 8300000, guid: f613f41cc5d7dd748a7d07cd45db52b7, type: 3}
+--- !u!114 &8587121603312544547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6945075915817990237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e17dffe3843b0044880551be911d2cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VidaNavioInimigo
+  caveiras:
+  - {fileID: 8482569166796526910}
+  - {fileID: 6229749832053340547}
+  - {fileID: 3892873976947028017}
+  - {fileID: 458165910372706980}
+  - {fileID: 3146436017535928559}
+  - {fileID: 6055551118525200726}
+  - {fileID: 856337977893684300}
+  - {fileID: 7733440788190241387}
+  - {fileID: 5541486287718460280}
+  - {fileID: 6463518275825341220}
+  - {fileID: 2644238997030713060}
+  explosaoPrefab: {fileID: 1530883628459045667, guid: afa739533d2d00a44a3142d022a75b6e, type: 3}
+  pontosExplosao: []
+  intervaloEntreExplosoes: 0.3
+  tempoParaDesaparecer: 3
 --- !u!1 &7108173264519285778
 GameObject:
   m_ObjectHideFlags: 0

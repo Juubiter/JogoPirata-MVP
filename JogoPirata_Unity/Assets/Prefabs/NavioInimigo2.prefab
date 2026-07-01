@@ -1648,6 +1648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8139921727166925519}
   - component: {fileID: -6296373112553191373}
+  - component: {fileID: 7502760647185778483}
   m_Layer: 0
   m_Name: NavioInimigo2
   m_TagString: Untagged
@@ -1720,7 +1721,31 @@ MonoBehaviour:
   alvosFogo: []
   alvosAgua: []
   particulasExplosao: {fileID: 0}
-  somExplosao: {fileID: 0}
+  somExplosao: {fileID: 8300000, guid: f613f41cc5d7dd748a7d07cd45db52b7, type: 3}
+--- !u!114 &7502760647185778483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2457727989503907873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e17dffe3843b0044880551be911d2cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VidaNavioInimigo
+  caveiras:
+  - {fileID: 5352510879930719239}
+  - {fileID: 2120595421659368448}
+  - {fileID: 2737191015232550832}
+  - {fileID: 4807214074259409964}
+  - {fileID: 4230640489311681245}
+  - {fileID: 5490367088383394415}
+  - {fileID: 3254201342496776425}
+  explosaoPrefab: {fileID: 1530883628459045667, guid: afa739533d2d00a44a3142d022a75b6e, type: 3}
+  pontosExplosao: []
+  intervaloEntreExplosoes: 0.3
+  tempoParaDesaparecer: 3
 --- !u!1 &2481497159952501164
 GameObject:
   m_ObjectHideFlags: 0
