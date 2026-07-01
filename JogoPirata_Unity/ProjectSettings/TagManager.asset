@@ -94,6 +94,9 @@ TagManager:
   - name: 8
     uniqueID: 314874723
     locked: 0
+  - name: caveiras
+    uniqueID: 2582097565
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []

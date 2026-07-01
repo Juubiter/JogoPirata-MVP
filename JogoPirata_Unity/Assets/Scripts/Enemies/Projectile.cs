@@ -161,8 +161,8 @@ public class Projectile : MonoBehaviour
 
         foreach (SpriteRenderer sr in renderers)
         {
-            sr.sortingLayerName = "Fumaça";
-            sr.sortingOrder = 9999;
+            sr.sortingLayerName = "8";
+sr.sortingOrder = 10000;
         }
 
         Debug.Log("BURACO DE ÁGUA CRIADO EM: " + posicaoBuraco);
@@ -186,15 +186,14 @@ public class Projectile : MonoBehaviour
             Debug.LogWarning("Target da bala está vazio. Não posso criar fogo.");
             return;
         }
+        Debug.Log("Target: " + target.name);
 
-        GameObject fogo = Instantiate(fogoPrefab, target.position, Quaternion.identity);
-        fogo.name = "Fogo_Criado";
-        fogo.tag = "Fogo";
+     GameObject fogo = Instantiate(fogoPrefab, target.position, Quaternion.identity);
 
-        GameObject navio = GameObject.FindGameObjectWithTag("Player");
+fogo.transform.SetParent(target.parent, true);
 
-        if (navio != null)
-            fogo.transform.SetParent(navio.transform, true);
+fogo.transform.position = target.position;
+fogo.transform.localScale = Vector3.one * tamanhoFogo;
 
         fogo.transform.localScale = Vector3.one * tamanhoFogo;
 
@@ -205,8 +204,8 @@ public class Projectile : MonoBehaviour
 
         foreach (SpriteRenderer sr in renderers)
         {
-            sr.sortingLayerName = "Fumaça";
-            sr.sortingOrder = 10000;
+           sr.sortingLayerName = "8";
+sr.sortingOrder = 10000;
         }
 
         Debug.Log("FOGO CRIADO EM: " + fogo.transform.position);
